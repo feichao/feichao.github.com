@@ -4,29 +4,41 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>八戒传-1 | Feichao&#39;s blog</title>
+    <title>WP8之Socket | Feichao&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Feichao Wan">
     
 
     
-    <meta name="description" content="感想  寄居广州城乡结合处，老婆在天河上班。那日午后，天降大雨，雷声滚滚，无法入眠，故写此文送于老婆，无甚含义。
-正文  八戒，师父这里一切都好，刚才也下了一点雨，我没有数清楚是多少滴。天河下雨了，那河水肯定涨到你的腰了，不知道那猴子养的马有没有被淹死。好久没有去你那里坐坐了，上次去你还亲自下厨，好怀念你的味道啊。
-  有时候我念经念到想吐了，就会想起一起去西天的那段时光。哈哈，师父瞒着你们和如来">
+    <meta name="description" content="主题  WP8之Socket ——作为服务端接收消息
+正文  网上都说WP8 socket已经开始支持服务端，但是在网上总找不到代码，经过研究，以下的方式可以实现监听。
+   代码：
+  //监听用
+  private Socket socketListen = null;
+
+  private SocketAsyncEventArgs socketEventArgListen = new Soc">
 <meta property="og:type" content="article">
-<meta property="og:title" content="八戒传-1">
-<meta property="og:url" content="http://0xfc.cn/2015/04/21/Bajie-1/index.html">
+<meta property="og:title" content="WP8之Socket">
+<meta property="og:url" content="http://0xfc.cn/2013/10/15/wp8socket/index.html">
 <meta property="og:site_name" content="Feichao's blog">
-<meta property="og:description" content="感想  寄居广州城乡结合处，老婆在天河上班。那日午后，天降大雨，雷声滚滚，无法入眠，故写此文送于老婆，无甚含义。
-正文  八戒，师父这里一切都好，刚才也下了一点雨，我没有数清楚是多少滴。天河下雨了，那河水肯定涨到你的腰了，不知道那猴子养的马有没有被淹死。好久没有去你那里坐坐了，上次去你还亲自下厨，好怀念你的味道啊。
-  有时候我念经念到想吐了，就会想起一起去西天的那段时光。哈哈，师父瞒着你们和如来">
-<meta property="og:updated_time" content="2015-08-05T13:34:40.000Z">
+<meta property="og:description" content="主题  WP8之Socket ——作为服务端接收消息
+正文  网上都说WP8 socket已经开始支持服务端，但是在网上总找不到代码，经过研究，以下的方式可以实现监听。
+   代码：
+  //监听用
+  private Socket socketListen = null;
+
+  private SocketAsyncEventArgs socketEventArgListen = new Soc">
+<meta property="og:updated_time" content="2015-08-05T13:54:40.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="八戒传-1">
-<meta name="twitter:description" content="感想  寄居广州城乡结合处，老婆在天河上班。那日午后，天降大雨，雷声滚滚，无法入眠，故写此文送于老婆，无甚含义。
-正文  八戒，师父这里一切都好，刚才也下了一点雨，我没有数清楚是多少滴。天河下雨了，那河水肯定涨到你的腰了，不知道那猴子养的马有没有被淹死。好久没有去你那里坐坐了，上次去你还亲自下厨，好怀念你的味道啊。
-  有时候我念经念到想吐了，就会想起一起去西天的那段时光。哈哈，师父瞒着你们和如来">
+<meta name="twitter:title" content="WP8之Socket">
+<meta name="twitter:description" content="主题  WP8之Socket ——作为服务端接收消息
+正文  网上都说WP8 socket已经开始支持服务端，但是在网上总找不到代码，经过研究，以下的方式可以实现监听。
+   代码：
+  //监听用
+  private Socket socketListen = null;
+
+  private SocketAsyncEventArgs socketEventArgListen = new Soc">
 
     
     <link rel="alternative" href="/atom.xml" title="Feichao&#39;s blog" type="application/atom+xml">
@@ -92,14 +104,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/04/21/Bajie-1/" title="八戒传-1" itemprop="url">八戒传-1</a>
+      <a href="/2013/10/15/wp8socket/" title="WP8之Socket" itemprop="url">WP8之Socket</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Feichao Wan" target="_blank" itemprop="author">Feichao Wan</a>
 		
   <p class="article-time">
-    <time datetime="2015-04-21T03:59:59.000Z" itemprop="datePublished"> 发表于 2015-04-21</time>
+    <time datetime="2013-10-15T02:34:59.000Z" itemprop="datePublished"> 发表于 2013-10-15</time>
     
   </p>
 </header>
@@ -108,17 +120,246 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#感想"><span class="toc-number">1.</span> <span class="toc-text">感想</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正文"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#主题"><span class="toc-number">1.</span> <span class="toc-text">主题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正文"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a></li></ol>
 		
 		</div>
 		
-		<h3 id="感想">感想</h3><p>  寄居广州城乡结合处，老婆在天河上班。那日午后，天降大雨，雷声滚滚，无法入眠，故写此文送于老婆，无甚含义。</p>
-<h3 id="正文">正文</h3><p>  八戒，师父这里一切都好，刚才也下了一点雨，我没有数清楚是多少滴。天河下雨了，那河水肯定涨到你的腰了，不知道那猴子养的马有没有被淹死。好久没有去你那里坐坐了，上次去你还亲自下厨，好怀念你的味道啊。</p>
-<p>  有时候我念经念到想吐了，就会想起一起去西天的那段时光。哈哈，师父瞒着你们和如来喝了两杯，唉，如来也不容易。没想到转眼一个月就过去了，好快好快。八戒，师父知道你比较好色，虽然你住在天上，但还是要注意身体，那些仙女儿即使再好看，也别辜负高家女儿。</p>
-<p>  师父一个人住在庙里，每天除了大妈大姐来上香，没有一个漂亮mm，都被高富帅抢走了。皇上也不来看我了，每天抱着经书祈求长生不老，连他的妃子都无暇顾及，唉，就这样吧。</p>
-<p>  八戒，不知道你还会不会经常想起那猴子，反正悟净已经彻底堕落了，他和白龙马混在一起，除了做海盗，还做起了恐怖分子，搞得到处都是他们的通缉令。说那猴子吧，他有了小猴子，据他说也是从石头里蹦出来的，可为师总觉得他的话不靠谱，如果你了解，要尽快回复我。</p>
-<p>  好了，师父要去隔壁尼姑庵找你师母了，看来她又做了红烧肉，你应该不感兴趣。还有个好消息，再有八个月，小唐僧就出生了，哈哈，我也是最近才知道。家里也养了一窝猪，下的猪仔没一个像你的，你要努力哦。</p>
-<p>  爱你的师父，再聊。</p>
+		<h3 id="主题">主题</h3><p>  WP8之Socket ——作为服务端接收消息</p>
+<h3 id="正文">正文</h3><p>  网上都说WP8 socket已经开始支持服务端，但是在网上总找不到代码，经过研究，以下的方式可以实现监听。</p>
+<p>   代码：</p>
+<p>  //监听用</p>
+<pre><code>  <span class="keyword">private</span> Socket socketListen = <span class="keyword">null</span>;
+
+  <span class="keyword">private</span> SocketAsyncEventArgs socketEventArgListen = <span class="keyword">new</span> SocketAsyncEventArgs();
+
+ <span class="comment">//监听成功后获取已经连接的socket</span>
+
+  <span class="keyword">private</span> Socket socketConnect = <span class="keyword">null</span>;
+
+  <span class="keyword">private</span> SocketAsyncEventArgs socketEventArgConnect = <span class="keyword">null</span>;
+
+ <span class="comment">//初始化socket</span>
+
+  socketListen = <span class="keyword">new</span> Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+
+  socketListen.Bind(<span class="keyword">new</span> IPEndPoint(IPAddress.Any, Constants.TCP_SERVER_PORT));
+
+
+
+ <span class="comment">//异步socket操作执行完成后触发的事件</span>
+
+  socketEventArgListen.Completed += socketEventArgListen_Completed;
+
+
+
+ <span class="comment">//监听函数</span>
+
+  <span class="function"><span class="keyword">public</span> <span class="keyword">string</span> <span class="title">Listen</span>(<span class="params"></span>)
+
+  </span>{
+
+      response = <span class="string">"Error"</span>;
+
+      clientDone.Reset();
+
+      socketListen.Listen(<span class="number">5</span>);
+
+      socketEventArgListen.SetBuffer(<span class="keyword">new</span> Byte[Constants.IO_BUF_SIZE], <span class="number">0</span>, Constants.IO_BUF_SIZE);
+
+      <span class="comment">//如果监听同步完成</span>
+
+      <span class="keyword">if</span> (!socketListen.AcceptAsync(socketEventArgListen))
+
+      {
+
+          socketEventArgListen_Completed(socketListen, socketEventArgListen);
+
+          <span class="keyword">return</span> response;
+
+      }
+
+      <span class="comment">//监听异步完成</span>
+
+      clientDone.WaitOne(Constants.TIMEOUT_MILLISECONDS);
+
+      <span class="keyword">return</span> response;
+
+  }
+
+
+
+<span class="comment">//操作完成后执行</span>
+
+ <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">socketEventArgListen_Completed</span>(<span class="params"><span class="keyword">object</span> sender, SocketAsyncEventArgs e</span>)
+
+  </span>{
+
+      response = e.SocketError.ToString();
+
+      <span class="keyword">switch</span> (e.LastOperation)
+
+      {
+
+              <span class="comment">//当客户端发来Connect消息时，服务端会通过AcceptAsync接受，接受成功会执行下面代码</span>
+
+          <span class="keyword">case</span> SocketAsyncOperation.Accept:
+
+             <span class="comment">//得到客户端发来的消息</span>
+
+              response = Encoding.UTF8.GetString(e.Buffer, e.Offset, e.BytesTransferred);
+
+              response = response.Trim(<span class="string">'\0'</span>);
+
+              <span class="keyword">if</span> (response == <span class="string">""</span>)
+
+              {
+
+                  response = <span class="string">"Error"</span>;
+
+              }
+
+             <span class="comment">//得到已连接的socket，此后就可以用这个socket执行发送和接收了</span>
+
+              socketConnect = e.AcceptSocket;
+
+              socketEventArgConnect = e;
+
+              <span class="keyword">break</span>;
+
+          <span class="keyword">case</span> SocketAsyncOperation.Send:
+
+              <span class="keyword">break</span>;
+
+              <span class="comment">//when receive, we can get the Buffer</span>
+
+          <span class="keyword">case</span> SocketAsyncOperation.Receive:
+
+              response = Encoding.UTF8.GetString(e.Buffer, e.Offset, e.BytesTransferred);
+
+              response = response.Trim(<span class="string">'\0'</span>);
+
+              <span class="keyword">if</span> (response == <span class="string">""</span>)
+
+              {
+
+                  response = <span class="string">"Error"</span>;
+
+              }
+
+              <span class="keyword">break</span>;
+
+          <span class="keyword">default</span>:
+
+              <span class="keyword">break</span>;
+
+      }
+
+      clientDone.Set();
+
+  }
+
+
+
+ <span class="comment">//作为服务端向客户端发消息，</span>
+
+  <span class="function"><span class="keyword">public</span> <span class="keyword">string</span> <span class="title">SendServer</span>(<span class="params">Socket isocket,SocketAsyncEventArgs isocketEvent,<span class="keyword">string</span> idata</span>)
+
+  </span>{
+
+      response = <span class="string">"Error"</span>;
+
+      <span class="keyword">if</span> (isocket != <span class="keyword">null</span>)
+
+      {
+
+          <span class="keyword">byte</span>[] payload = Encoding.UTF8.GetBytes(idata);
+
+          isocketEvent.SetBuffer(payload, <span class="number">0</span>, payload.Length);
+
+          clientDone.Reset();
+
+         <span class="comment">//如果发送同步完成</span>
+
+          <span class="keyword">if</span> (!isocket.SendAsync(isocketEvent))
+
+          {
+
+              socketEventArgListen_Completed(isocket, isocketEvent);
+
+              <span class="keyword">return</span> response;
+
+          }
+
+          clientDone.WaitOne(Constants.TIMEOUT_MILLISECONDS);
+
+      }
+
+      <span class="keyword">else</span>
+
+      {
+
+          response = <span class="string">"Socket is not initialized"</span>;
+
+      }
+
+      <span class="keyword">return</span> response;
+
+  }
+
+
+
+ <span class="comment">//作为服务端接收来自客户端的消息</span>
+
+  <span class="function"><span class="keyword">public</span> <span class="keyword">string</span> <span class="title">ReceiveServer</span>(<span class="params">Socket isocket, SocketAsyncEventArgs isocketEvent, <span class="keyword">int</span> ibuffersize</span>)
+
+  </span>{
+
+      response = <span class="string">"Error"</span>;
+
+      <span class="keyword">if</span> (isocket != <span class="keyword">null</span>)
+
+      {
+
+          clientDone.Reset();
+
+          <span class="keyword">byte</span>[] temp = <span class="keyword">new</span> <span class="keyword">byte</span>[ibuffersize];
+
+          isocketEvent.SetBuffer(temp, <span class="number">0</span>, ibuffersize);
+
+          <span class="comment">//如果同步完成</span>
+
+          <span class="keyword">if</span> (!isocket.ReceiveAsync(isocketEvent))
+
+          {
+
+              socketEventArgListen_Completed(isocket, isocketEvent);
+
+              <span class="keyword">return</span> response;
+
+          }
+
+          clientDone.WaitOne(Constants.TIMEOUT_MILLISECONDS);
+
+      }
+
+      <span class="keyword">else</span>
+
+      {
+
+          response = <span class="string">"Socket is not initialized"</span>;
+
+      }
+
+      <span class="keyword">return</span> response;
+
+  }
+</code></pre><p>  具体使用的时候：</p>
+<pre><code>当我们拿到socketConnect和socketEventArgConnect后，可以执行：
+
+<span class="function"><span class="title">SendServer</span><span class="params">(socketConnect, socketEventArgConnect, strdata )</span></span>向客户端发送消息
+
+<span class="function"><span class="title">ReceiveServer</span><span class="params">(socketConnect, socketEventArgConnect, size)</span></span>从buffer中拿消息
+</code></pre><p>  使用完成后记得关闭Socket，上述代码在楼主的手机上顺利执行，但是当网络不好的时候，会出现丢失数据的现象，现在正在优化，如果有研究WP8 Socket的大牛，请多多指导。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -126,13 +367,13 @@
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/westgoal/">westgoal</a>
+  <a class="article-category-link" href="/categories/tech/">tech</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/八戒/">八戒</a>
+  <span></span> <a href="/tags/WP8/">WP8</a>
   </div>
 
 </div>
@@ -141,7 +382,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://0xfc.cn/2015/04/21/Bajie-1/" data-title="八戒传-1 | Feichao&#39;s blog" data-tsina="null" class="share clearfix">
+	  <div data-url="http://0xfc.cn/2013/10/15/wp8socket/" data-title="WP8之Socket | Feichao&#39;s blog" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -155,18 +396,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2015/04/22/Bajie-2/" title="八戒传-2">
+ <a href="/2013/11/29/wp8vibrate/" title="WP8之自定义震动">
   <strong>上一篇：</strong><br/>
   <span>
-  八戒传-2</span>
+  WP8之自定义震动</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2014/03/10/wp8record/"  title="WP8之录音详解">
+<a href="/2013/10/13/wp8sdcard/"  title="WP8之读取SD卡">
  <strong>下一篇：</strong><br/> 
- <span>WP8之录音详解
+ <span>WP8之读取SD卡
 </span>
 </a>
 </div>
@@ -181,7 +422,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#感想"><span class="toc-number">1.</span> <span class="toc-text">感想</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正文"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#主题"><span class="toc-number">1.</span> <span class="toc-text">主题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正文"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a></li></ol>
  
   </div>
 
