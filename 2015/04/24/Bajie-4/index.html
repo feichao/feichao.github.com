@@ -39,6 +39,7 @@
     <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
     
     <link rel="stylesheet" href="/css/style.css" type="text/css">
+    <link rel="stylesheet" href="/css/wan-spinner.css" type="text/css">
 </head>
 
   <body>
@@ -194,6 +195,8 @@
 		<ul>
 		
 		  
+			<li><a href="/categories/component/" title="component">component<sup>1</sup></a></li>
+		  
 		
 		  
 			<li><a href="/categories/tech/" title="tech">tech<sup>5</sup></a></li>
@@ -218,6 +221,10 @@
 		
 			
 				<li><a href="/tags/WP8/" title="WP8">WP8<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/组件/" title="组件">组件<sup>1</sup></a></li>
 			
 		
 		</ul>
@@ -304,6 +311,33 @@
 <script src="/js/jquery.imagesloaded.min.js"></script>
 <script src="/js/gallery.js"></script>
 <script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+<script src="/js/wan-spinner.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  var options = {
+     maxValue: 10,     //设置所能到达的最大值，默认为 999
+     minValue: -5,     //设置所能到达的最小值，默认为 -999
+     step: 2.131,      //步进长度，默认为 1
+     inputWidth: 100,  //根据最大值设置输入框的宽度，防止内容超出，默认为25
+     start: -2,        //起始值，默认为 1
+     plusClick: function(val) {//点击plus按钮触发事件
+       console.log("plus button click: " + val);
+     },
+     minusClick: function(val) {//点击minus按钮触发事件
+       console.log("minus button click: " + val);
+     },
+     exceptionFun: function(exception) {//值超出设置的范围时触发事件，等于1说明超出上范围，等于-1说明超出下范围
+       console.log("exception: " + exception);
+     },
+     valueChanged: function(val) {//值变更时触发事件
+       console.log("value changed: " + val);
+     }
+   };
+  $(".wan-spinner-1").WanSpinner(options);
+  $(".wan-spinner-2").WanSpinner().css("border-color", "red");
+});
+</script>
 
 <script type="text/javascript">
 $(document).ready(function(){ 
