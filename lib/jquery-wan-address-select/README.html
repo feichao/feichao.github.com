@@ -1,0 +1,54 @@
+<h1 id="wan-address-select">wan-address-select</h1><h2 id="a_jquery_address_selector_for_China">a jquery address selector for China</h2><p><strong>demo</strong></p>
+<blockquote>
+<p>demo/test.html</p>
+</blockquote>
+<p><strong>prepare to use</strong></p>
+<blockquote>
+<ul>
+<li>include jQuery</li>
+<li>include bulid/wan-address-select.css </li>
+<li>include build/wan-address-select.js</li>
+<li>in your html:</li>
+</ul>
+<pre><code class="html"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"wan-address-select"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+</code></pre>
+</blockquote>
+<p><strong>how to use</strong></p>
+<blockquote>
+<p>init component</p>
+<pre><code class="javascript">$(<span class="string">".wan-spinner"</span>).WanAddressSelect(options);
+</code></pre>
+<p>get value</p>
+<pre><code class="javascript">$(<span class="string">".wan-spinner"</span>).WanAddressSelect(<span class="string">"val"</span>);
+
+result: {
+    <span class="string">"province"</span> : <span class="string">"北京市"</span>,
+    <span class="string">"city"</span> : <span class="string">"市辖区"</span>,
+    <span class="string">"county"</span> : <span class="string">"西城区"</span>,
+    <span class="string">"town"</span> : <span class="string">"月坛街道办事处"</span>
+}
+</code></pre>
+<p>get value and id</p>
+<pre><code class="javascript">$(<span class="string">".wan-spinner"</span>).WanAddressSelect(<span class="string">"idval"</span>);
+
+result: {
+    <span class="string">"provinceId"</span> : <span class="number">110</span>,
+    <span class="string">"province"</span> : <span class="string">"北京市"</span>,
+    <span class="string">"cityId"</span> : <span class="number">110100000000</span>,
+    <span class="string">"city"</span> : <span class="string">"市辖区"</span>,
+    <span class="string">"countyId"</span> : <span class="number">110102000000</span>,
+    <span class="string">"county"</span> : <span class="string">"西城区"</span>,
+    <span class="string">"townId"</span> : <span class="number">110102007000</span>,
+    <span class="string">"town"</span> : <span class="string">"月坛街道办事处"</span>
+}
+</code></pre>
+</blockquote>
+<p><strong>options</strong></p>
+<blockquote>
+<p>initProvice: default: ‘北京市’. 初始化插件时默认值，下同。</p>
+<p>initCity: default: ‘市辖区’.</p>
+<p>initCounty: default: ‘西城区’.</p>
+<p>initTown: default: ‘月坛街道办事处’.</p>
+<p>initVillage: default: ‘南礼士路社区居委会’.</p>
+<p>fineness: default: ‘county’.  地址选择的精细度，可取值：[‘county’, ‘town’, ‘village’]</p>
+</blockquote>

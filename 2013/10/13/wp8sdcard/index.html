@@ -271,21 +271,13 @@ foreach (ExternalStorageFile <span class="type">file</span> <span class="keyword
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2013/10/15/wp8socket/" title="WP8之Socket">
+ <a href="/2013/10/13/wp8Json/" title="WP8的Json">
   <strong>上一篇：</strong><br/>
   <span>
-  WP8之Socket</span>
+  WP8的Json</span>
 </a>
 </div>
 
-
-<div class="next">
-<a href="/2013/10/13/wp8Json/"  title="WP8的Json">
- <strong>下一篇：</strong><br/> 
- <span>WP8的Json
-</span>
-</a>
-</div>
 
 </nav>
 
@@ -311,7 +303,7 @@ foreach (ExternalStorageFile <span class="type">file</span> <span class="keyword
 		<ul>
 		
 		  
-			<li><a href="/categories/component/" title="component">component<sup>1</sup></a></li>
+			<li><a href="/categories/component/" title="component">component<sup>2</sup></a></li>
 		  
 		
 		  
@@ -340,7 +332,7 @@ foreach (ExternalStorageFile <span class="type">file</span> <span class="keyword
 			
 		
 			
-				<li><a href="/tags/组件/" title="组件">组件<sup>1</sup></a></li>
+				<li><a href="/tags/组件/" title="组件">组件<sup>2</sup></a></li>
 			
 		
 		</ul>
@@ -428,6 +420,7 @@ foreach (ExternalStorageFile <span class="type">file</span> <span class="keyword
 <script src="/js/gallery.js"></script>
 <script src="/js/jquery.qrcode-0.12.0.min.js"></script>
 <script src="/js/wan-spinner.js"></script>
+<script src="/lib/jquery-wan-address-select/build/wan-address-select.js"></script>
 
 <script type="text/javascript">
 $(document).ready(function() {
@@ -452,6 +445,44 @@ $(document).ready(function() {
    };
   $(".wan-spinner-1").WanSpinner(options);
   $(".wan-spinner-2").WanSpinner().css("border-color", "red");
+
+  var optionsAddress1 = {
+      initProvice: '北京市',
+      initCity: '市辖区',
+      initCounty: '西城区',
+      initTown: '月坛街道办事处',
+      initVillage: '南礼士路社区居委会',
+      fineness: 'county',
+      url: 'lib/'
+    };
+  var optionsAddress2 = {
+      initProvice: '北京市',
+      initCity: '市辖区',
+      initCounty: '西城区',
+      initTown: '月坛街道办事处',
+      initVillage: '南礼士路社区居委会',
+      fineness: 'town',
+      url: 'lib/'
+    };
+  var optionsAddress3 = {
+      initProvice: '北京市',
+      initCity: '市辖区',
+      initCounty: '西城区',
+      initTown: '月坛街道办事处',
+      initVillage: '南礼士路社区居委会',
+      fineness: 'village',
+      url: 'lib/'
+    };
+  $(".wan-address-select1").WanAddressSelect(optionsAddress1);
+  $(".wan-address-select2").WanAddressSelect(optionsAddress2);
+  $(".wan-address-select3").WanAddressSelect(optionsAddress3);
+
+  $("#getValue").on("click", function(){
+    alert(JSON.stringify($(".wan-address-select1").WanAddressSelect('val')));
+  });
+  $("#getValueAndId").on("click", function(){
+    alert(JSON.stringify($(".wan-address-select1").WanAddressSelect('idval')));
+  });
 });
 </script>
 
