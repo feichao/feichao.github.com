@@ -33,6 +33,7 @@
     
     <link rel="stylesheet" href="/css/style.css" type="text/css">
     <link rel="stylesheet" href="/css/wan-spinner.css" type="text/css">
+    <link rel="stylesheet" href="/css/wan-carousel.css" type="text/css">
 </head>
 
   <body>
@@ -88,112 +89,255 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2013/10/13/wp8Json/" title="WP8的Json" itemprop="url">WP8的Json</a>
+      <a href="/2013/10/15/wp8socket/" title="WP8之Socket" itemprop="url">WP8之Socket</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Feichao Wan" target="_blank" itemprop="author">Feichao Wan</a>
 		
   <p class="article-time">
-    <time datetime="2013-10-13T02:34:59.000Z" itemprop="datePublished"> 发表于 2013-10-13</time>
+    <time datetime="2013-10-15T02:34:59.000Z" itemprop="datePublished"> 发表于 2013-10-15</time>
     
   </p>
 </header>
     <div class="article-content">
         
-        <h3 id="主题">主题</h3><p>  WP8的Json数据转换。</p>
-<h3 id="正文">正文</h3><p>  需要引用：</p>
-<p>  using System.Runtime.Serialization.Json;</p>
-<p>  using System.Runtime.Serialization;</p>
-<p>  具体方法如下:</p>
-<pre><code> <span class="comment"><span class="xmlDocTag">///</span>/ 转化为 JSON stream.</span>
+        <h3 id="主题">主题</h3><p>  WP8之Socket ——作为服务端接收消息</p>
+<h3 id="正文">正文</h3><p>  网上都说WP8 socket已经开始支持服务端，但是在网上总找不到代码，经过研究，以下的方式可以实现监听。</p>
+<p>   代码：</p>
+<p>  //监听用</p>
+<pre><code>  <span class="keyword">private</span> Socket socketListen = <span class="keyword">null</span>;
 
- <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">string</span> <span class="title">WriteFromObject</span>(<span class="params">TransforData itransforData</span>)
+  <span class="keyword">private</span> SocketAsyncEventArgs socketEventArgListen = <span class="keyword">new</span> SocketAsyncEventArgs();
 
- </span>{
+ <span class="comment">//监听成功后获取已经连接的socket</span>
 
-     <span class="comment">//Create a stream to serialize the object to.</span>
+  <span class="keyword">private</span> Socket socketConnect = <span class="keyword">null</span>;
 
-     MemoryStream ms = <span class="keyword">new</span> MemoryStream();
+  <span class="keyword">private</span> SocketAsyncEventArgs socketEventArgConnect = <span class="keyword">null</span>;
 
-     <span class="comment">// Serializer the User object to the stream.</span>
+ <span class="comment">//初始化socket</span>
 
-     DataContractJsonSerializer ser = <span class="keyword">new</span> DataContractJsonSerializer(<span class="keyword">typeof</span>(TransforData));
+  socketListen = <span class="keyword">new</span> Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
-     ser.WriteObject(ms, itransforData);
+  socketListen.Bind(<span class="keyword">new</span> IPEndPoint(IPAddress.Any, Constants.TCP_SERVER_PORT));
 
-     <span class="keyword">byte</span>[] data = ms.ToArray();
 
-     ms.Close();
 
-     <span class="keyword">return</span> Encoding.UTF8.GetString(data, <span class="number">0</span>, data.Length);
+ <span class="comment">//异步socket操作执行完成后触发的事件</span>
 
- }
+  socketEventArgListen.Completed += socketEventArgListen_Completed;
 
- <span class="comment">// 转为用户数据</span>
 
-<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> TransforData <span class="title">ReadToObject</span>(<span class="params"><span class="keyword">string</span> idata</span>)
 
- </span>{
+ <span class="comment">//监听函数</span>
 
-     TransforData transforData = <span class="keyword">new</span> TransforData();
+  <span class="function"><span class="keyword">public</span> <span class="keyword">string</span> <span class="title">Listen</span>(<span class="params"></span>)
 
-     MemoryStream ms = <span class="keyword">new</span> MemoryStream(Encoding.UTF8.GetBytes(idata));
+  </span>{
 
-     DataContractJsonSerializer ser = <span class="keyword">new</span> DataContractJsonSerializer(transforData.GetType());
+      response = <span class="string">"Error"</span>;
 
-     transforData = ser.ReadObject(ms) <span class="keyword">as</span> TransforData;
+      clientDone.Reset();
 
-     ms.Close();
+      socketListen.Listen(<span class="number">5</span>);
 
-     <span class="keyword">return</span> transforData;
+      socketEventArgListen.SetBuffer(<span class="keyword">new</span> Byte[Constants.IO_BUF_SIZE], <span class="number">0</span>, Constants.IO_BUF_SIZE);
 
- }
-</code></pre><p>  其中TransforData是用户自定义的,格式如下:</p>
-<p>  namespace myAPP</p>
-<p>  {</p>
-<pre><code>[DataContract]
+      <span class="comment">//如果监听同步完成</span>
 
-<span class="keyword">public</span> <span class="keyword">class</span> <span class="title">TransforData</span>
+      <span class="keyword">if</span> (!socketListen.AcceptAsync(socketEventArgListen))
 
-{
+      {
 
-    [DataMember]
+          socketEventArgListen_Completed(socketListen, socketEventArgListen);
 
-    <span class="keyword">public</span> <span class="keyword">int</span> X
+          <span class="keyword">return</span> response;
 
-    {
+      }
 
-        <span class="keyword">get</span>;
+      <span class="comment">//监听异步完成</span>
 
-        <span class="keyword">set</span>;
+      clientDone.WaitOne(Constants.TIMEOUT_MILLISECONDS);
 
-    }
+      <span class="keyword">return</span> response;
 
-    [DataMember]
+  }
 
-    <span class="keyword">public</span> <span class="keyword">int</span> Y
 
-    {
 
-        <span class="keyword">get</span>;
+<span class="comment">//操作完成后执行</span>
 
-        <span class="keyword">set</span>;
+ <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">socketEventArgListen_Completed</span>(<span class="params"><span class="keyword">object</span> sender, SocketAsyncEventArgs e</span>)
 
-    }
+  </span>{
 
-    [DataMember]
+      response = e.SocketError.ToString();
 
-    <span class="keyword">public</span> <span class="keyword">string</span> Z
+      <span class="keyword">switch</span> (e.LastOperation)
 
-    {
+      {
 
-        <span class="keyword">get</span>;
+              <span class="comment">//当客户端发来Connect消息时，服务端会通过AcceptAsync接受，接受成功会执行下面代码</span>
 
-        <span class="keyword">set</span>;
+          <span class="keyword">case</span> SocketAsyncOperation.Accept:
 
-    }
-</code></pre><p>  }</p>
+             <span class="comment">//得到客户端发来的消息</span>
+
+              response = Encoding.UTF8.GetString(e.Buffer, e.Offset, e.BytesTransferred);
+
+              response = response.Trim(<span class="string">'\0'</span>);
+
+              <span class="keyword">if</span> (response == <span class="string">""</span>)
+
+              {
+
+                  response = <span class="string">"Error"</span>;
+
+              }
+
+             <span class="comment">//得到已连接的socket，此后就可以用这个socket执行发送和接收了</span>
+
+              socketConnect = e.AcceptSocket;
+
+              socketEventArgConnect = e;
+
+              <span class="keyword">break</span>;
+
+          <span class="keyword">case</span> SocketAsyncOperation.Send:
+
+              <span class="keyword">break</span>;
+
+              <span class="comment">//when receive, we can get the Buffer</span>
+
+          <span class="keyword">case</span> SocketAsyncOperation.Receive:
+
+              response = Encoding.UTF8.GetString(e.Buffer, e.Offset, e.BytesTransferred);
+
+              response = response.Trim(<span class="string">'\0'</span>);
+
+              <span class="keyword">if</span> (response == <span class="string">""</span>)
+
+              {
+
+                  response = <span class="string">"Error"</span>;
+
+              }
+
+              <span class="keyword">break</span>;
+
+          <span class="keyword">default</span>:
+
+              <span class="keyword">break</span>;
+
+      }
+
+      clientDone.Set();
+
+  }
+
+
+
+ <span class="comment">//作为服务端向客户端发消息，</span>
+
+  <span class="function"><span class="keyword">public</span> <span class="keyword">string</span> <span class="title">SendServer</span>(<span class="params">Socket isocket,SocketAsyncEventArgs isocketEvent,<span class="keyword">string</span> idata</span>)
+
+  </span>{
+
+      response = <span class="string">"Error"</span>;
+
+      <span class="keyword">if</span> (isocket != <span class="keyword">null</span>)
+
+      {
+
+          <span class="keyword">byte</span>[] payload = Encoding.UTF8.GetBytes(idata);
+
+          isocketEvent.SetBuffer(payload, <span class="number">0</span>, payload.Length);
+
+          clientDone.Reset();
+
+         <span class="comment">//如果发送同步完成</span>
+
+          <span class="keyword">if</span> (!isocket.SendAsync(isocketEvent))
+
+          {
+
+              socketEventArgListen_Completed(isocket, isocketEvent);
+
+              <span class="keyword">return</span> response;
+
+          }
+
+          clientDone.WaitOne(Constants.TIMEOUT_MILLISECONDS);
+
+      }
+
+      <span class="keyword">else</span>
+
+      {
+
+          response = <span class="string">"Socket is not initialized"</span>;
+
+      }
+
+      <span class="keyword">return</span> response;
+
+  }
+
+
+
+ <span class="comment">//作为服务端接收来自客户端的消息</span>
+
+  <span class="function"><span class="keyword">public</span> <span class="keyword">string</span> <span class="title">ReceiveServer</span>(<span class="params">Socket isocket, SocketAsyncEventArgs isocketEvent, <span class="keyword">int</span> ibuffersize</span>)
+
+  </span>{
+
+      response = <span class="string">"Error"</span>;
+
+      <span class="keyword">if</span> (isocket != <span class="keyword">null</span>)
+
+      {
+
+          clientDone.Reset();
+
+          <span class="keyword">byte</span>[] temp = <span class="keyword">new</span> <span class="keyword">byte</span>[ibuffersize];
+
+          isocketEvent.SetBuffer(temp, <span class="number">0</span>, ibuffersize);
+
+          <span class="comment">//如果同步完成</span>
+
+          <span class="keyword">if</span> (!isocket.ReceiveAsync(isocketEvent))
+
+          {
+
+              socketEventArgListen_Completed(isocket, isocketEvent);
+
+              <span class="keyword">return</span> response;
+
+          }
+
+          clientDone.WaitOne(Constants.TIMEOUT_MILLISECONDS);
+
+      }
+
+      <span class="keyword">else</span>
+
+      {
+
+          response = <span class="string">"Socket is not initialized"</span>;
+
+      }
+
+      <span class="keyword">return</span> response;
+
+  }
+</code></pre><p>  具体使用的时候：</p>
+<pre><code>当我们拿到socketConnect和socketEventArgConnect后，可以执行：
+
+<span class="function"><span class="title">SendServer</span><span class="params">(socketConnect, socketEventArgConnect, strdata )</span></span>向客户端发送消息
+
+<span class="function"><span class="title">ReceiveServer</span><span class="params">(socketConnect, socketEventArgConnect, size)</span></span>从buffer中拿消息
+</code></pre><p>  使用完成后记得关闭Socket，上述代码在楼主的手机上顺利执行，但是当网络不好的时候，会出现丢失数据的现象，现在正在优化，如果有研究WP8 Socket的大牛，请多多指导。</p>
 
         
         
@@ -418,6 +562,158 @@ foreach (ExternalStorageFile <span class="type">file</span> <span class="keyword
 
 
 
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2013/10/13/wp8Json/" title="WP8的Json" itemprop="url">WP8的Json</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Feichao Wan" target="_blank" itemprop="author">Feichao Wan</a>
+		
+  <p class="article-time">
+    <time datetime="2013-10-13T02:34:59.000Z" itemprop="datePublished"> 发表于 2013-10-13</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h3 id="主题">主题</h3><p>  WP8的Json数据转换。</p>
+<h3 id="正文">正文</h3><p>  需要引用：</p>
+<p>  using System.Runtime.Serialization.Json;</p>
+<p>  using System.Runtime.Serialization;</p>
+<p>  具体方法如下:</p>
+<pre><code> <span class="comment"><span class="xmlDocTag">///</span>/ 转化为 JSON stream.</span>
+
+ <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">string</span> <span class="title">WriteFromObject</span>(<span class="params">TransforData itransforData</span>)
+
+ </span>{
+
+     <span class="comment">//Create a stream to serialize the object to.</span>
+
+     MemoryStream ms = <span class="keyword">new</span> MemoryStream();
+
+     <span class="comment">// Serializer the User object to the stream.</span>
+
+     DataContractJsonSerializer ser = <span class="keyword">new</span> DataContractJsonSerializer(<span class="keyword">typeof</span>(TransforData));
+
+     ser.WriteObject(ms, itransforData);
+
+     <span class="keyword">byte</span>[] data = ms.ToArray();
+
+     ms.Close();
+
+     <span class="keyword">return</span> Encoding.UTF8.GetString(data, <span class="number">0</span>, data.Length);
+
+ }
+
+ <span class="comment">// 转为用户数据</span>
+
+<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> TransforData <span class="title">ReadToObject</span>(<span class="params"><span class="keyword">string</span> idata</span>)
+
+ </span>{
+
+     TransforData transforData = <span class="keyword">new</span> TransforData();
+
+     MemoryStream ms = <span class="keyword">new</span> MemoryStream(Encoding.UTF8.GetBytes(idata));
+
+     DataContractJsonSerializer ser = <span class="keyword">new</span> DataContractJsonSerializer(transforData.GetType());
+
+     transforData = ser.ReadObject(ms) <span class="keyword">as</span> TransforData;
+
+     ms.Close();
+
+     <span class="keyword">return</span> transforData;
+
+ }
+</code></pre><p>  其中TransforData是用户自定义的,格式如下:</p>
+<p>  namespace myAPP</p>
+<p>  {</p>
+<pre><code>[DataContract]
+
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="title">TransforData</span>
+
+{
+
+    [DataMember]
+
+    <span class="keyword">public</span> <span class="keyword">int</span> X
+
+    {
+
+        <span class="keyword">get</span>;
+
+        <span class="keyword">set</span>;
+
+    }
+
+    [DataMember]
+
+    <span class="keyword">public</span> <span class="keyword">int</span> Y
+
+    {
+
+        <span class="keyword">get</span>;
+
+        <span class="keyword">set</span>;
+
+    }
+
+    [DataMember]
+
+    <span class="keyword">public</span> <span class="keyword">string</span> Z
+
+    {
+
+        <span class="keyword">get</span>;
+
+        <span class="keyword">set</span>;
+
+    }
+</code></pre><p>  }</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/tech/">tech</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/WP8/">WP8</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
 
   <nav id="page-nav" class="clearfix">
     <a class="extend prev" rel="prev" href="/"><span></span>Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
@@ -436,7 +732,7 @@ foreach (ExternalStorageFile <span class="type">file</span> <span class="keyword
 		<ul>
 		
 		  
-			<li><a href="/categories/component/" title="component">component<sup>2</sup></a></li>
+			<li><a href="/categories/component/" title="component">component<sup>3</sup></a></li>
 		  
 		
 		  
@@ -465,7 +761,7 @@ foreach (ExternalStorageFile <span class="type">file</span> <span class="keyword
 			
 		
 			
-				<li><a href="/tags/组件/" title="组件">组件<sup>2</sup></a></li>
+				<li><a href="/tags/组件/" title="组件">组件<sup>3</sup></a></li>
 			
 		
 		</ul>
@@ -553,6 +849,7 @@ foreach (ExternalStorageFile <span class="type">file</span> <span class="keyword
 <script src="/js/gallery.js"></script>
 <script src="/js/jquery.qrcode-0.12.0.min.js"></script>
 <script src="/js/wan-spinner.js"></script>
+<script src="/js/wan-carousel.js"></script>
 <script src="/lib/jquery-wan-address-select/build/wan-address-select.js"></script>
 
 <script type="text/javascript">
@@ -612,6 +909,16 @@ $(document).ready(function() {
   });
   $("#getValueAndId").on("click", function(){
     alert(JSON.stringify($(".wan-address-select1").WanAddressSelect('idval')));
+  });
+
+  $(".wan-carousel-1, .wan-carousel-2").WanCarousel();
+  $(".wan-carousel-3").WanCarousel({
+    interval: 8000,
+    speed: 400,
+  });
+  $(".wan-carousel-4").WanCarousel({
+    interval: 2000,
+    speed: 800,
   });
 });
 </script>
@@ -676,6 +983,7 @@ $(document).ready(function(){
 $(document).ready(function(){ 
   $('.article-content').each(function(i){
     $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('no-fancybox')) return;
       if ($(this).parent().hasClass('fancybox')) return;
       var alt = this.alt;
       if (alt) $(this).after('<span class="caption">' + alt + '</span>');

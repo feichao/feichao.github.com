@@ -37,6 +37,7 @@
     
     <link rel="stylesheet" href="/css/style.css" type="text/css">
     <link rel="stylesheet" href="/css/wan-spinner.css" type="text/css">
+    <link rel="stylesheet" href="/css/wan-carousel.css" type="text/css">
 </head>
 
   <body>
@@ -271,13 +272,21 @@ foreach (ExternalStorageFile <span class="type">file</span> <span class="keyword
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2013/10/13/wp8Json/" title="WP8的Json">
+ <a href="/2013/10/15/wp8socket/" title="WP8之Socket">
   <strong>上一篇：</strong><br/>
   <span>
-  WP8的Json</span>
+  WP8之Socket</span>
 </a>
 </div>
 
+
+<div class="next">
+<a href="/2013/10/13/wp8Json/"  title="WP8的Json">
+ <strong>下一篇：</strong><br/> 
+ <span>WP8的Json
+</span>
+</a>
+</div>
 
 </nav>
 
@@ -303,7 +312,7 @@ foreach (ExternalStorageFile <span class="type">file</span> <span class="keyword
 		<ul>
 		
 		  
-			<li><a href="/categories/component/" title="component">component<sup>2</sup></a></li>
+			<li><a href="/categories/component/" title="component">component<sup>3</sup></a></li>
 		  
 		
 		  
@@ -332,7 +341,7 @@ foreach (ExternalStorageFile <span class="type">file</span> <span class="keyword
 			
 		
 			
-				<li><a href="/tags/组件/" title="组件">组件<sup>2</sup></a></li>
+				<li><a href="/tags/组件/" title="组件">组件<sup>3</sup></a></li>
 			
 		
 		</ul>
@@ -420,6 +429,7 @@ foreach (ExternalStorageFile <span class="type">file</span> <span class="keyword
 <script src="/js/gallery.js"></script>
 <script src="/js/jquery.qrcode-0.12.0.min.js"></script>
 <script src="/js/wan-spinner.js"></script>
+<script src="/js/wan-carousel.js"></script>
 <script src="/lib/jquery-wan-address-select/build/wan-address-select.js"></script>
 
 <script type="text/javascript">
@@ -479,6 +489,16 @@ $(document).ready(function() {
   });
   $("#getValueAndId").on("click", function(){
     alert(JSON.stringify($(".wan-address-select1").WanAddressSelect('idval')));
+  });
+
+  $(".wan-carousel-1, .wan-carousel-2").WanCarousel();
+  $(".wan-carousel-3").WanCarousel({
+    interval: 8000,
+    speed: 400,
+  });
+  $(".wan-carousel-4").WanCarousel({
+    interval: 2000,
+    speed: 800,
   });
 });
 </script>
@@ -620,6 +640,7 @@ $(document).ready(function(){
 $(document).ready(function(){ 
   $('.article-content').each(function(i){
     $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('no-fancybox')) return;
       if ($(this).parent().hasClass('fancybox')) return;
       var alt = this.alt;
       if (alt) $(this).after('<span class="caption">' + alt + '</span>');

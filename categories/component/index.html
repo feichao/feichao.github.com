@@ -33,6 +33,7 @@
     
     <link rel="stylesheet" href="/css/style.css" type="text/css">
     <link rel="stylesheet" href="/css/wan-spinner.css" type="text/css">
+    <link rel="stylesheet" href="/css/wan-carousel.css" type="text/css">
 </head>
 
     <body>
@@ -88,6 +89,19 @@
 </div>
 <div id="main" class="archive-part clearfix">
   <div id="archive-page">
+
+  <section class="post" itemscope itemprop="blogPost">
+  
+    <a href="/2015/08/11/carousel/" title="jquery-carousel" itemprop="url">
+  
+
+    <time datetime="2015-08-11T04:05:18.000Z" itemprop="datePublished">2015-08-11</time>
+
+
+    <h1 itemprop="name">jquery-carousel</h1>
+
+  </a>
+</section>
 
   <section class="post" itemscope itemprop="blogPost">
   
@@ -166,6 +180,7 @@
 <script src="/js/gallery.js"></script>
 <script src="/js/jquery.qrcode-0.12.0.min.js"></script>
 <script src="/js/wan-spinner.js"></script>
+<script src="/js/wan-carousel.js"></script>
 <script src="/lib/jquery-wan-address-select/build/wan-address-select.js"></script>
 
 <script type="text/javascript">
@@ -225,6 +240,16 @@ $(document).ready(function() {
   });
   $("#getValueAndId").on("click", function(){
     alert(JSON.stringify($(".wan-address-select1").WanAddressSelect('idval')));
+  });
+
+  $(".wan-carousel-1, .wan-carousel-2").WanCarousel();
+  $(".wan-carousel-3").WanCarousel({
+    interval: 8000,
+    speed: 400,
+  });
+  $(".wan-carousel-4").WanCarousel({
+    interval: 2000,
+    speed: 800,
   });
 });
 </script>
@@ -289,6 +314,7 @@ $(document).ready(function(){
 $(document).ready(function(){ 
   $('.article-content').each(function(i){
     $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('no-fancybox')) return;
       if ($(this).parent().hasClass('fancybox')) return;
       var alt = this.alt;
       if (alt) $(this).after('<span class="caption">' + alt + '</span>');

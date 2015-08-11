@@ -33,6 +33,7 @@
     
     <link rel="stylesheet" href="/css/style.css" type="text/css">
     <link rel="stylesheet" href="/css/wan-spinner.css" type="text/css">
+    <link rel="stylesheet" href="/css/wan-carousel.css" type="text/css">
 </head>
 
   <body>
@@ -81,6 +82,70 @@
     </header>
     <div id="container">
       <div id="main">
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/08/11/carousel/" title="jquery-carousel" itemprop="url">jquery-carousel</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Feichao Wan" target="_blank" itemprop="author">Feichao Wan</a>
+		
+  <p class="article-time">
+    <time datetime="2015-08-11T04:05:18.000Z" itemprop="datePublished"> 发表于 2015-08-11</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h3 id="主题">主题</h3><p>  基于jQuery实现的图片轮播效果。</p>
+<h3 id="详情">详情</h3> <div class="wan-carousel wan-carousel-1" style="width: 50%; float:left;"><div class="carousel-list no-fancybox"><img src="/img/1.jpg" alt="img"><img src="/img/2.jpg" alt="img"><img src="/img/3.jpg" alt="img"><img src="/img/4.jpg" alt="img"></div></div><div class="wan-carousel wan-carousel-2" style="width: 50%; float:left;"><div class="carousel-list no-fancybox"><img src="/img/1.jpg" alt="img"><img src="/img/2.jpg" alt="img"></div></div><div class="wan-carousel wan-carousel-3" style="width: 50%; float:left;"><div class="carousel-list no-fancybox"><img src="/img/2.jpg" alt="img"><img src="/img/3.jpg" alt="img"><img src="/img/4.jpg" alt="img"></div></div><div class="wan-carousel wan-carousel-4" style="width: 50%; float:left;"><div class="carousel-list no-fancybox"><img src="/img/1.jpg" alt="img"><img src="/img/2.jpg" alt="img"></div></div>
+
+<p>配置文件如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">".wan-carousel-1, .wan-carousel-2"</span>).WanCarousel();</span><br><span class="line">$(<span class="string">".wan-carousel-3"</span>).WanCarousel(&#123;</span><br><span class="line">  interval: <span class="number">8000</span>,</span><br><span class="line">  speed: <span class="number">400</span>,</span><br><span class="line">&#125;);</span><br><span class="line">$(<span class="string">".wan-carousel-4"</span>).WanCarousel(&#123;</span><br><span class="line">  interval: <span class="number">2000</span>,</span><br><span class="line">  speed: <span class="number">800</span>,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>HTML文件如下：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"wan-carousel wan-carousel-1"</span> <span class="attribute">style</span>=<span class="value">"width: 50%; float:left;"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"carousel-list"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"img/1.jpg"</span> <span class="attribute">alt</span>=<span class="value">"img"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"img/2.jpg"</span> <span class="attribute">alt</span>=<span class="value">"img"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"img/3.jpg"</span> <span class="attribute">alt</span>=<span class="value">"img"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"img/4.jpg"</span> <span class="attribute">alt</span>=<span class="value">"img"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"wan-carousel wan-carousel-2"</span> <span class="attribute">style</span>=<span class="value">"width: 50%; float:left;"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"carousel-list"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"#"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"img/1.jpg"</span> <span class="attribute">alt</span>=<span class="value">"img"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"img/2.jpg"</span> <span class="attribute">alt</span>=<span class="value">"img"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"wan-carousel wan-carousel-3"</span> <span class="attribute">style</span>=<span class="value">"width: 50%; float:left;"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"carousel-list"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"img/2.jpg"</span> <span class="attribute">alt</span>=<span class="value">"img"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"img/3.jpg"</span> <span class="attribute">alt</span>=<span class="value">"img"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"img/4.jpg"</span> <span class="attribute">alt</span>=<span class="value">"img"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"wan-carousel wan-carousel-4"</span> <span class="attribute">style</span>=<span class="value">"width: 50%; float:left;"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"carousel-list"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"#"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"img/1.jpg"</span> <span class="attribute">alt</span>=<span class="value">"img"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"img/2.jpg"</span> <span class="attribute">alt</span>=<span class="value">"img"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/component/">component</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/组件/">组件</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
 
    
     
@@ -714,301 +779,6 @@ dt.Start()<span class="comment">;</span>
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2013/10/15/wp8socket/" title="WP8之Socket" itemprop="url">WP8之Socket</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Feichao Wan" target="_blank" itemprop="author">Feichao Wan</a>
-		
-  <p class="article-time">
-    <time datetime="2013-10-15T02:34:59.000Z" itemprop="datePublished"> 发表于 2013-10-15</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h3 id="主题">主题</h3><p>  WP8之Socket ——作为服务端接收消息</p>
-<h3 id="正文">正文</h3><p>  网上都说WP8 socket已经开始支持服务端，但是在网上总找不到代码，经过研究，以下的方式可以实现监听。</p>
-<p>   代码：</p>
-<p>  //监听用</p>
-<pre><code>  <span class="keyword">private</span> Socket socketListen = <span class="keyword">null</span>;
-
-  <span class="keyword">private</span> SocketAsyncEventArgs socketEventArgListen = <span class="keyword">new</span> SocketAsyncEventArgs();
-
- <span class="comment">//监听成功后获取已经连接的socket</span>
-
-  <span class="keyword">private</span> Socket socketConnect = <span class="keyword">null</span>;
-
-  <span class="keyword">private</span> SocketAsyncEventArgs socketEventArgConnect = <span class="keyword">null</span>;
-
- <span class="comment">//初始化socket</span>
-
-  socketListen = <span class="keyword">new</span> Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-
-  socketListen.Bind(<span class="keyword">new</span> IPEndPoint(IPAddress.Any, Constants.TCP_SERVER_PORT));
-
-
-
- <span class="comment">//异步socket操作执行完成后触发的事件</span>
-
-  socketEventArgListen.Completed += socketEventArgListen_Completed;
-
-
-
- <span class="comment">//监听函数</span>
-
-  <span class="function"><span class="keyword">public</span> <span class="keyword">string</span> <span class="title">Listen</span>(<span class="params"></span>)
-
-  </span>{
-
-      response = <span class="string">"Error"</span>;
-
-      clientDone.Reset();
-
-      socketListen.Listen(<span class="number">5</span>);
-
-      socketEventArgListen.SetBuffer(<span class="keyword">new</span> Byte[Constants.IO_BUF_SIZE], <span class="number">0</span>, Constants.IO_BUF_SIZE);
-
-      <span class="comment">//如果监听同步完成</span>
-
-      <span class="keyword">if</span> (!socketListen.AcceptAsync(socketEventArgListen))
-
-      {
-
-          socketEventArgListen_Completed(socketListen, socketEventArgListen);
-
-          <span class="keyword">return</span> response;
-
-      }
-
-      <span class="comment">//监听异步完成</span>
-
-      clientDone.WaitOne(Constants.TIMEOUT_MILLISECONDS);
-
-      <span class="keyword">return</span> response;
-
-  }
-
-
-
-<span class="comment">//操作完成后执行</span>
-
- <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">socketEventArgListen_Completed</span>(<span class="params"><span class="keyword">object</span> sender, SocketAsyncEventArgs e</span>)
-
-  </span>{
-
-      response = e.SocketError.ToString();
-
-      <span class="keyword">switch</span> (e.LastOperation)
-
-      {
-
-              <span class="comment">//当客户端发来Connect消息时，服务端会通过AcceptAsync接受，接受成功会执行下面代码</span>
-
-          <span class="keyword">case</span> SocketAsyncOperation.Accept:
-
-             <span class="comment">//得到客户端发来的消息</span>
-
-              response = Encoding.UTF8.GetString(e.Buffer, e.Offset, e.BytesTransferred);
-
-              response = response.Trim(<span class="string">'\0'</span>);
-
-              <span class="keyword">if</span> (response == <span class="string">""</span>)
-
-              {
-
-                  response = <span class="string">"Error"</span>;
-
-              }
-
-             <span class="comment">//得到已连接的socket，此后就可以用这个socket执行发送和接收了</span>
-
-              socketConnect = e.AcceptSocket;
-
-              socketEventArgConnect = e;
-
-              <span class="keyword">break</span>;
-
-          <span class="keyword">case</span> SocketAsyncOperation.Send:
-
-              <span class="keyword">break</span>;
-
-              <span class="comment">//when receive, we can get the Buffer</span>
-
-          <span class="keyword">case</span> SocketAsyncOperation.Receive:
-
-              response = Encoding.UTF8.GetString(e.Buffer, e.Offset, e.BytesTransferred);
-
-              response = response.Trim(<span class="string">'\0'</span>);
-
-              <span class="keyword">if</span> (response == <span class="string">""</span>)
-
-              {
-
-                  response = <span class="string">"Error"</span>;
-
-              }
-
-              <span class="keyword">break</span>;
-
-          <span class="keyword">default</span>:
-
-              <span class="keyword">break</span>;
-
-      }
-
-      clientDone.Set();
-
-  }
-
-
-
- <span class="comment">//作为服务端向客户端发消息，</span>
-
-  <span class="function"><span class="keyword">public</span> <span class="keyword">string</span> <span class="title">SendServer</span>(<span class="params">Socket isocket,SocketAsyncEventArgs isocketEvent,<span class="keyword">string</span> idata</span>)
-
-  </span>{
-
-      response = <span class="string">"Error"</span>;
-
-      <span class="keyword">if</span> (isocket != <span class="keyword">null</span>)
-
-      {
-
-          <span class="keyword">byte</span>[] payload = Encoding.UTF8.GetBytes(idata);
-
-          isocketEvent.SetBuffer(payload, <span class="number">0</span>, payload.Length);
-
-          clientDone.Reset();
-
-         <span class="comment">//如果发送同步完成</span>
-
-          <span class="keyword">if</span> (!isocket.SendAsync(isocketEvent))
-
-          {
-
-              socketEventArgListen_Completed(isocket, isocketEvent);
-
-              <span class="keyword">return</span> response;
-
-          }
-
-          clientDone.WaitOne(Constants.TIMEOUT_MILLISECONDS);
-
-      }
-
-      <span class="keyword">else</span>
-
-      {
-
-          response = <span class="string">"Socket is not initialized"</span>;
-
-      }
-
-      <span class="keyword">return</span> response;
-
-  }
-
-
-
- <span class="comment">//作为服务端接收来自客户端的消息</span>
-
-  <span class="function"><span class="keyword">public</span> <span class="keyword">string</span> <span class="title">ReceiveServer</span>(<span class="params">Socket isocket, SocketAsyncEventArgs isocketEvent, <span class="keyword">int</span> ibuffersize</span>)
-
-  </span>{
-
-      response = <span class="string">"Error"</span>;
-
-      <span class="keyword">if</span> (isocket != <span class="keyword">null</span>)
-
-      {
-
-          clientDone.Reset();
-
-          <span class="keyword">byte</span>[] temp = <span class="keyword">new</span> <span class="keyword">byte</span>[ibuffersize];
-
-          isocketEvent.SetBuffer(temp, <span class="number">0</span>, ibuffersize);
-
-          <span class="comment">//如果同步完成</span>
-
-          <span class="keyword">if</span> (!isocket.ReceiveAsync(isocketEvent))
-
-          {
-
-              socketEventArgListen_Completed(isocket, isocketEvent);
-
-              <span class="keyword">return</span> response;
-
-          }
-
-          clientDone.WaitOne(Constants.TIMEOUT_MILLISECONDS);
-
-      }
-
-      <span class="keyword">else</span>
-
-      {
-
-          response = <span class="string">"Socket is not initialized"</span>;
-
-      }
-
-      <span class="keyword">return</span> response;
-
-  }
-</code></pre><p>  具体使用的时候：</p>
-<pre><code>当我们拿到socketConnect和socketEventArgConnect后，可以执行：
-
-<span class="function"><span class="title">SendServer</span><span class="params">(socketConnect, socketEventArgConnect, strdata )</span></span>向客户端发送消息
-
-<span class="function"><span class="title">ReceiveServer</span><span class="params">(socketConnect, socketEventArgConnect, size)</span></span>从buffer中拿消息
-</code></pre><p>  使用完成后记得关闭Socket，上述代码在楼主的手机上顺利执行，但是当网络不好的时候，会出现丢失数据的现象，现在正在优化，如果有研究WP8 Socket的大牛，请多多指导。</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/tech/">tech</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/WP8/">WP8</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
@@ -1027,7 +797,7 @@ dt.Start()<span class="comment">;</span>
 		<ul>
 		
 		  
-			<li><a href="/categories/component/" title="component">component<sup>2</sup></a></li>
+			<li><a href="/categories/component/" title="component">component<sup>3</sup></a></li>
 		  
 		
 		  
@@ -1056,7 +826,7 @@ dt.Start()<span class="comment">;</span>
 			
 		
 			
-				<li><a href="/tags/组件/" title="组件">组件<sup>2</sup></a></li>
+				<li><a href="/tags/组件/" title="组件">组件<sup>3</sup></a></li>
 			
 		
 		</ul>
@@ -1144,6 +914,7 @@ dt.Start()<span class="comment">;</span>
 <script src="/js/gallery.js"></script>
 <script src="/js/jquery.qrcode-0.12.0.min.js"></script>
 <script src="/js/wan-spinner.js"></script>
+<script src="/js/wan-carousel.js"></script>
 <script src="/lib/jquery-wan-address-select/build/wan-address-select.js"></script>
 
 <script type="text/javascript">
@@ -1203,6 +974,16 @@ $(document).ready(function() {
   });
   $("#getValueAndId").on("click", function(){
     alert(JSON.stringify($(".wan-address-select1").WanAddressSelect('idval')));
+  });
+
+  $(".wan-carousel-1, .wan-carousel-2").WanCarousel();
+  $(".wan-carousel-3").WanCarousel({
+    interval: 8000,
+    speed: 400,
+  });
+  $(".wan-carousel-4").WanCarousel({
+    interval: 2000,
+    speed: 800,
   });
 });
 </script>
@@ -1267,6 +1048,7 @@ $(document).ready(function(){
 $(document).ready(function(){ 
   $('.article-content').each(function(i){
     $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('no-fancybox')) return;
       if ($(this).parent().hasClass('fancybox')) return;
       var alt = this.alt;
       if (alt) $(this).after('<span class="caption">' + alt + '</span>');
