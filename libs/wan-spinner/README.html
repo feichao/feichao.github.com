@@ -1,0 +1,36 @@
+<h2 id="#wan-spinner,_a_jQuery_Spinner">#wan-spinner,  a jQuery Spinner</h2><blockquote>
+<p><img src="http://7xl1b4.com1.z0.glb.clouddn.com/wan-spinner.png" alt="demo"></p>
+</blockquote>
+<h3 id="demo"><a href="http://0xfc.cn/2015/08/09/spinner/">demo</a></h3><blockquote>
+<p>demo/test.html</p>
+</blockquote>
+<p><strong>prepare to use</strong></p>
+<blockquote>
+<ul>
+<li>include jQuery</li>
+<li>include bulid/wan-spinner.css </li>
+<li>include build/wan-sinner.js</li>
+<li>in your html:<pre><code class="html"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"wan-spinner"</span>&gt;</span>
+<span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"javascript:void(0)"</span> <span class="attribute">class</span>=<span class="value">"minus"</span>&gt;</span>-<span class="tag">&lt;/<span class="title">a</span>&gt;</span>
+<span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">value</span>=<span class="value">"1"</span>&gt;</span>
+<span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"javascript:void(0)"</span> <span class="attribute">class</span>=<span class="value">"plus"</span>&gt;</span>+<span class="tag">&lt;/<span class="title">a</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+</code></pre>
+</li>
+</ul>
+</blockquote>
+<p><strong>how to use</strong></p>
+<blockquote>
+<p><code>$(&quot;.wan-spinner&quot;).WanSpinner(options);</code></p>
+</blockquote>
+<p><strong>options</strong></p>
+<blockquote>
+<p>maxValue: Number, default 999. Set the Max Value of the input.</p>
+<p>minValue: Number, default -999. Set the Min Value of the input.</p>
+<p>step: Number, default 1. Set the Step Value of the input when click plus and minus button.</p>
+<p>start: Number, default 1. Set the Init Value of the input.</p>
+<p>inputWidth: Number default 24. Set the Input Width.</p>
+<p>plusClick: function. A trigger when Plus Button is clicked.</p>
+<p>minusClick: function. A trigger when Minus Button is clicked.</p>
+<p>valueChanged: function. A trigger when Input Value is changed.</p>
+</blockquote>
