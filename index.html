@@ -20,12 +20,14 @@
   
   <link href="/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
   <link href="/webfonts/source-code-pro/main.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/0.10.0/angular-material.min.css">
   <link rel="stylesheet" href="/css/style.css" type="text/css">
   
 
   <link rel="stylesheet" href="/libs/wan-address-select/build/wan-address-select.css" type="text/css">
   <link rel="stylesheet" href="/libs/wan-carousel/build/wan-carousel.css" type="text/css">
   <link rel="stylesheet" href="/libs/wan-spinner/build/wan-spinner.css" type="text/css">
+  <link rel="stylesheet" href="/libs/daterange-picker/src/daterangepicker.css" type="text/css">
 </head>
 
 <body>
@@ -59,6 +61,55 @@
   </div>
 </header>
     <section id="main" class="outer">
+      <article id="post-daterange-picker" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/20/daterange-picker/">angular-material daterange-picker</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2015/08/20/daterange-picker/" class="article-date">
+  <time datetime="2015-08-20T08:30:45.000Z" itemprop="datePublished">2015-08-20</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/component/">component</a>
+  </div>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="主题">主题</h3><p>  基于angular material的日期段选择控件，也可以只选择日期。</p>
+<h3 id="详情">详情</h3><div ng-app="demoRanger" class="wrapper" ng-controller="DemoCtrl"><daterange-picker date-lang="cn" date-type="range" start-date="startDate" end-date="endDate" date-length="dateLength" max-date="2015-08-23" min-date="2010-07-09" date-label="选择日期段："></daterange-picker><br><br><br><daterange-picker date-lang="cn" start-date="startDate" date-label="选择日期："></daterange-picker><br><br><br><daterange-picker start-date="startDate" date-label="Date："></daterange-picker><br></div>
+
+<p>配置文件如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">angular</span><br><span class="line"> .module(<span class="string">'demoRanger'</span>, [</span><br><span class="line">   <span class="string">'ngMaterial'</span>,</span><br><span class="line">   <span class="string">'fc.dateRange'</span></span><br><span class="line"> ]).controller(<span class="string">'DemoCtrl'</span>, DemoCtrl);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">DemoCtrl</span>(<span class="params">$scope</span>) </span>&#123;</span><br><span class="line">  $scope.startDate = <span class="string">"2015-07-07"</span>;</span><br><span class="line">  $scope.endDate = <span class="string">"2015-07-27"</span>;</span><br><span class="line">  $scope.dateLength = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>HTML文件如下：<br> <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"wrapper"</span> <span class="attribute">ng-controller</span>=<span class="value">"DemoCtrl"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">daterange-picker</span> </span><br><span class="line">    <span class="attribute">date-lang</span>=<span class="value">"cn"</span> </span><br><span class="line">    <span class="attribute">date-type</span>=<span class="value">"range"</span> </span><br><span class="line">    <span class="attribute">start-date</span>=<span class="value">"startDate"</span> </span><br><span class="line">    <span class="attribute">end-date</span>=<span class="value">"endDate"</span> </span><br><span class="line">    <span class="attribute">date-length</span>=<span class="value">"dateLength"</span> </span><br><span class="line">    <span class="attribute">max-date</span>=<span class="value">"2015-08-23"</span> </span><br><span class="line">    <span class="attribute">min-date</span>=<span class="value">"2010-07-09"</span> </span><br><span class="line">    <span class="attribute">date-label</span>=<span class="value">"选择日期段："</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">daterange-picker</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>Options:</p>
+<h4 id="所有日期格式均为_YYYY-MM-DD">所有日期格式均为 YYYY-MM-DD</h4><h5 id="date-lang:_string，默认值en，设为cn即为中文">date-lang: string，默认值en，设为cn即为中文</h5><h5 id="date-type:_string，默认为日期选择，设为range即为日期段">date-type: string，默认为日期选择，设为range即为日期段</h5><h5 id="start-date:_选中的开始日期">start-date: 选中的开始日期</h5><h5 id="end-date:_选中的截止日期">end-date: 选中的截止日期</h5><h5 id="date-length:_日期长度">date-length: 日期长度</h5><h5 id="max-date:_所能选的最大日期">max-date: 所能选的最大日期</h5><h5 id="min-date:_所能选的最小日期">min-date: 所能选的最小日期</h5><h5 id="date-label:_label">date-label: label</h5>
+      
+    </div>
+  
+    <footer class="article-footer">
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/组件/">组件</a></li></ul>
+
+    </footer>
+  
+  </div>
+  
+</article>
+
+
+    
       <article id="post-carousel" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -87,7 +138,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="主题">主题</h3><p>  基于jQuery实现的图片轮播效果。</p>
-<h3 id="详情">详情</h3> <div class="wan-carousel wan-carousel-1 a-no-textdecotion" style="width: 50%; float:left;"><div class="carousel-list no-fancybox"><img src="/img/1.jpg" alt="img"><img src="/img/2.jpg" alt="img"><img src="/img/3.jpg" alt="img"><img src="/img/4.jpg" alt="img"></div></div><div class="wan-carousel wan-carousel-2 a-no-textdecotion" style="width: 50%; float:left;"><div class="carousel-list no-fancybox"><img src="/img/1.jpg" alt="img"><img src="/img/2.jpg" alt="img"></div></div><div class="wan-carousel wan-carousel-3 a-no-textdecotion" style="width: 50%; float:left;"><div class="carousel-list no-fancybox"><img src="/img/2.jpg" alt="img"><img src="/img/3.jpg" alt="img"><img src="/img/4.jpg" alt="img"></div></div><div class="wan-carousel wan-carousel-4 a-no-textdecotion" style="width: 50%; float:left;"><div class="carousel-list no-fancybox"><img src="/img/1.jpg" alt="img"><img src="/img/2.jpg" alt="img"></div></div>
+<h3 id="详情">详情</h3> <div class="wan-carousel wan-carousel-1 a-no-textdecotion" style="width: 50%; float:left;"><div class="carousel-list no-fancybox"><img src="/css/images/1.jpg" alt="img"><img src="/css/images/2.jpg" alt="img"><img src="/css/images/3.jpg" alt="img"><img src="/css/images/4.jpg" alt="img"></div></div><div class="wan-carousel wan-carousel-2 a-no-textdecotion" style="width: 50%; float:left;"><div class="carousel-list no-fancybox"><img src="/css/images/1.jpg" alt="img"><img src="/css/images/2.jpg" alt="img"></div></div><div class="wan-carousel wan-carousel-3 a-no-textdecotion" style="width: 50%; float:left;"><div class="carousel-list no-fancybox"><img src="/css/images/2.jpg" alt="img"><img src="/css/images/3.jpg" alt="img"><img src="/css/images/4.jpg" alt="img"></div></div><div class="wan-carousel wan-carousel-4 a-no-textdecotion" style="width: 50%; float:left;"><div class="carousel-list no-fancybox"><img src="/css/images/1.jpg" alt="img"><img src="/css/images/2.jpg" alt="img"></div></div>
 
 <p>配置文件如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">".wan-carousel-1, .wan-carousel-2"</span>).WanCarousel();</span><br><span class="line">$(<span class="string">".wan-carousel-3"</span>).WanCarousel(&#123;</span><br><span class="line">  interval: <span class="number">8000</span>,</span><br><span class="line">  speed: <span class="number">400</span>,</span><br><span class="line">&#125;);</span><br><span class="line">$(<span class="string">".wan-carousel-4"</span>).WanCarousel(&#123;</span><br><span class="line">  interval: <span class="number">2000</span>,</span><br><span class="line">  speed: <span class="number">800</span>,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
 <p>HTML文件如下：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"wan-carousel wan-carousel-1"</span> <span class="attribute">style</span>=<span class="value">"width: 50%; float:left;"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"carousel-list"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"img/1.jpg"</span> <span class="attribute">alt</span>=<span class="value">"img"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"img/2.jpg"</span> <span class="attribute">alt</span>=<span class="value">"img"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"img/3.jpg"</span> <span class="attribute">alt</span>=<span class="value">"img"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"img/4.jpg"</span> <span class="attribute">alt</span>=<span class="value">"img"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"wan-carousel wan-carousel-2"</span> <span class="attribute">style</span>=<span class="value">"width: 50%; float:left;"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"carousel-list"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"#"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"img/1.jpg"</span> <span class="attribute">alt</span>=<span class="value">"img"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"img/2.jpg"</span> <span class="attribute">alt</span>=<span class="value">"img"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"wan-carousel wan-carousel-3"</span> <span class="attribute">style</span>=<span class="value">"width: 50%; float:left;"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"carousel-list"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"img/2.jpg"</span> <span class="attribute">alt</span>=<span class="value">"img"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"img/3.jpg"</span> <span class="attribute">alt</span>=<span class="value">"img"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"img/4.jpg"</span> <span class="attribute">alt</span>=<span class="value">"img"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"wan-carousel wan-carousel-4"</span> <span class="attribute">style</span>=<span class="value">"width: 50%; float:left;"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"carousel-list"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"#"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"img/1.jpg"</span> <span class="attribute">alt</span>=<span class="value">"img"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"img/2.jpg"</span> <span class="attribute">alt</span>=<span class="value">"img"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
@@ -182,16 +233,10 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="主题">主题</h3><p>  基于jQuery实现的组件，支持最大值，最小值，起始值，步进值，异常处理，事件通知。</p>
-<h3 id="详情">详情</h3><blockquote>
-<p>例：使用自定义配置</p>
-</blockquote>
-<p> <div class="wan-spinner wan-spinner-1 a-no-textdecotion"><a href="javascript:void(0)" class="minus" target="_blank" rel="external">-</a><input type="text" value="1"><a href="javascript:void(0)" class="plus" target="_blank" rel="external">+</a></div><br> 配置文件如下：<br> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> options = &#123;</span><br><span class="line">  maxValue: <span class="number">10</span>,     <span class="comment">//设置所能到达的最大值，默认为 999</span></span><br><span class="line">  minValue: -<span class="number">5</span>,     <span class="comment">//设置所能到达的最小值，默认为 -999</span></span><br><span class="line">  step: <span class="number">2.131</span>,      <span class="comment">//步进长度，默认为 1</span></span><br><span class="line">  inputWidth: <span class="number">100</span>,  <span class="comment">//根据最大值设置输入框的宽度，防止内容超出，默认为25</span></span><br><span class="line">  start: -<span class="number">2</span>,        <span class="comment">//起始值，默认为 1</span></span><br><span class="line">  plusClick: <span class="function"><span class="keyword">function</span>(<span class="params">val</span>) </span>&#123;<span class="comment">//点击plus按钮触发事件</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"plus button click: "</span> + val);</span><br><span class="line">  &#125;,</span><br><span class="line">  minusClick: <span class="function"><span class="keyword">function</span>(<span class="params">val</span>) </span>&#123;<span class="comment">//点击minus按钮触发事件</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"minus button click: "</span> + val);</span><br><span class="line">  &#125;,</span><br><span class="line">  exceptionFun: <span class="function"><span class="keyword">function</span>(<span class="params">exception</span>) </span>&#123;<span class="comment">//值超出设置的范围时触发事件，等于1说明超出上范围，等于-1说明超出下范围</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"exception: "</span> + exception);</span><br><span class="line">  &#125;,</span><br><span class="line">  valueChanged: <span class="function"><span class="keyword">function</span>(<span class="params">val</span>) </span>&#123;<span class="comment">//值变更时触发事件</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"value changed: "</span> + val);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">$(<span class="string">".wan-spinner"</span>).WanSpinner(options);</span><br></pre></td></tr></table></figure></p>
+<h3 id="详情">详情</h3><h4 id="使用自定义配置">使用自定义配置</h4><p> <div class="wan-spinner wan-spinner-1 a-no-textdecotion"><a href="javascript:void(0)" class="minus" target="_blank" rel="external">-</a><input type="text" value="1"><a href="javascript:void(0)" class="plus" target="_blank" rel="external">+</a></div><br> 配置文件如下：<br> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> options = &#123;</span><br><span class="line">  maxValue: <span class="number">10</span>,     <span class="comment">//设置所能到达的最大值，默认为 999</span></span><br><span class="line">  minValue: -<span class="number">5</span>,     <span class="comment">//设置所能到达的最小值，默认为 -999</span></span><br><span class="line">  step: <span class="number">2.131</span>,      <span class="comment">//步进长度，默认为 1</span></span><br><span class="line">  inputWidth: <span class="number">100</span>,  <span class="comment">//根据最大值设置输入框的宽度，防止内容超出，默认为25</span></span><br><span class="line">  start: -<span class="number">2</span>,        <span class="comment">//起始值，默认为 1</span></span><br><span class="line">  plusClick: <span class="function"><span class="keyword">function</span>(<span class="params">val</span>) </span>&#123;<span class="comment">//点击plus按钮触发事件</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"plus button click: "</span> + val);</span><br><span class="line">  &#125;,</span><br><span class="line">  minusClick: <span class="function"><span class="keyword">function</span>(<span class="params">val</span>) </span>&#123;<span class="comment">//点击minus按钮触发事件</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"minus button click: "</span> + val);</span><br><span class="line">  &#125;,</span><br><span class="line">  exceptionFun: <span class="function"><span class="keyword">function</span>(<span class="params">exception</span>) </span>&#123;<span class="comment">//值超出设置的范围时触发事件，等于1说明超出上范围，等于-1说明超出下范围</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"exception: "</span> + exception);</span><br><span class="line">  &#125;,</span><br><span class="line">  valueChanged: <span class="function"><span class="keyword">function</span>(<span class="params">val</span>) </span>&#123;<span class="comment">//值变更时触发事件</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"value changed: "</span> + val);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">$(<span class="string">".wan-spinner"</span>).WanSpinner(options);</span><br></pre></td></tr></table></figure></p>
 <p> HTML文件如下：<br> <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"wan-spinner wan-spinner-1"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"javascript:void(0)"</span> <span class="attribute">class</span>=<span class="value">"minus"</span>&gt;</span>-<span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">value</span>=<span class="value">"1"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"javascript:void(0)"</span> <span class="attribute">class</span>=<span class="value">"plus"</span>&gt;</span>+<span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p><br></p>
-<blockquote>
-<p>例：使用默认配置</p>
-</blockquote>
-<p><div class="wan-spinner wan-spinner-2 a-no-textdecotion"><a href="javascript:void(0)" class="minus" target="_blank" rel="external">-</a><input type="text" value="1"><a href="javascript:void(0)" class="plus" target="_blank" rel="external">+</a></div><br>HTML文件如下：<br> <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"wan-spinner wan-spinner-2"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"javascript:void(0)"</span> <span class="attribute">class</span>=<span class="value">"minus"</span>&gt;</span>-<span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">value</span>=<span class="value">"1"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"javascript:void(0)"</span> <span class="attribute">class</span>=<span class="value">"plus"</span>&gt;</span>+<span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="使用默认配置">使用默认配置</h4><p><div class="wan-spinner wan-spinner-2 a-no-textdecotion"><a href="javascript:void(0)" class="minus" target="_blank" rel="external">-</a><input type="text" value="1"><a href="javascript:void(0)" class="plus" target="_blank" rel="external">+</a></div><br>HTML文件如下：<br> <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"wan-spinner wan-spinner-2"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"javascript:void(0)"</span> <span class="attribute">class</span>=<span class="value">"minus"</span>&gt;</span>-<span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">value</span>=<span class="value">"1"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"javascript:void(0)"</span> <span class="attribute">class</span>=<span class="value">"plus"</span>&gt;</span>+<span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -547,54 +592,6 @@ dt.Start()<span class="comment">;</span>
 
 
     
-      <article id="post-wp8vibrate" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2013/11/29/wp8vibrate/">WP8之自定义震动</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/2013/11/29/wp8vibrate/" class="article-date">
-  <time datetime="2013-11-29T02:34:59.000Z" itemprop="datePublished">2013-11-29</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/tech/">tech</a>
-  </div>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="主题">主题</h3><p>  WP8 自定义震动</p>
-<h3 id="正文">正文</h3><p>  自定义Button，想让它按下时震动怎么办？</p>
-<p>  首先包含：using Microsoft.Devices;</p>
-<p>  定义：private VibrateController vibrateController = VibrateController.Default;</p>
-<p>  使用：vibrateController.Start(TimeSpan.FromMilliseconds(time));</p>
-
-      
-    </div>
-  
-    <footer class="article-footer">
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WP8/">WP8</a></li></ul>
-
-    </footer>
-  
-  </div>
-  
-</article>
-
-
-    
       <nav id="page-nav">
         <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
       </nav>
@@ -621,6 +618,27 @@ dt.Start()<span class="comment">;</span>
 <script src="/libs/wan-address-select/build/wan-address-select.js" type="text/javascript"></script>
 <script src="/libs/wan-carousel/build/wan-carousel.js" type="text/javascript"></script>
 <script src="/libs/wan-spinner/build/wan-spinner.js" type="text/javascript"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular-animate.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular-aria.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-material/0.10.0/angular-material.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+<script src="/libs/daterange-picker/src/daterangepicker.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  angular
+    .module('demoRanger', [
+      'ngMaterial',
+      'fc.dateRange'
+    ]).controller('DemoCtrl', DemoCtrl);
+
+  function DemoCtrl($scope) {
+    $scope.startDate = "2015-07-07";
+    $scope.endDate = "2015-07-27";
+    $scope.dateLength = 0;
+  }
+</script>
 
 <script type="text/javascript">
 $(document).ready(function() {

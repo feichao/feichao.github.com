@@ -6,39 +6,32 @@
   <title>jquery-spinner - Feichao&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="主题  基于jQuery实现的组件，支持最大值，最小值，起始值，步进值，异常处理，事件通知。
-详情
-例：使用自定义配置
-
- -+ 配置文件如下： 1234567891011121314151617181920var options = &amp;#123;  maxValue: 10,     //设置所能到达的最大值，默认为 999  minValue: -5,     //设置所能到达的最小值，默认为">
+详情使用自定义配置 -+ 配置文件如下： 1234567891011121314151617181920var options = &amp;#123;  maxValue: 10,     //设置所能到达的最大值，默认为 999  minValue: -5,     //设置所能到达的最小值，默认为 -999">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jquery-spinner">
 <meta property="og:url" content="http://0xfc.cn/2015/08/09/spinner/index.html">
 <meta property="og:site_name" content="Feichao's blog">
 <meta property="og:description" content="主题  基于jQuery实现的组件，支持最大值，最小值，起始值，步进值，异常处理，事件通知。
-详情
-例：使用自定义配置
-
- -+ 配置文件如下： 1234567891011121314151617181920var options = &amp;#123;  maxValue: 10,     //设置所能到达的最大值，默认为 999  minValue: -5,     //设置所能到达的最小值，默认为">
-<meta property="og:updated_time" content="2015-08-17T12:16:38.000Z">
+详情使用自定义配置 -+ 配置文件如下： 1234567891011121314151617181920var options = &amp;#123;  maxValue: 10,     //设置所能到达的最大值，默认为 999  minValue: -5,     //设置所能到达的最小值，默认为 -999">
+<meta property="og:updated_time" content="2015-08-20T08:43:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jquery-spinner">
 <meta name="twitter:description" content="主题  基于jQuery实现的组件，支持最大值，最小值，起始值，步进值，异常处理，事件通知。
-详情
-例：使用自定义配置
-
- -+ 配置文件如下： 1234567891011121314151617181920var options = &amp;#123;  maxValue: 10,     //设置所能到达的最大值，默认为 999  minValue: -5,     //设置所能到达的最小值，默认为">
+详情使用自定义配置 -+ 配置文件如下： 1234567891011121314151617181920var options = &amp;#123;  maxValue: 10,     //设置所能到达的最大值，默认为 999  minValue: -5,     //设置所能到达的最小值，默认为 -999">
   
   
     <link rel="icon" href="/favicon.png">
   
   <link href="/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
   <link href="/webfonts/source-code-pro/main.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/0.10.0/angular-material.min.css">
   <link rel="stylesheet" href="/css/style.css" type="text/css">
   
 
   <link rel="stylesheet" href="/libs/wan-address-select/build/wan-address-select.css" type="text/css">
   <link rel="stylesheet" href="/libs/wan-carousel/build/wan-carousel.css" type="text/css">
   <link rel="stylesheet" href="/libs/wan-spinner/build/wan-spinner.css" type="text/css">
+  <link rel="stylesheet" href="/libs/daterange-picker/src/daterangepicker.css" type="text/css">
 </head>
 
 <body>
@@ -99,16 +92,10 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="主题">主题</h3><p>  基于jQuery实现的组件，支持最大值，最小值，起始值，步进值，异常处理，事件通知。</p>
-<h3 id="详情">详情</h3><blockquote>
-<p>例：使用自定义配置</p>
-</blockquote>
-<p> <div class="wan-spinner wan-spinner-1 a-no-textdecotion"><a href="javascript:void(0)" class="minus" target="_blank" rel="external">-</a><input type="text" value="1"><a href="javascript:void(0)" class="plus" target="_blank" rel="external">+</a></div><br> 配置文件如下：<br> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> options = &#123;</span><br><span class="line">  maxValue: <span class="number">10</span>,     <span class="comment">//设置所能到达的最大值，默认为 999</span></span><br><span class="line">  minValue: -<span class="number">5</span>,     <span class="comment">//设置所能到达的最小值，默认为 -999</span></span><br><span class="line">  step: <span class="number">2.131</span>,      <span class="comment">//步进长度，默认为 1</span></span><br><span class="line">  inputWidth: <span class="number">100</span>,  <span class="comment">//根据最大值设置输入框的宽度，防止内容超出，默认为25</span></span><br><span class="line">  start: -<span class="number">2</span>,        <span class="comment">//起始值，默认为 1</span></span><br><span class="line">  plusClick: <span class="function"><span class="keyword">function</span>(<span class="params">val</span>) </span>&#123;<span class="comment">//点击plus按钮触发事件</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"plus button click: "</span> + val);</span><br><span class="line">  &#125;,</span><br><span class="line">  minusClick: <span class="function"><span class="keyword">function</span>(<span class="params">val</span>) </span>&#123;<span class="comment">//点击minus按钮触发事件</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"minus button click: "</span> + val);</span><br><span class="line">  &#125;,</span><br><span class="line">  exceptionFun: <span class="function"><span class="keyword">function</span>(<span class="params">exception</span>) </span>&#123;<span class="comment">//值超出设置的范围时触发事件，等于1说明超出上范围，等于-1说明超出下范围</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"exception: "</span> + exception);</span><br><span class="line">  &#125;,</span><br><span class="line">  valueChanged: <span class="function"><span class="keyword">function</span>(<span class="params">val</span>) </span>&#123;<span class="comment">//值变更时触发事件</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"value changed: "</span> + val);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">$(<span class="string">".wan-spinner"</span>).WanSpinner(options);</span><br></pre></td></tr></table></figure></p>
+<h3 id="详情">详情</h3><h4 id="使用自定义配置">使用自定义配置</h4><p> <div class="wan-spinner wan-spinner-1 a-no-textdecotion"><a href="javascript:void(0)" class="minus" target="_blank" rel="external">-</a><input type="text" value="1"><a href="javascript:void(0)" class="plus" target="_blank" rel="external">+</a></div><br> 配置文件如下：<br> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> options = &#123;</span><br><span class="line">  maxValue: <span class="number">10</span>,     <span class="comment">//设置所能到达的最大值，默认为 999</span></span><br><span class="line">  minValue: -<span class="number">5</span>,     <span class="comment">//设置所能到达的最小值，默认为 -999</span></span><br><span class="line">  step: <span class="number">2.131</span>,      <span class="comment">//步进长度，默认为 1</span></span><br><span class="line">  inputWidth: <span class="number">100</span>,  <span class="comment">//根据最大值设置输入框的宽度，防止内容超出，默认为25</span></span><br><span class="line">  start: -<span class="number">2</span>,        <span class="comment">//起始值，默认为 1</span></span><br><span class="line">  plusClick: <span class="function"><span class="keyword">function</span>(<span class="params">val</span>) </span>&#123;<span class="comment">//点击plus按钮触发事件</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"plus button click: "</span> + val);</span><br><span class="line">  &#125;,</span><br><span class="line">  minusClick: <span class="function"><span class="keyword">function</span>(<span class="params">val</span>) </span>&#123;<span class="comment">//点击minus按钮触发事件</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"minus button click: "</span> + val);</span><br><span class="line">  &#125;,</span><br><span class="line">  exceptionFun: <span class="function"><span class="keyword">function</span>(<span class="params">exception</span>) </span>&#123;<span class="comment">//值超出设置的范围时触发事件，等于1说明超出上范围，等于-1说明超出下范围</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"exception: "</span> + exception);</span><br><span class="line">  &#125;,</span><br><span class="line">  valueChanged: <span class="function"><span class="keyword">function</span>(<span class="params">val</span>) </span>&#123;<span class="comment">//值变更时触发事件</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"value changed: "</span> + val);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">$(<span class="string">".wan-spinner"</span>).WanSpinner(options);</span><br></pre></td></tr></table></figure></p>
 <p> HTML文件如下：<br> <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"wan-spinner wan-spinner-1"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"javascript:void(0)"</span> <span class="attribute">class</span>=<span class="value">"minus"</span>&gt;</span>-<span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">value</span>=<span class="value">"1"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"javascript:void(0)"</span> <span class="attribute">class</span>=<span class="value">"plus"</span>&gt;</span>+<span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p><br></p>
-<blockquote>
-<p>例：使用默认配置</p>
-</blockquote>
-<p><div class="wan-spinner wan-spinner-2 a-no-textdecotion"><a href="javascript:void(0)" class="minus" target="_blank" rel="external">-</a><input type="text" value="1"><a href="javascript:void(0)" class="plus" target="_blank" rel="external">+</a></div><br>HTML文件如下：<br> <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"wan-spinner wan-spinner-2"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"javascript:void(0)"</span> <span class="attribute">class</span>=<span class="value">"minus"</span>&gt;</span>-<span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">value</span>=<span class="value">"1"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"javascript:void(0)"</span> <span class="attribute">class</span>=<span class="value">"plus"</span>&gt;</span>+<span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="使用默认配置">使用默认配置</h4><p><div class="wan-spinner wan-spinner-2 a-no-textdecotion"><a href="javascript:void(0)" class="minus" target="_blank" rel="external">-</a><input type="text" value="1"><a href="javascript:void(0)" class="plus" target="_blank" rel="external">+</a></div><br>HTML文件如下：<br> <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"wan-spinner wan-spinner-2"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"javascript:void(0)"</span> <span class="attribute">class</span>=<span class="value">"minus"</span>&gt;</span>-<span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">value</span>=<span class="value">"1"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"javascript:void(0)"</span> <span class="attribute">class</span>=<span class="value">"plus"</span>&gt;</span>+<span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -165,6 +152,27 @@
 <script src="/libs/wan-address-select/build/wan-address-select.js" type="text/javascript"></script>
 <script src="/libs/wan-carousel/build/wan-carousel.js" type="text/javascript"></script>
 <script src="/libs/wan-spinner/build/wan-spinner.js" type="text/javascript"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular-animate.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular-aria.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-material/0.10.0/angular-material.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+<script src="/libs/daterange-picker/src/daterangepicker.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  angular
+    .module('demoRanger', [
+      'ngMaterial',
+      'fc.dateRange'
+    ]).controller('DemoCtrl', DemoCtrl);
+
+  function DemoCtrl($scope) {
+    $scope.startDate = "2015-07-07";
+    $scope.endDate = "2015-07-27";
+    $scope.dateLength = 0;
+  }
+</script>
 
 <script type="text/javascript">
 $(document).ready(function() {
