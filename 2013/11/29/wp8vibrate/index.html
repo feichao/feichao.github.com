@@ -41,6 +41,7 @@
   <link rel="stylesheet" href="/libs/wan-carousel/build/wan-carousel.css" type="text/css">
   <link rel="stylesheet" href="/libs/wan-spinner/build/wan-spinner.css" type="text/css">
   <link rel="stylesheet" href="/libs/daterange-picker/src/daterangepicker.css" type="text/css">
+  <link rel="stylesheet" href="/libs/back-to-top/src/wan-backtotop.css" type="text/css">
 </head>
 
 <body>
@@ -65,11 +66,8 @@
           <a class="main-nav-link" href="/about">关于</a>
         
       </nav>
-      <nav id="sub-nav">
-        <div id="search-form-wrap">
-          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://0xfc.cn"></form>
-        </div>
-      </nav>
+      
+      
     </div>
   </div>
 </header>
@@ -147,6 +145,7 @@
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, theme by <a href="http://github.com/ppoffice">PPOffice</a>
     </div>
   </div>
+  <div class="wan-backtotop"></div>
 </footer>
     
 
@@ -161,6 +160,7 @@
 <script src="/libs/wan-address-select/build/wan-address-select.js" type="text/javascript"></script>
 <script src="/libs/wan-carousel/build/wan-carousel.js" type="text/javascript"></script>
 <script src="/libs/wan-spinner/build/wan-spinner.js" type="text/javascript"></script>
+<script src="/libs/back-to-top/src/wan-backtotop.js" type="text/javascript"></script>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular-animate.min.js"></script>
@@ -251,6 +251,30 @@ $(document).ready(function() {
     interval: 2000,
     speed: 800,
   });
+
+  var optionsTop = {
+    toTopImg: 'http://7xl1b4.com1.z0.glb.clouddn.com/to_top.png',
+    css: undefined,
+    displayTop: 200,
+    speed: 200,
+    position: {
+      right: '10px',
+      bottom: '10px'
+    },
+    showAnimate: function(img) {
+      img.animate({
+        bottom: this.position.bottom
+      }, 120, 'swing');
+    },
+    hideAnimate: function(img) {
+      img.animate({
+        bottom: '-50px'
+      }, 120, 'swing');
+    },
+    template: '<img alt="backtotop" class="backtotop-img">'
+  };
+
+  $(".wan-backtotop").WanBackToTop(optionsTop);
 });
 </script>
   </div>
