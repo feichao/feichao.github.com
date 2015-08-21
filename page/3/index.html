@@ -838,7 +838,7 @@ foreach (ExternalStorageFile <span class="type">file</span> <span class="keyword
     $scope.selectedData = [];
 
     $scope.selectChanged = function(){
-      console.log($scope.selectedData);
+      jQuery("#wan-selected-data").html($scope.selectedData.join('，'));
     };
   }
 </script>
