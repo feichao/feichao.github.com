@@ -3,24 +3,45 @@
 <head>
   <meta charset="utf-8">
   
-  <title>jquery-wan-address-select - Feichao&#39;s blog</title>
+  <title>工具箱 - Feichao&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="主题  基于jQuery实现的中国省市区选择插件，可自定义精细度：城镇，街道，村委。
-详情 
-   配置文件如下： 12345678910111213141516171819202122232425262728293031323334 var optionsAddress1 = &amp;#123;  initProvice: &apos;北京市&apos;,  initCity: &apos;市辖区&apos;,  initCounty: &apos;">
-<meta property="og:type" content="article">
-<meta property="og:title" content="jquery-wan-address-select">
-<meta property="og:url" content="http://blog.0xfc.cn/2015/08/11/address/index.html">
+  <meta name="description" content="CanIUse
+CDNJS
+站长工具
+草料二维码
+Markdown编辑器
+在线图片压缩
+css-js 压缩
+sass to css
+CSS缓动函数
+ColorHexa">
+<meta property="og:type" content="website">
+<meta property="og:title" content="工具箱">
+<meta property="og:url" content="http://blog.0xfc.cn/tool/index.html">
 <meta property="og:site_name" content="Feichao's blog">
-<meta property="og:description" content="主题  基于jQuery实现的中国省市区选择插件，可自定义精细度：城镇，街道，村委。
-详情 
-   配置文件如下： 12345678910111213141516171819202122232425262728293031323334 var optionsAddress1 = &amp;#123;  initProvice: &apos;北京市&apos;,  initCity: &apos;市辖区&apos;,  initCounty: &apos;">
-<meta property="og:updated_time" content="2015-08-17T12:25:26.000Z">
+<meta property="og:description" content="CanIUse
+CDNJS
+站长工具
+草料二维码
+Markdown编辑器
+在线图片压缩
+css-js 压缩
+sass to css
+CSS缓动函数
+ColorHexa">
+<meta property="og:updated_time" content="2015-08-22T05:06:16.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="jquery-wan-address-select">
-<meta name="twitter:description" content="主题  基于jQuery实现的中国省市区选择插件，可自定义精细度：城镇，街道，村委。
-详情 
-   配置文件如下： 12345678910111213141516171819202122232425262728293031323334 var optionsAddress1 = &amp;#123;  initProvice: &apos;北京市&apos;,  initCity: &apos;市辖区&apos;,  initCounty: &apos;">
+<meta name="twitter:title" content="工具箱">
+<meta name="twitter:description" content="CanIUse
+CDNJS
+站长工具
+草料二维码
+Markdown编辑器
+在线图片压缩
+css-js 压缩
+sass to css
+CSS缓动函数
+ColorHexa">
   
   
     <link rel="icon" href="/favicon.png">
@@ -69,7 +90,7 @@
   </div>
 </header>
 <div ng-app="demoWan">
-    <section id="main" class="outer"><article id="post-address" class="article article-type-post" itemscope itemprop="blogPost">
+    <section id="main" class="outer"><article id="page-undefined" class="article article-type-page" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     
@@ -77,66 +98,49 @@
         
   
     <h1 class="article-title" itemprop="name">
-      jquery-wan-address-select
+      工具箱
     </h1>
   
 
       </header>
     
     <div class="article-meta">
-      <a href="/2015/08/11/address/" class="article-date">
-  <time datetime="2015-08-11T02:11:38.000Z" itemprop="datePublished">2015-08-11</time>
+      <a href="/tool/index.html" class="article-date">
+  <time datetime="2015-08-22T04:40:35.000Z" itemprop="datePublished">2015-08-22</time>
 </a>
       
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/component/">component</a>
-  </div>
-
       
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="主题">主题</h3><p>  基于jQuery实现的中国省市区选择插件，可自定义精细度：城镇，街道，村委。</p>
-<h3 id="详情">详情</h3><p> <div class="wan-address-select wan-address-select1" style="display:inline-block;"></div><input id="getValue" type="button" value="get value" style="margin-left:20px;"><input id="getValueAndId" type="button" value="get value and id"></p>
-<p> <div class="wan-address-select wan-address-select2"></div><br> <div class="wan-address-select wan-address-select3"></div><br> 配置文件如下：<br> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">var</span> optionsAddress1 = &#123;</span><br><span class="line">  initProvice: <span class="string">'北京市'</span>,</span><br><span class="line">  initCity: <span class="string">'市辖区'</span>,</span><br><span class="line">  initCounty: <span class="string">'西城区'</span>,</span><br><span class="line">  initTown: <span class="string">'月坛街道办事处'</span>,</span><br><span class="line">  initVillage: <span class="string">'南礼士路社区居委会'</span>,</span><br><span class="line">  fineness: <span class="string">'county'</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> optionsAddress2 = &#123;</span><br><span class="line">     initProvice: <span class="string">'北京市'</span>,</span><br><span class="line">     initCity: <span class="string">'市辖区'</span>,</span><br><span class="line">     initCounty: <span class="string">'西城区'</span>,</span><br><span class="line">     initTown: <span class="string">'月坛街道办事处'</span>,</span><br><span class="line">     initVillage: <span class="string">'南礼士路社区居委会'</span>,</span><br><span class="line">     fineness: <span class="string">'town'</span></span><br><span class="line">   &#125;;</span><br><span class="line"> <span class="keyword">var</span> optionsAddress3 = &#123;</span><br><span class="line">     initProvice: <span class="string">'北京市'</span>,</span><br><span class="line">     initCity: <span class="string">'市辖区'</span>,</span><br><span class="line">     initCounty: <span class="string">'西城区'</span>,</span><br><span class="line">     initTown: <span class="string">'月坛街道办事处'</span>,</span><br><span class="line">     initVillage: <span class="string">'南礼士路社区居委会'</span>,</span><br><span class="line">     fineness: <span class="string">'village'</span></span><br><span class="line">   &#125;;</span><br><span class="line"> $(<span class="string">".wan-address-select1"</span>).WanAddressSelect(optionsAddress1);</span><br><span class="line"> $(<span class="string">".wan-address-select2"</span>).WanAddressSelect(optionsAddress2);</span><br><span class="line"> $(<span class="string">".wan-address-select3"</span>).WanAddressSelect(optionsAddress3);</span><br><span class="line"></span><br><span class="line"> $(<span class="string">"#getValue"</span>).on(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   alert(<span class="built_in">JSON</span>.stringify($(<span class="string">".wan-address-select1"</span>).WanAddressSelect(<span class="string">'val'</span>)));</span><br><span class="line"> &#125;);</span><br><span class="line"> $(<span class="string">"#getValueAndId"</span>).on(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   alert(<span class="built_in">JSON</span>.stringify($(<span class="string">".wan-address-select1"</span>).WanAddressSelect(<span class="string">'idval'</span>)));</span><br><span class="line"> &#125;);</span><br></pre></td></tr></table></figure></p>
-<p> HTML文件如下：<br> <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"wan-address-select wan-address-select1"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"wan-address-select wan-address-select2"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"wan-address-select wan-address-select3"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+        <p><a href="http://caniuse.com/" target="_blank" rel="external">CanIUse</a></p>
+<p><a href="https://cdnjs.com/" target="_blank" rel="external">CDNJS</a></p>
+<p><a href="http://tool.chinaz.com/" target="_blank" rel="external">站长工具</a></p>
+<p><a href="http://cli.im/" target="_blank" rel="external">草料二维码</a></p>
+<p><a href="https://stackedit.io/editor#" target="_blank" rel="external">Markdown编辑器</a></p>
+<p><a href="https://tinypng.com/" target="_blank" rel="external">在线图片压缩</a></p>
+<p><a href="http://tool.css-js.com/" target="_blank" rel="external">css-js 压缩</a></p>
+<p><a href="http://sassmeister.com/" target="_blank" rel="external">sass to css</a></p>
+<p><a href="http://cubic-bezier.com/#.17,.67,.83,.67" target="_blank" rel="external">CSS缓动函数</a></p>
+<p><a href="http://www.colorhexa.com/3d9970" target="_blank" rel="external">ColorHexa</a></p>
 
       
     </div>
   
     <footer class="article-footer">
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/组件/">组件</a></li></ul>
-
     </footer>
   
   </div>
   
     
-<nav id="article-nav">
-  
-    <a href="/2015/08/11/carousel/" id="article-nav-newer" class="article-nav-link-wrap">
-      <div class="article-nav-title"><span>&lt;</span>&nbsp;
-        
-          jquery-carousel
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2015/08/09/spinner/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">jquery-spinner&nbsp;<span>&gt;</span></div>
-    </a>
-  
-</nav>
-
   
 </article>
 
 
   <section id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread outer" data-thread-key="post-address" data-title="jquery-wan-address-select" data-url="http://blog.0xfc.cn/2015/08/11/address/"></div>
+    <div class="ds-thread outer" data-thread-key="page-undefined" data-title="工具箱" data-url="http://blog.0xfc.cn/tool/index.html"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
