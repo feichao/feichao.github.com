@@ -1,18 +1,3 @@
 /*********** backtotop start *************/
 
-.wan-backtotop {
-  bottom: -50px;
-  cursor: pointer;
-  height: 50px;
-  position: fixed;
-  right: 30px;
-  width: 50px;
-}
-
-.wan-backtotop > .backtotop-img {
-  height: 50px;
-  width: 50px;
-}
-
-
 /*********** backtotop end *************/

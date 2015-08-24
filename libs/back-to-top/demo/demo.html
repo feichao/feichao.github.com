@@ -25,33 +25,60 @@
   <div class="test"></div>
   <div class="test"></div>
   <div class="test"></div>
-  <div class="wan-backtotop"></div>
+  <div class="test"></div>
+  <div class="test"></div>
+  <div class="wan-backtotop wan-backtotop1"></div>
+  <div class="wan-backtotop wan-backtotop2"></div>
+  <div class="wan-backtotop wan-backtotop3"></div>
   <script type="text/javascript" src="js/jquery-1.11.3.js"></script>
   <script type="text/javascript" src="../src/wan-backtotop.js"></script>
   <script type="text/javascript">
   $(document).ready(function() {
-    var options = {
-      toTopImg: 'http://7xl1b4.com1.z0.glb.clouddn.com/to_top.png',
-      css: undefined,
+    var options1 = {
+      imgSrc: 'http://7xl1b4.com1.z0.glb.clouddn.com/to_top.png',
       displayTop: 200,
       speed: 200,
+      size: {
+        height: '35px',
+        width: '35px'
+      },
       position: {
-        right: '10px',
-        bottom: '10px'
+        right: '40px',
+        bottom: '30px'
       },
-      showAnimate: function(img) {
-        img.animate({
-          bottom: this.position.bottom
-        }, 120, 'swing');
-      },
-      hideAnimate: function(img) {
-        img.animate({
-          bottom: '-50px'
-        }, 120, 'swing');
-      },
-      template: '<img alt="backtotop" class="backtotop-img">'
+      template: ''
     };
-    $(".wan-backtotop").WanBackToTop(options);
+    var options2 = {
+      imgSrc: 'http://7xl1b4.com1.z0.glb.clouddn.com/to_top_2.png',
+      displayTop: 600,
+      speed: 800,
+      size: {
+        height: '40px',
+        width: '40px'
+      },
+      position: {
+        right: '90px',
+        bottom: '60px'
+      },
+      template: ''
+    };
+    var options3 = {
+      imgSrc: 'http://7xl1b4.com1.z0.glb.clouddn.com/to_top_3.png',
+      displayTop: 1000,
+      speed: 2000,
+      size: {
+        height: '45px',
+        width: '45px'
+      },
+      position: {
+        right: '140px',
+        bottom: '90px'
+      },
+      template: ''
+    };
+    $(".wan-backtotop1").WanBackToTop(options1);
+    $(".wan-backtotop2").WanBackToTop(options2);
+    $(".wan-backtotop3").WanBackToTop(options3);
   });
   </script>
 </body>
