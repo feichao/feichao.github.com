@@ -32,7 +32,6 @@
   <link rel="stylesheet" href="/libs/wan-carousel/build/wan-carousel.css" type="text/css">
   <link rel="stylesheet" href="/libs/wan-spinner/build/wan-spinner.css" type="text/css">
   <link rel="stylesheet" href="/libs/daterange-picker/src/daterangepicker.css" type="text/css">
-  <link rel="stylesheet" href="/libs/back-to-top/src/wan-backtotop.css" type="text/css">
   <link rel="stylesheet" href="/libs/wan-select/src/wan-select.css" type="text/css">
 </head>
 
@@ -162,7 +161,9 @@
       <p style="margin-top:10px;">Email: <a href="mailto:len.may@foxmail.com">len.may@foxmail.com</a></p>
     </div>
   </div>
-  <div class="wan-backtotop"></div>
+  <div class="wan-backtotop-theme-1"></div>
+  <div class="wan-backtotop-theme-2"></div>
+  <div class="wan-backtotop-theme-3"></div>
 </footer>
     
 
@@ -278,29 +279,51 @@ $(document).ready(function() {
     speed: 800,
   });
 
-  var optionsTop = {
-    toTopImg: 'http://7xl1b4.com1.z0.glb.clouddn.com/to_top.png',
-    css: undefined,
-    displayTop: 200,
+  var optionsTheme1 = {
+    imgSrc: 'http://7xl1b4.com1.z0.glb.clouddn.com/to_top.png',
+    displayTop: 500,
     speed: 200,
+    size: {
+      height: '35px',
+      width: '35px'
+    },
     position: {
-      right: '10px',
-      bottom: '10px'
+      right: '40px',
+      bottom: '30px'
     },
-    showAnimate: function(img) {
-      img.animate({
-        bottom: this.position.bottom
-      }, 120, 'swing');
-    },
-    hideAnimate: function(img) {
-      img.animate({
-        bottom: '-50px'
-      }, 120, 'swing');
-    },
-    template: '<img alt="backtotop" class="backtotop-img">'
+    template: ''
   };
-
-  $(".wan-backtotop").WanBackToTop(optionsTop);
+  var optionsTheme2 = {
+    imgSrc: 'http://7xl1b4.com1.z0.glb.clouddn.com/to_top_2.png',
+    displayTop: 2500,
+    speed: 800,
+    size: {
+      height: '40px',
+      width: '40px'
+    },
+    position: {
+      right: '90px',
+      bottom: '60px'
+    },
+    template: ''
+  };
+  var optionsTheme3 = {
+    imgSrc: 'http://7xl1b4.com1.z0.glb.clouddn.com/to_top_3.png',
+    displayTop: 4000,
+    speed: 2000,
+    size: {
+      height: '45px',
+      width: '45px'
+    },
+    position: {
+      right: '140px',
+      bottom: '90px'
+    },
+    template: ''
+  };
+  $(".wan-backtotop-theme-1").WanBackToTop(optionsTheme1);
+  $(".wan-backtotop-theme-2").WanBackToTop(optionsTheme2);
+  $(".wan-backtotop-theme-3").WanBackToTop(optionsTheme3);
 });
 </script>
   </div>

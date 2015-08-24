@@ -28,7 +28,6 @@
   <link rel="stylesheet" href="/libs/wan-carousel/build/wan-carousel.css" type="text/css">
   <link rel="stylesheet" href="/libs/wan-spinner/build/wan-spinner.css" type="text/css">
   <link rel="stylesheet" href="/libs/daterange-picker/src/daterangepicker.css" type="text/css">
-  <link rel="stylesheet" href="/libs/back-to-top/src/wan-backtotop.css" type="text/css">
   <link rel="stylesheet" href="/libs/wan-select/src/wan-select.css" type="text/css">
 </head>
 
@@ -69,6 +68,25 @@
         </div>
         <div class="archives">
     
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
+        <a href="/2015/08/24/backtotop/" class="archive-article-date">
+  <time datetime="2015-08-24T08:04:35.000Z" itemprop="datePublished">8月 24</time>
+</a>
+      
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2015/08/24/backtotop/">jquery-wan-backtotop</a>
+    </h1>
+  
+
+    </header>
+  </div>
+</article>
+  
     <article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
@@ -145,29 +163,10 @@
   </div>
 </article>
   
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-        <a href="/2015/08/09/spinner/" class="archive-article-date">
-  <time datetime="2015-08-09T11:47:39.000Z" itemprop="datePublished">8月 9</time>
-</a>
-      
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/08/09/spinner/">jquery-spinner</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
     </div></section>
   
       <nav id="page-nav">
-        <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/2/">下一页 &raquo;</a>
+        <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="page-number" href="/archives/page/4/">4</a><a class="extend next" rel="next" href="/archives/page/2/">下一页 &raquo;</a>
       </nav>
     
 
@@ -182,7 +181,9 @@
       <p style="margin-top:10px;">Email: <a href="mailto:len.may@foxmail.com">len.may@foxmail.com</a></p>
     </div>
   </div>
-  <div class="wan-backtotop"></div>
+  <div class="wan-backtotop-theme-1"></div>
+  <div class="wan-backtotop-theme-2"></div>
+  <div class="wan-backtotop-theme-3"></div>
 </footer>
     
 
@@ -298,29 +299,51 @@ $(document).ready(function() {
     speed: 800,
   });
 
-  var optionsTop = {
-    toTopImg: 'http://7xl1b4.com1.z0.glb.clouddn.com/to_top.png',
-    css: undefined,
-    displayTop: 200,
+  var optionsTheme1 = {
+    imgSrc: 'http://7xl1b4.com1.z0.glb.clouddn.com/to_top.png',
+    displayTop: 500,
     speed: 200,
+    size: {
+      height: '35px',
+      width: '35px'
+    },
     position: {
-      right: '10px',
-      bottom: '10px'
+      right: '40px',
+      bottom: '30px'
     },
-    showAnimate: function(img) {
-      img.animate({
-        bottom: this.position.bottom
-      }, 120, 'swing');
-    },
-    hideAnimate: function(img) {
-      img.animate({
-        bottom: '-50px'
-      }, 120, 'swing');
-    },
-    template: '<img alt="backtotop" class="backtotop-img">'
+    template: ''
   };
-
-  $(".wan-backtotop").WanBackToTop(optionsTop);
+  var optionsTheme2 = {
+    imgSrc: 'http://7xl1b4.com1.z0.glb.clouddn.com/to_top_2.png',
+    displayTop: 2500,
+    speed: 800,
+    size: {
+      height: '40px',
+      width: '40px'
+    },
+    position: {
+      right: '90px',
+      bottom: '60px'
+    },
+    template: ''
+  };
+  var optionsTheme3 = {
+    imgSrc: 'http://7xl1b4.com1.z0.glb.clouddn.com/to_top_3.png',
+    displayTop: 4000,
+    speed: 2000,
+    size: {
+      height: '45px',
+      width: '45px'
+    },
+    position: {
+      right: '140px',
+      bottom: '90px'
+    },
+    template: ''
+  };
+  $(".wan-backtotop-theme-1").WanBackToTop(optionsTheme1);
+  $(".wan-backtotop-theme-2").WanBackToTop(optionsTheme2);
+  $(".wan-backtotop-theme-3").WanBackToTop(optionsTheme3);
 });
 </script>
   </div>
