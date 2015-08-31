@@ -62,6 +62,142 @@
 </header>
 <div ng-app="demoWan">
     <section id="main" class="outer">
+      <article id="post-wp8Json" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/10/13/wp8Json/">WP8的Json</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2013/10/13/wp8Json/" class="article-date">
+  <time datetime="2013-10-13T02:34:59.000Z" itemprop="datePublished">2013-10-13</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/tech/">tech</a>
+  </div>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="主题">主题</h3><p>  WP8的Json数据转换。</p>
+<h3 id="正文">正文</h3><p>  需要引用：</p>
+<p>  using System.Runtime.Serialization.Json;</p>
+<p>  using System.Runtime.Serialization;</p>
+<p>  具体方法如下:</p>
+<pre><code> <span class="comment"><span class="xmlDocTag">///</span>/ 转化为 JSON stream.</span>
+
+ <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">string</span> <span class="title">WriteFromObject</span>(<span class="params">TransforData itransforData</span>)
+
+ </span>{
+
+     <span class="comment">//Create a stream to serialize the object to.</span>
+
+     MemoryStream ms = <span class="keyword">new</span> MemoryStream();
+
+     <span class="comment">// Serializer the User object to the stream.</span>
+
+     DataContractJsonSerializer ser = <span class="keyword">new</span> DataContractJsonSerializer(<span class="keyword">typeof</span>(TransforData));
+
+     ser.WriteObject(ms, itransforData);
+
+     <span class="keyword">byte</span>[] data = ms.ToArray();
+
+     ms.Close();
+
+     <span class="keyword">return</span> Encoding.UTF8.GetString(data, <span class="number">0</span>, data.Length);
+
+ }
+
+ <span class="comment">// 转为用户数据</span>
+
+<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> TransforData <span class="title">ReadToObject</span>(<span class="params"><span class="keyword">string</span> idata</span>)
+
+ </span>{
+
+     TransforData transforData = <span class="keyword">new</span> TransforData();
+
+     MemoryStream ms = <span class="keyword">new</span> MemoryStream(Encoding.UTF8.GetBytes(idata));
+
+     DataContractJsonSerializer ser = <span class="keyword">new</span> DataContractJsonSerializer(transforData.GetType());
+
+     transforData = ser.ReadObject(ms) <span class="keyword">as</span> TransforData;
+
+     ms.Close();
+
+     <span class="keyword">return</span> transforData;
+
+ }
+</code></pre><p>  其中TransforData是用户自定义的,格式如下:</p>
+<p>  namespace myAPP</p>
+<p>  {</p>
+<pre><code>[DataContract]
+
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="title">TransforData</span>
+
+{
+
+    [DataMember]
+
+    <span class="keyword">public</span> <span class="keyword">int</span> X
+
+    {
+
+        <span class="keyword">get</span>;
+
+        <span class="keyword">set</span>;
+
+    }
+
+    [DataMember]
+
+    <span class="keyword">public</span> <span class="keyword">int</span> Y
+
+    {
+
+        <span class="keyword">get</span>;
+
+        <span class="keyword">set</span>;
+
+    }
+
+    [DataMember]
+
+    <span class="keyword">public</span> <span class="keyword">string</span> Z
+
+    {
+
+        <span class="keyword">get</span>;
+
+        <span class="keyword">set</span>;
+
+    }
+</code></pre><p>  }</p>
+
+      
+    </div>
+  
+    <footer class="article-footer">
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WP8/">WP8</a></li></ul>
+
+    </footer>
+  
+  </div>
+  
+</article>
+
+
+    
       <article id="post-wp8sdcard" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     

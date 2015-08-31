@@ -62,6 +62,53 @@
 </header>
 <div ng-app="demoWan">
     <section id="main" class="outer">
+      <article id="post-address" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/11/address/">jquery-wan-address-select</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2015/08/11/address/" class="article-date">
+  <time datetime="2015-08-11T02:11:38.000Z" itemprop="datePublished">2015-08-11</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/component/">component</a>
+  </div>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="主题">主题</h3><p>  基于jQuery实现的中国省市区选择插件，可自定义精细度：城镇，街道，村委。</p>
+<h3 id="详情">详情</h3><p> <div class="wan-address-select wan-address-select1" style="display:inline-block;"></div><input id="getValue" type="button" value="get value" style="margin-left:20px;"><input id="getValueAndId" type="button" value="get value and id"></p>
+<p> <div class="wan-address-select wan-address-select2"></div><br> <div class="wan-address-select wan-address-select3"></div><br> 配置文件如下：<br> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">var</span> optionsAddress1 = &#123;</span><br><span class="line">  initProvice: <span class="string">'北京市'</span>,</span><br><span class="line">  initCity: <span class="string">'市辖区'</span>,</span><br><span class="line">  initCounty: <span class="string">'西城区'</span>,</span><br><span class="line">  initTown: <span class="string">'月坛街道办事处'</span>,</span><br><span class="line">  initVillage: <span class="string">'南礼士路社区居委会'</span>,</span><br><span class="line">  fineness: <span class="string">'county'</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> optionsAddress2 = &#123;</span><br><span class="line">     initProvice: <span class="string">'北京市'</span>,</span><br><span class="line">     initCity: <span class="string">'市辖区'</span>,</span><br><span class="line">     initCounty: <span class="string">'西城区'</span>,</span><br><span class="line">     initTown: <span class="string">'月坛街道办事处'</span>,</span><br><span class="line">     initVillage: <span class="string">'南礼士路社区居委会'</span>,</span><br><span class="line">     fineness: <span class="string">'town'</span></span><br><span class="line">   &#125;;</span><br><span class="line"> <span class="keyword">var</span> optionsAddress3 = &#123;</span><br><span class="line">     initProvice: <span class="string">'北京市'</span>,</span><br><span class="line">     initCity: <span class="string">'市辖区'</span>,</span><br><span class="line">     initCounty: <span class="string">'西城区'</span>,</span><br><span class="line">     initTown: <span class="string">'月坛街道办事处'</span>,</span><br><span class="line">     initVillage: <span class="string">'南礼士路社区居委会'</span>,</span><br><span class="line">     fineness: <span class="string">'village'</span></span><br><span class="line">   &#125;;</span><br><span class="line"> $(<span class="string">".wan-address-select1"</span>).WanAddressSelect(optionsAddress1);</span><br><span class="line"> $(<span class="string">".wan-address-select2"</span>).WanAddressSelect(optionsAddress2);</span><br><span class="line"> $(<span class="string">".wan-address-select3"</span>).WanAddressSelect(optionsAddress3);</span><br><span class="line"></span><br><span class="line"> $(<span class="string">"#getValue"</span>).on(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   alert(<span class="built_in">JSON</span>.stringify($(<span class="string">".wan-address-select1"</span>).WanAddressSelect(<span class="string">'val'</span>)));</span><br><span class="line"> &#125;);</span><br><span class="line"> $(<span class="string">"#getValueAndId"</span>).on(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   alert(<span class="built_in">JSON</span>.stringify($(<span class="string">".wan-address-select1"</span>).WanAddressSelect(<span class="string">'idval'</span>)));</span><br><span class="line"> &#125;);</span><br></pre></td></tr></table></figure></p>
+<p> HTML文件如下：<br> <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"wan-address-select wan-address-select1"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"wan-address-select wan-address-select2"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"wan-address-select wan-address-select3"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+  
+    <footer class="article-footer">
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/组件/">组件</a></li></ul>
+
+    </footer>
+  
+  </div>
+  
+</article>
+
+
+    
       <article id="post-spinner" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -240,57 +287,6 @@
 <p>  为师其实挺后悔的，那时候年少轻狂，又从小接受被ZF左右的正统佛学教育，年纪轻轻便背着皇上的“宁爱本乡一捻土,勿恋他国万两金”，斗志昂扬的带着你们三个没有共同语言的连搞基都搞不了的人妖见到了一只手就可以掌控天下的祖师爷，拿回来一坨满是忧郁的即使日夜煎熬也可能一事无成的经文，直到现在为师才渐渐明白，为师只是祖师爷用来耍皇上的小棋子，还好那些书为师只是稍微翻了翻，不然就会像现在的皇上一样，每天都在观察家禽的起居作息，不理朝政，不顾天下人民死活。回到正题，为师为什么后悔呢，当然不是因为被祖师爷耍了，也不是因为现在还是一副臭皮囊，没有得到长生之法，而是因为浪费了大好的青春，害得你师娘只能削发为尼以示忠贞，搞得至今膝下无子。</p>
 <p>  又是一个月，为师觉得自己越发的老了，再也没有激情和精力去佛堂拜见祖师爷了，你不知道，每次见到祖师爷身边的观音娘娘打着OK的手型时，我就一阵冷汗。不说了，他们都在偷听。</p>
 <p>  至于猴子讲了什么传说，下次再唠给你。</p>
-<p>  爱你的师父，再聊。</p>
-
-      
-    </div>
-  
-    <footer class="article-footer">
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/八戒/">八戒</a></li></ul>
-
-    </footer>
-  
-  </div>
-  
-</article>
-
-
-    
-      <article id="post-Bajie-2" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/04/22/Bajie-2/">八戒传-2</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/2015/04/22/Bajie-2/" class="article-date">
-  <time datetime="2015-04-22T03:59:59.000Z" itemprop="datePublished">2015-04-22</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/westgoal/">westgoal</a>
-  </div>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="感想">感想</h3><p>  随便想想，无甚含义。</p>
-<h3 id="正文">正文</h3><p>  八戒，转眼又过了一个月，不知道天气怎么回事，为师已经好久没有收到你亲自做的的猪扒信了。夏日炎炎，广寒宫成了避暑胜地，不知道你是不是在偷偷勾搭嫦娥妹妹。</p>
-<p>  前几天世民兄来找为师，大发雷霆说他已经翻遍了所有的经书还是没找到可以长生不老的法子。为师就和他说你看我身边凡是可以长生不老的不是猪就是猴，人要是那么容易就可以长生不老，为师早就不在寺庙念经了。他一甩袖子，气呼呼的走了。我听说这两天他已经开始研究家禽和野兽了。</p>
-<p>  说实话，取经回来后为师还没有认真翻过经书，那些经书有些晦涩难懂，也只有回来的那天晚上看了两眼而已。皇帝老了，放不下的东西太多，也只有他才有耐心去读这些书。还有，那本让你撕破的书我没敢拿给皇上，一直在垫着床脚。等等，难道长生不老的法子在这本书上！！</p>
-<p>  夜深人静的时候为师总是在思考，我们跋山涉水去西天拿回来那些书到底有什么意义，离开长安时那拯救天下苍生的凌云壮志哪去了。但是总是在还没有想出原因的时候，你师母就急急忙忙的跑过来说我门下的哪个小和尚又在勾引她门下的某个小尼姑了。唉，世事难料啊。</p>
-<p>  有个不幸的消息，原来你师母没怀孕，我也奇怪，为啥我们刚回来一个月，你师母就已经怀孕俩月了。算了，再努力吧。</p>
-<p>  如果你收到为师的信，一定记得回复，为师一直在等。</p>
 <p>  爱你的师父，再聊。</p>
 
       
