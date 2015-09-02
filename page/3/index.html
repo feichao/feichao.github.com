@@ -62,6 +62,55 @@
 </header>
 <div ng-app="demoWan">
     <section id="main" class="outer">
+      <article id="post-Bajie-3" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/04/23/Bajie-3/">八戒传-3</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2015/04/23/Bajie-3/" class="article-date">
+  <time datetime="2015-04-23T03:59:59.000Z" itemprop="datePublished">2015-04-23</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/westgoal/">westgoal</a>
+  </div>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="感想">感想</h3><p>  随便想想，无甚含义。</p>
+<h3 id="正文">正文</h3><p>  猪，前几天猴子来看望我，带了一大袋香蕉，自从你师母告诉我她门下的小尼姑经常在饭后带一根香蕉回房间却在第二天早上才将香蕉皮丢出去后，为师就越发觉得香蕉属荤，到现在，为师已经不吃萝卜、茄子和西瓜了，看着都觉得有些委屈。猴子讲了一个传说，至少对为师来说是个传说，不知道是几千年前的事情了，那时候他还是一块相信海枯石烂的石头，但是到最后还是忍不住自己蹦出来了，不经想果然生不逢时，被祖师爷压了500年。</p>
+<p>  为师其实挺后悔的，那时候年少轻狂，又从小接受被ZF左右的正统佛学教育，年纪轻轻便背着皇上的“宁爱本乡一捻土,勿恋他国万两金”，斗志昂扬的带着你们三个没有共同语言的连搞基都搞不了的人妖见到了一只手就可以掌控天下的祖师爷，拿回来一坨满是忧郁的即使日夜煎熬也可能一事无成的经文，直到现在为师才渐渐明白，为师只是祖师爷用来耍皇上的小棋子，还好那些书为师只是稍微翻了翻，不然就会像现在的皇上一样，每天都在观察家禽的起居作息，不理朝政，不顾天下人民死活。回到正题，为师为什么后悔呢，当然不是因为被祖师爷耍了，也不是因为现在还是一副臭皮囊，没有得到长生之法，而是因为浪费了大好的青春，害得你师娘只能削发为尼以示忠贞，搞得至今膝下无子。</p>
+<p>  又是一个月，为师觉得自己越发的老了，再也没有激情和精力去佛堂拜见祖师爷了，你不知道，每次见到祖师爷身边的观音娘娘打着OK的手型时，我就一阵冷汗。不说了，他们都在偷听。</p>
+<p>  至于猴子讲了什么传说，下次再唠给你。</p>
+<p>  爱你的师父，再聊。</p>
+
+      
+    </div>
+  
+    <footer class="article-footer">
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/八戒/">八戒</a></li></ul>
+
+    </footer>
+  
+  </div>
+  
+</article>
+
+
+    
       <article id="post-Bajie-2" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -286,285 +335,6 @@ dt.Start()<span class="comment">;</span>
 <p>  首先包含：using Microsoft.Devices;</p>
 <p>  定义：private VibrateController vibrateController = VibrateController.Default;</p>
 <p>  使用：vibrateController.Start(TimeSpan.FromMilliseconds(time));</p>
-
-      
-    </div>
-  
-    <footer class="article-footer">
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WP8/">WP8</a></li></ul>
-
-    </footer>
-  
-  </div>
-  
-</article>
-
-
-    
-      <article id="post-wp8socket" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2013/10/15/wp8socket/">WP8之Socket</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/2013/10/15/wp8socket/" class="article-date">
-  <time datetime="2013-10-15T02:34:59.000Z" itemprop="datePublished">2013-10-15</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/tech/">tech</a>
-  </div>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="主题">主题</h3><p>  WP8之Socket ——作为服务端接收消息</p>
-<h3 id="正文">正文</h3><p>  网上都说WP8 socket已经开始支持服务端，但是在网上总找不到代码，经过研究，以下的方式可以实现监听。</p>
-<p>   代码：</p>
-<p>  //监听用</p>
-<pre><code>  <span class="keyword">private</span> Socket socketListen = <span class="keyword">null</span>;
-
-  <span class="keyword">private</span> SocketAsyncEventArgs socketEventArgListen = <span class="keyword">new</span> SocketAsyncEventArgs();
-
- <span class="comment">//监听成功后获取已经连接的socket</span>
-
-  <span class="keyword">private</span> Socket socketConnect = <span class="keyword">null</span>;
-
-  <span class="keyword">private</span> SocketAsyncEventArgs socketEventArgConnect = <span class="keyword">null</span>;
-
- <span class="comment">//初始化socket</span>
-
-  socketListen = <span class="keyword">new</span> Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-
-  socketListen.Bind(<span class="keyword">new</span> IPEndPoint(IPAddress.Any, Constants.TCP_SERVER_PORT));
-
-
-
- <span class="comment">//异步socket操作执行完成后触发的事件</span>
-
-  socketEventArgListen.Completed += socketEventArgListen_Completed;
-
-
-
- <span class="comment">//监听函数</span>
-
-  <span class="function"><span class="keyword">public</span> <span class="keyword">string</span> <span class="title">Listen</span>(<span class="params"></span>)
-
-  </span>{
-
-      response = <span class="string">"Error"</span>;
-
-      clientDone.Reset();
-
-      socketListen.Listen(<span class="number">5</span>);
-
-      socketEventArgListen.SetBuffer(<span class="keyword">new</span> Byte[Constants.IO_BUF_SIZE], <span class="number">0</span>, Constants.IO_BUF_SIZE);
-
-      <span class="comment">//如果监听同步完成</span>
-
-      <span class="keyword">if</span> (!socketListen.AcceptAsync(socketEventArgListen))
-
-      {
-
-          socketEventArgListen_Completed(socketListen, socketEventArgListen);
-
-          <span class="keyword">return</span> response;
-
-      }
-
-      <span class="comment">//监听异步完成</span>
-
-      clientDone.WaitOne(Constants.TIMEOUT_MILLISECONDS);
-
-      <span class="keyword">return</span> response;
-
-  }
-
-
-
-<span class="comment">//操作完成后执行</span>
-
- <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">socketEventArgListen_Completed</span>(<span class="params"><span class="keyword">object</span> sender, SocketAsyncEventArgs e</span>)
-
-  </span>{
-
-      response = e.SocketError.ToString();
-
-      <span class="keyword">switch</span> (e.LastOperation)
-
-      {
-
-              <span class="comment">//当客户端发来Connect消息时，服务端会通过AcceptAsync接受，接受成功会执行下面代码</span>
-
-          <span class="keyword">case</span> SocketAsyncOperation.Accept:
-
-             <span class="comment">//得到客户端发来的消息</span>
-
-              response = Encoding.UTF8.GetString(e.Buffer, e.Offset, e.BytesTransferred);
-
-              response = response.Trim(<span class="string">'\0'</span>);
-
-              <span class="keyword">if</span> (response == <span class="string">""</span>)
-
-              {
-
-                  response = <span class="string">"Error"</span>;
-
-              }
-
-             <span class="comment">//得到已连接的socket，此后就可以用这个socket执行发送和接收了</span>
-
-              socketConnect = e.AcceptSocket;
-
-              socketEventArgConnect = e;
-
-              <span class="keyword">break</span>;
-
-          <span class="keyword">case</span> SocketAsyncOperation.Send:
-
-              <span class="keyword">break</span>;
-
-              <span class="comment">//when receive, we can get the Buffer</span>
-
-          <span class="keyword">case</span> SocketAsyncOperation.Receive:
-
-              response = Encoding.UTF8.GetString(e.Buffer, e.Offset, e.BytesTransferred);
-
-              response = response.Trim(<span class="string">'\0'</span>);
-
-              <span class="keyword">if</span> (response == <span class="string">""</span>)
-
-              {
-
-                  response = <span class="string">"Error"</span>;
-
-              }
-
-              <span class="keyword">break</span>;
-
-          <span class="keyword">default</span>:
-
-              <span class="keyword">break</span>;
-
-      }
-
-      clientDone.Set();
-
-  }
-
-
-
- <span class="comment">//作为服务端向客户端发消息，</span>
-
-  <span class="function"><span class="keyword">public</span> <span class="keyword">string</span> <span class="title">SendServer</span>(<span class="params">Socket isocket,SocketAsyncEventArgs isocketEvent,<span class="keyword">string</span> idata</span>)
-
-  </span>{
-
-      response = <span class="string">"Error"</span>;
-
-      <span class="keyword">if</span> (isocket != <span class="keyword">null</span>)
-
-      {
-
-          <span class="keyword">byte</span>[] payload = Encoding.UTF8.GetBytes(idata);
-
-          isocketEvent.SetBuffer(payload, <span class="number">0</span>, payload.Length);
-
-          clientDone.Reset();
-
-         <span class="comment">//如果发送同步完成</span>
-
-          <span class="keyword">if</span> (!isocket.SendAsync(isocketEvent))
-
-          {
-
-              socketEventArgListen_Completed(isocket, isocketEvent);
-
-              <span class="keyword">return</span> response;
-
-          }
-
-          clientDone.WaitOne(Constants.TIMEOUT_MILLISECONDS);
-
-      }
-
-      <span class="keyword">else</span>
-
-      {
-
-          response = <span class="string">"Socket is not initialized"</span>;
-
-      }
-
-      <span class="keyword">return</span> response;
-
-  }
-
-
-
- <span class="comment">//作为服务端接收来自客户端的消息</span>
-
-  <span class="function"><span class="keyword">public</span> <span class="keyword">string</span> <span class="title">ReceiveServer</span>(<span class="params">Socket isocket, SocketAsyncEventArgs isocketEvent, <span class="keyword">int</span> ibuffersize</span>)
-
-  </span>{
-
-      response = <span class="string">"Error"</span>;
-
-      <span class="keyword">if</span> (isocket != <span class="keyword">null</span>)
-
-      {
-
-          clientDone.Reset();
-
-          <span class="keyword">byte</span>[] temp = <span class="keyword">new</span> <span class="keyword">byte</span>[ibuffersize];
-
-          isocketEvent.SetBuffer(temp, <span class="number">0</span>, ibuffersize);
-
-          <span class="comment">//如果同步完成</span>
-
-          <span class="keyword">if</span> (!isocket.ReceiveAsync(isocketEvent))
-
-          {
-
-              socketEventArgListen_Completed(isocket, isocketEvent);
-
-              <span class="keyword">return</span> response;
-
-          }
-
-          clientDone.WaitOne(Constants.TIMEOUT_MILLISECONDS);
-
-      }
-
-      <span class="keyword">else</span>
-
-      {
-
-          response = <span class="string">"Socket is not initialized"</span>;
-
-      }
-
-      <span class="keyword">return</span> response;
-
-  }
-</code></pre><p>  具体使用的时候：</p>
-<pre><code>当我们拿到socketConnect和socketEventArgConnect后，可以执行：
-
-<span class="function"><span class="title">SendServer</span><span class="params">(socketConnect, socketEventArgConnect, strdata )</span></span>向客户端发送消息
-
-<span class="function"><span class="title">ReceiveServer</span><span class="params">(socketConnect, socketEventArgConnect, size)</span></span>从buffer中拿消息
-</code></pre><p>  使用完成后记得关闭Socket，上述代码在楼主的手机上顺利执行，但是当网络不好的时候，会出现丢失数据的现象，现在正在优化，如果有研究WP8 Socket的大牛，请多多指导。</p>
 
       
     </div>

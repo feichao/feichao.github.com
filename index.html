@@ -62,6 +62,54 @@
 </header>
 <div ng-app="demoWan">
     <section id="main" class="outer">
+      <article id="post-gulp-seajs" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/02/gulp-seajs/">使用gulp构建SeaJS</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2015/09/02/gulp-seajs/" class="article-date">
+  <time datetime="2015-09-02T03:19:29.000Z" itemprop="datePublished">2015-09-02</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/tech/">tech</a>
+  </div>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="主题">主题</h3><p>  使用SeaJS完成了Cvtouch商城的模块化工作，接下来一个严峻的问题是如何进行构建，因为模块化之前使用的是gulp，也为了减少切换成本，放弃了SPM，决定还是暂时使用gulp构建。</p>
+<h3 id="正文">正文</h3><p>  <br>  使用SeaJS主要是改变了JS的文件结构，对其他静态文件CSS，IMG都没有什么影响。所以本文只针对模块化构建前后的JS部分。<br>  对JS的构建包括：合并，压缩，文件名+hash。<br>  模块化之前的gulp file：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">  gulp.task(<span class="string">'lib-js'</span>, [], <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> gulp.src([</span><br><span class="line">        pathSource.libs + <span class="string">'jquery.min.js'</span>,</span><br><span class="line">        pathSource.libs + <span class="string">'jquery.bpopup.min.js'</span>])</span><br><span class="line">      .pipe(sourcemaps.init())</span><br><span class="line">      .pipe(concat(<span class="string">'lib.min.js'</span>))</span><br><span class="line">      .pipe(uglify())</span><br><span class="line">      .pipe(rev())</span><br><span class="line">      .pipe(sourcemaps.write(<span class="string">'.'</span>))</span><br><span class="line">      .pipe(gulp.dest(pathDist.libs))</span><br><span class="line">      .pipe(rev.manifest(&#123;base:<span class="string">''</span>, merge: <span class="literal">true</span>&#125;))</span><br><span class="line">      .pipe(gulp.dest(<span class="string">''</span>));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>  模块化之后的gulp file：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">  gulp.task(<span class="string">"module-js"</span>, [<span class="string">'component-js'</span>], <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    gulp.src([</span><br><span class="line">      pathSource.modules + <span class="string">"cstorage.js"</span>,</span><br><span class="line">      pathSource.modules + <span class="string">"dialog.js"</span>,</span><br><span class="line">      pathSource.modules + <span class="string">"util.js"</span>], &#123;base: pathSource.root&#125;)</span><br><span class="line">      .pipe(transport())</span><br><span class="line">      .pipe(sourcemaps.init())</span><br><span class="line">      .pipe(concat(<span class="string">'module.min.js'</span>))</span><br><span class="line">      .pipe(uglify())</span><br><span class="line">      .pipe(rev())</span><br><span class="line">      .pipe(sourcemaps.write(<span class="string">'.'</span>))</span><br><span class="line">      .pipe(gulp.dest(pathDist.modules))</span><br><span class="line">      .pipe(rev.manifest(&#123;base:<span class="string">''</span>, merge: <span class="literal">true</span>&#125;))</span><br><span class="line">      .pipe(gulp.dest(<span class="string">''</span>));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>  可以看到，构建操作：合并，压缩，文件名+hash，模块化前后本质上没有任何区别。而模块化之后主要多了一步transport（使用gulp-seajs-transport）。关于SeaJS的transport，请看<a href="http://www.zhihu.com/question/20789867/answer/16187950" target="_blank" rel="external">http://www.zhihu.com/question/20789867/answer/16187950</a>，简单就是为每个模块命名ID，使SeaJS在定位模块时采用ID，而不是文件名。这里要详细了解下SeaJS模块ID的解析规则，否则可能在构建后发生无法找到模块的错误，具体可以看这里<a href="http://segmentfault.com/a/1190000000354302" target="_blank" rel="external">http://segmentfault.com/a/1190000000354302</a>和<a href="https://github.com/seajs/seajs/issues/930" target="_blank" rel="external">https://github.com/seajs/seajs/issues/930</a>，简单来说就是尽量使用相对标识，不要使用顶级标识。<br>  HTML中引用构建后的文件：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 公共模块 --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- build:js $&#123;pageContext.request.contextPath&#125;/modules/module.min.js --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- /build --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 业务模块 --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- build:js $&#123;pageContext.request.contextPath&#125;/public/public.min.js --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- /build --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="actionscript"></span><br><span class="line">  seajs.config(&#123;</span><br><span class="line">    charset: <span class="string">'utf-8'</span>,</span><br><span class="line">    debug: <span class="literal">false</span></span><br><span class="line">  &#125;);</span><br><span class="line">  seajs.<span class="keyword">use</span>(<span class="string">"public/js/main"</span>);</span><br><span class="line"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>  看起来没什么复杂的，其实最重要的是熟悉SeaJS ID的解析规则！！！</p>
+
+      
+    </div>
+  
+    <footer class="article-footer">
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SeaJS/">SeaJS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gulp/">gulp</a></li></ul>
+
+    </footer>
+  
+  </div>
+  
+</article>
+
+
+    
       <article id="post-start-seajs" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -70,7 +118,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/31/start-seajs/">start_seajs</a>
+      <a class="article-title" href="/2015/08/31/start-seajs/">引入SeaJS</a>
     </h1>
   
 
@@ -267,54 +315,6 @@
 <p>HTML文件如下：<br> <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"wrapper"</span> <span class="attribute">ng-controller</span>=<span class="value">"DemoCtrl"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">daterange-picker</span> <span class="attribute">date-lang</span>=<span class="value">"cn"</span> </span><br><span class="line">                    <span class="attribute">date-type</span>=<span class="value">"range"</span></span><br><span class="line">                    <span class="attribute">start-date</span>=<span class="value">"startDate"</span> </span><br><span class="line">                    <span class="attribute">end-date</span>=<span class="value">"endDate"</span> </span><br><span class="line">                    <span class="attribute">date-length</span>=<span class="value">"dateLength"</span> </span><br><span class="line">                    <span class="attribute">max-date</span>=<span class="value">"2015-08-23"</span> </span><br><span class="line">                    <span class="attribute">min-date</span>=<span class="value">"2010-07-09"</span> </span><br><span class="line">                    <span class="attribute">date-label</span>=<span class="value">"选择日期段："</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">daterange-picker</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>Options:</p>
 <h4 id="所有日期格式均为_YYYY-MM-DD">所有日期格式均为 YYYY-MM-DD</h4><h5 id="date-lang:_string，默认值en，设为cn即为中文">date-lang: string，默认值en，设为cn即为中文</h5><h5 id="date-type:_string，默认为日期选择，设为range即为日期段">date-type: string，默认为日期选择，设为range即为日期段</h5><h5 id="start-date:_选中的开始日期">start-date: 选中的开始日期</h5><h5 id="end-date:_选中的截止日期">end-date: 选中的截止日期</h5><h5 id="date-length:_日期长度">date-length: 日期长度</h5><h5 id="max-date:_所能选的最大日期">max-date: 所能选的最大日期</h5><h5 id="min-date:_所能选的最小日期">min-date: 所能选的最小日期</h5><h5 id="date-label:_label">date-label: label</h5><h5 id="shoule-refresh:_如果起始日期或者截止日期可能会在组件外部被更改，则可将此字段设为true，每次选择日期前都会自动刷新组件">shoule-refresh: 如果起始日期或者截止日期可能会在组件外部被更改，则可将此字段设为true，每次选择日期前都会自动刷新组件</h5>
-      
-    </div>
-  
-    <footer class="article-footer">
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/组件/">组件</a></li></ul>
-
-    </footer>
-  
-  </div>
-  
-</article>
-
-
-    
-      <article id="post-carousel" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/11/carousel/">jquery-carousel</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/2015/08/11/carousel/" class="article-date">
-  <time datetime="2015-08-11T04:05:18.000Z" itemprop="datePublished">2015-08-11</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/component/">component</a>
-  </div>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="主题">主题</h3><p>  基于jQuery实现的图片轮播效果。</p>
-<h3 id="详情">详情</h3> <div class="wan-carousel wan-carousel-1 a-no-textdecotion" style="width: 50%; float:left;"><div class="carousel-list no-fancybox"><img src="/css/images/1.jpg" alt="img"><img src="/css/images/2.jpg" alt="img"><img src="/css/images/3.jpg" alt="img"><img src="/css/images/4.jpg" alt="img"></div></div><div class="wan-carousel wan-carousel-2 a-no-textdecotion" style="width: 50%; float:left;"><div class="carousel-list no-fancybox"><img src="/css/images/1.jpg" alt="img"><img src="/css/images/2.jpg" alt="img"></div></div><div class="wan-carousel wan-carousel-3 a-no-textdecotion" style="width: 50%; float:left;"><div class="carousel-list no-fancybox"><img src="/css/images/2.jpg" alt="img"><img src="/css/images/3.jpg" alt="img"><img src="/css/images/4.jpg" alt="img"></div></div><div class="wan-carousel wan-carousel-4 a-no-textdecotion" style="width: 50%; float:left;"><div class="carousel-list no-fancybox"><img src="/css/images/1.jpg" alt="img"><img src="/css/images/2.jpg" alt="img"></div></div>
-
-<p>配置文件如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">".wan-carousel-1, .wan-carousel-2"</span>).WanCarousel();</span><br><span class="line">$(<span class="string">".wan-carousel-3"</span>).WanCarousel(&#123;</span><br><span class="line">  interval: <span class="number">8000</span>,</span><br><span class="line">  speed: <span class="number">400</span>,</span><br><span class="line">&#125;);</span><br><span class="line">$(<span class="string">".wan-carousel-4"</span>).WanCarousel(&#123;</span><br><span class="line">  interval: <span class="number">2000</span>,</span><br><span class="line">  speed: <span class="number">800</span>,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-<p>HTML文件如下：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"wan-carousel wan-carousel-1"</span> <span class="attribute">style</span>=<span class="value">"width: 50%; float:left;"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"carousel-list"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"img/1.jpg"</span> <span class="attribute">alt</span>=<span class="value">"img"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"img/2.jpg"</span> <span class="attribute">alt</span>=<span class="value">"img"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"img/3.jpg"</span> <span class="attribute">alt</span>=<span class="value">"img"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"img/4.jpg"</span> <span class="attribute">alt</span>=<span class="value">"img"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"wan-carousel wan-carousel-2"</span> <span class="attribute">style</span>=<span class="value">"width: 50%; float:left;"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"carousel-list"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"#"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"img/1.jpg"</span> <span class="attribute">alt</span>=<span class="value">"img"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"img/2.jpg"</span> <span class="attribute">alt</span>=<span class="value">"img"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"wan-carousel wan-carousel-3"</span> <span class="attribute">style</span>=<span class="value">"width: 50%; float:left;"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"carousel-list"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"img/2.jpg"</span> <span class="attribute">alt</span>=<span class="value">"img"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"img/3.jpg"</span> <span class="attribute">alt</span>=<span class="value">"img"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"img/4.jpg"</span> <span class="attribute">alt</span>=<span class="value">"img"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"wan-carousel wan-carousel-4"</span> <span class="attribute">style</span>=<span class="value">"width: 50%; float:left;"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"carousel-list"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"#"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"img/1.jpg"</span> <span class="attribute">alt</span>=<span class="value">"img"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"img/2.jpg"</span> <span class="attribute">alt</span>=<span class="value">"img"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-
       
     </div>
   
