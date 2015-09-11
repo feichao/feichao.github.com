@@ -20,7 +20,7 @@
   
   <link href="/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
   <link href="/webfonts/source-code-pro/main.css" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/0.10.0/angular-material.min.css">
+  <link rel="stylesheet" type="text/css" href="http://7xlphe.com1.z0.glb.clouddn.com/angular-material.min.css">
   <link rel="stylesheet" href="/css/style.css" type="text/css">
   
 
@@ -341,6 +341,142 @@
 
 
     
+      <article id="post-wp8Json" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/10/13/wp8Json/">WP8的Json</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2013/10/13/wp8Json/" class="article-date">
+  <time datetime="2013-10-13T02:34:59.000Z" itemprop="datePublished">2013-10-13</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/tech/">tech</a>
+  </div>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="主题">主题</h3><p>  WP8的Json数据转换。</p>
+<h3 id="正文">正文</h3><p>  需要引用：</p>
+<p>  using System.Runtime.Serialization.Json;</p>
+<p>  using System.Runtime.Serialization;</p>
+<p>  具体方法如下:</p>
+<pre><code> <span class="comment"><span class="xmlDocTag">///</span>/ 转化为 JSON stream.</span>
+
+ <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">string</span> <span class="title">WriteFromObject</span>(<span class="params">TransforData itransforData</span>)
+
+ </span>{
+
+     <span class="comment">//Create a stream to serialize the object to.</span>
+
+     MemoryStream ms = <span class="keyword">new</span> MemoryStream();
+
+     <span class="comment">// Serializer the User object to the stream.</span>
+
+     DataContractJsonSerializer ser = <span class="keyword">new</span> DataContractJsonSerializer(<span class="keyword">typeof</span>(TransforData));
+
+     ser.WriteObject(ms, itransforData);
+
+     <span class="keyword">byte</span>[] data = ms.ToArray();
+
+     ms.Close();
+
+     <span class="keyword">return</span> Encoding.UTF8.GetString(data, <span class="number">0</span>, data.Length);
+
+ }
+
+ <span class="comment">// 转为用户数据</span>
+
+<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> TransforData <span class="title">ReadToObject</span>(<span class="params"><span class="keyword">string</span> idata</span>)
+
+ </span>{
+
+     TransforData transforData = <span class="keyword">new</span> TransforData();
+
+     MemoryStream ms = <span class="keyword">new</span> MemoryStream(Encoding.UTF8.GetBytes(idata));
+
+     DataContractJsonSerializer ser = <span class="keyword">new</span> DataContractJsonSerializer(transforData.GetType());
+
+     transforData = ser.ReadObject(ms) <span class="keyword">as</span> TransforData;
+
+     ms.Close();
+
+     <span class="keyword">return</span> transforData;
+
+ }
+</code></pre><p>  其中TransforData是用户自定义的,格式如下:</p>
+<p>  namespace myAPP</p>
+<p>  {</p>
+<pre><code>[DataContract]
+
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="title">TransforData</span>
+
+{
+
+    [DataMember]
+
+    <span class="keyword">public</span> <span class="keyword">int</span> X
+
+    {
+
+        <span class="keyword">get</span>;
+
+        <span class="keyword">set</span>;
+
+    }
+
+    [DataMember]
+
+    <span class="keyword">public</span> <span class="keyword">int</span> Y
+
+    {
+
+        <span class="keyword">get</span>;
+
+        <span class="keyword">set</span>;
+
+    }
+
+    [DataMember]
+
+    <span class="keyword">public</span> <span class="keyword">string</span> Z
+
+    {
+
+        <span class="keyword">get</span>;
+
+        <span class="keyword">set</span>;
+
+    }
+</code></pre><p>  }</p>
+
+      
+    </div>
+  
+    <footer class="article-footer">
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WP8/">WP8</a></li></ul>
+
+    </footer>
+  
+  </div>
+  
+</article>
+
+
+    
       <article id="post-wp8sdcard" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -509,142 +645,6 @@ foreach (ExternalStorageFile <span class="type">file</span> <span class="keyword
 
 
     
-      <article id="post-wp8Json" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2013/10/13/wp8Json/">WP8的Json</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/2013/10/13/wp8Json/" class="article-date">
-  <time datetime="2013-10-13T02:34:59.000Z" itemprop="datePublished">2013-10-13</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/tech/">tech</a>
-  </div>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="主题">主题</h3><p>  WP8的Json数据转换。</p>
-<h3 id="正文">正文</h3><p>  需要引用：</p>
-<p>  using System.Runtime.Serialization.Json;</p>
-<p>  using System.Runtime.Serialization;</p>
-<p>  具体方法如下:</p>
-<pre><code> <span class="comment"><span class="xmlDocTag">///</span>/ 转化为 JSON stream.</span>
-
- <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">string</span> <span class="title">WriteFromObject</span>(<span class="params">TransforData itransforData</span>)
-
- </span>{
-
-     <span class="comment">//Create a stream to serialize the object to.</span>
-
-     MemoryStream ms = <span class="keyword">new</span> MemoryStream();
-
-     <span class="comment">// Serializer the User object to the stream.</span>
-
-     DataContractJsonSerializer ser = <span class="keyword">new</span> DataContractJsonSerializer(<span class="keyword">typeof</span>(TransforData));
-
-     ser.WriteObject(ms, itransforData);
-
-     <span class="keyword">byte</span>[] data = ms.ToArray();
-
-     ms.Close();
-
-     <span class="keyword">return</span> Encoding.UTF8.GetString(data, <span class="number">0</span>, data.Length);
-
- }
-
- <span class="comment">// 转为用户数据</span>
-
-<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> TransforData <span class="title">ReadToObject</span>(<span class="params"><span class="keyword">string</span> idata</span>)
-
- </span>{
-
-     TransforData transforData = <span class="keyword">new</span> TransforData();
-
-     MemoryStream ms = <span class="keyword">new</span> MemoryStream(Encoding.UTF8.GetBytes(idata));
-
-     DataContractJsonSerializer ser = <span class="keyword">new</span> DataContractJsonSerializer(transforData.GetType());
-
-     transforData = ser.ReadObject(ms) <span class="keyword">as</span> TransforData;
-
-     ms.Close();
-
-     <span class="keyword">return</span> transforData;
-
- }
-</code></pre><p>  其中TransforData是用户自定义的,格式如下:</p>
-<p>  namespace myAPP</p>
-<p>  {</p>
-<pre><code>[DataContract]
-
-<span class="keyword">public</span> <span class="keyword">class</span> <span class="title">TransforData</span>
-
-{
-
-    [DataMember]
-
-    <span class="keyword">public</span> <span class="keyword">int</span> X
-
-    {
-
-        <span class="keyword">get</span>;
-
-        <span class="keyword">set</span>;
-
-    }
-
-    [DataMember]
-
-    <span class="keyword">public</span> <span class="keyword">int</span> Y
-
-    {
-
-        <span class="keyword">get</span>;
-
-        <span class="keyword">set</span>;
-
-    }
-
-    [DataMember]
-
-    <span class="keyword">public</span> <span class="keyword">string</span> Z
-
-    {
-
-        <span class="keyword">get</span>;
-
-        <span class="keyword">set</span>;
-
-    }
-</code></pre><p>  }</p>
-
-      
-    </div>
-  
-    <footer class="article-footer">
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WP8/">WP8</a></li></ul>
-
-    </footer>
-  
-  </div>
-  
-</article>
-
-
-    
       <nav id="page-nav">
         <a class="extend prev" rel="prev" href="/page/3/">&laquo; 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
       </nav>
@@ -680,11 +680,11 @@ foreach (ExternalStorageFile <span class="type">file</span> <span class="keyword
 <script src="/libs/wan-spinner/build/wan-spinner.js" type="text/javascript"></script>
 <script src="/libs/back-to-top/src/wan-backtotop.js" type="text/javascript"></script>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.5/angular.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.5/angular-animate.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.5/angular-aria.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-material/0.10.0/angular-material.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+<script type="text/javascript" src="http://7xlphe.com1.z0.glb.clouddn.com/angular.min.js"></script>
+<script type="text/javascript" src="http://7xlphe.com1.z0.glb.clouddn.com/angular-material.min.js"></script>
+<script type="text/javascript" src="http://7xlphe.com1.z0.glb.clouddn.com/angular-aria.min.js"></script>
+<script type="text/javascript" src="http://7xlphe.com1.z0.glb.clouddn.com/angular-animate.min.js"></script>
+<script type="text/javascript" src="http://7xlphe.com1.z0.glb.clouddn.com/moment.min.js"></script>
 <script src="/libs/daterange-picker/src/daterangepicker.js" type="text/javascript"></script>
 <script src="/libs/wan-select/src/wan-select.js" type="text/javascript"></script>
 
