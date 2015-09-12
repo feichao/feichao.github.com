@@ -29,6 +29,7 @@
   <link rel="stylesheet" href="/libs/wan-spinner/build/wan-spinner.css" type="text/css">
   <link rel="stylesheet" href="/libs/daterange-picker/src/daterangepicker.css" type="text/css">
   <link rel="stylesheet" href="/libs/wan-select/src/wan-select.css" type="text/css">
+  <link rel="stylesheet" href="/libs/paging/src/angular-material-paging.css" type="text/css">
 </head>
 
 <body>
@@ -62,6 +63,54 @@
 </header>
 <div ng-app="demoWan">
     <section id="main" class="outer">
+      <article id="post-wp8vibrate" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/11/29/wp8vibrate/">WP8之自定义震动</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2013/11/29/wp8vibrate/" class="article-date">
+  <time datetime="2013-11-29T02:34:59.000Z" itemprop="datePublished">2013-11-29</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/tech/">tech</a>
+  </div>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="主题">主题</h3><p>  WP8 自定义震动</p>
+<h3 id="正文">正文</h3><p>  自定义Button，想让它按下时震动怎么办？</p>
+<p>  首先包含：using Microsoft.Devices;</p>
+<p>  定义：private VibrateController vibrateController = VibrateController.Default;</p>
+<p>  使用：vibrateController.Start(TimeSpan.FromMilliseconds(time));</p>
+
+      
+    </div>
+  
+    <footer class="article-footer">
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WP8/">WP8</a></li></ul>
+
+    </footer>
+  
+  </div>
+  
+</article>
+
+
+    
       <article id="post-wp8socket" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -687,13 +736,15 @@ foreach (ExternalStorageFile <span class="type">file</span> <span class="keyword
 <script type="text/javascript" src="http://7xlphe.com1.z0.glb.clouddn.com/moment.min.js"></script>
 <script src="/libs/daterange-picker/src/daterangepicker.js" type="text/javascript"></script>
 <script src="/libs/wan-select/src/wan-select.js" type="text/javascript"></script>
+<script src="/libs/paging/src/angular-material-paging.js" type="text/javascript"></script>
 
 <script type="text/javascript">
   angular
     .module('demoWan', [
       'ngMaterial',
       'fc.dateRange',
-      'fc.wanSelect'
+      'fc.wanSelect',
+      'fc.paging'
     ]).controller('DemoCtrl', DemoCtrl);
 
   function DemoCtrl($scope) {
@@ -707,6 +758,20 @@ foreach (ExternalStorageFile <span class="type">file</span> <span class="keyword
     $scope.selectChanged = function(){
       jQuery("#wan-selected-data").html($scope.selectedData.join('，'));
     };
+
+    $scope.total = 50;
+    $scope.currentPage = 1;
+    $scope.step = 6;
+
+    $scope.total1 = 10;
+    $scope.currentPage1 = 1;
+    $scope.step1 = 10;
+
+    $scope.gotoPage = function() {
+      jQuery("#paging-current").html("CurrentPage: " + $scope.currentPage);
+      jQuery("#paging-current1").html("CurrentPage: " + $scope.currentPage1);
+    };
+
   }
 </script>
 
