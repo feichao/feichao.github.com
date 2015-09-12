@@ -19,7 +19,7 @@
 
 
 配置文件如下：123456789101112131415angular .module(&apos;demoWan&apos;, [   &apos;ngMaterial&apos;,   &apos;fc.paging&apos; ]).controller(&apos;DemoCtrl&apos;, DemoCtrl); function DemoCtrl($scope) &amp;#123;   $scope.">
-<meta property="og:updated_time" content="2015-09-12T08:23:24.000Z">
+<meta property="og:updated_time" content="2015-09-12T08:22:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="paging">
 <meta name="twitter:description" content="主题  基于angular material的分页组件。
@@ -237,16 +237,16 @@ $(document).ready(function() {
      step: 2.131,      //步进长度，默认为 1
      inputWidth: 100,  //根据最大值设置输入框的宽度，防止内容超出，默认为25
      start: -2,        //起始值，默认为 1
-     plusClick: function(val) {//点击plus按钮触发事件
+     plusClick: function(element, val) {//点击plus按钮触发事件
        console.log("plus button click: " + val);
      },
-     minusClick: function(val) {//点击minus按钮触发事件
+     minusClick: function(element, val) {//点击minus按钮触发事件
        console.log("minus button click: " + val);
      },
      exceptionFun: function(exception) {//值超出设置的范围时触发事件，等于1说明超出上范围，等于-1说明超出下范围
        console.log("exception: " + exception);
      },
-     valueChanged: function(val) {//值变更时触发事件
+     valueChanged: function(element, val) {//值变更时触发事件
        console.log("value changed: " + val);
      }
    };
