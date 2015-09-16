@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="demoSelect">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>demo daterangerpicker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
+  <link rel="stylesheet" type="text/css" href="bower_components/wan-select/src/wan-select.css">
+</head>
+
+<body>
+  <div class="wrapper" ng-controller="DemoCtrl">
+    <wan-select placeholder="国家：" source-data="sourceData" selected-data="selectedData" select-changed="selectChanged()"></wan-select>
+  </div>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/angular-aria/angular-aria.js"></script>
+  <script src="bower_components/angular-material/angular-material.js"></script>
+  <script src="bower_components/wan-select/src/wan-select.js"></script>
+  <script>
+  angular
+    .module('demoSelect', [
+      'ngMaterial',
+      'fc.wanSelect'
+    ]).controller('DemoCtrl', DemoCtrl);
+
+  function DemoCtrl($scope) {
+    $scope.sourceData = ["阿尔及利亚", "埃及", "利比亚", "摩洛哥", "苏丹", "突尼西亚", "贝宁", "布吉纳法索", "布基纳法索", "查德", "乍得", "科特迪瓦", "甘比亚", "冈比亚", "加纳", "几内亚", "几内亚比索", "赖比瑞亚", "利比里亚", "马里", "尼日", "尼日尔", "毛里塔尼亚", "奈及利亚", "尼日利亚", "塞内加尔", "狮子山", "塞拉利昂", "多哥", "维德角", "佛得角", "喀麦隆", "中非", "赤道几内亚", "加彭", "加蓬", "刚果共合国", "刚果民主共和国", "圣多美普林西比", "安哥拉", "波札那", "博茨瓦纳", "葛摩", "科摩罗", "赖索托", "莱索托", "马达加斯加", "马拉维", "模里西斯", "毛里求斯", "莫桑比克", "纳米比亚", "史瓦济兰", "斯威士兰", "南非", "坦尚尼亚", "赞比亚", "津巴布韦", "蒲隆地", "布隆迪", "吉布地", "吉布提", "厄利垂亚", "厄立特里亚", "伊索比亚", "埃塞俄比亚", "肯亚", "肯尼亚", "卢安达", "卢旺达", "塞席尔", "留尼旺", "留尼汪(法国)", "彼得一世岛(挪威)", "中国", "日本", "蒙古", "北韩", "朝鲜", "韩国", "缅甸", "文莱", "柬埔寨", "东帝汶", "印度尼西亚", "寮国", "老挝", "马来西亚", "菲律宾", "新加坡", "泰国", "越南"];
+    $scope.selectedData = [];
+
+    $scope.selectChanged = function(){
+      console.log($scope.selectedData);
+    };
+  }
+  </script>
+</body>
+
+</html>
