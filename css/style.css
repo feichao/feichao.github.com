@@ -180,6 +180,23 @@ div.bktt-test {
   margin-top: 5px;
   width: 100%;
 }
+.clear-icon-select {
+  margin-top: -9px;
+  right: 130px;
+  top: 50%;
+}
+.clear-name {
+  width: 300px;
+}
+.clear-sex {
+  width: 500px;
+}
+.clear-select {
+  width: 300px;
+}
+md-select .md-select-label {
+  min-width: 200px;
+}
 .article-meta a,
 a.article-title,
 .article-entry a,
