@@ -73,7 +73,6 @@
     self.imgContentMiddle = self.element.find('.carousel-content .item-middle');
     self.imgContentRight = self.element.find('.carousel-content .item-right');
     self.direction = self.element.find('.carousel-direction');
-    self.anchor = self.element.find('.carousel-anchor > a');
 
     self.element.delegate('.carousel-content', 'mouseover', function() {
       self.direction.removeClass('hidden');
@@ -167,10 +166,10 @@
   };
 
   WanCarousel.prototype.setAnchor = function() {
-    this.anchor.css({
+    $('.carousel-anchor > a').css({
       'background-color': 'white'
     });
-    $(this.anchor[this.currentIndex]).css({
+    $('.carousel-anchor > a[data-index="' + this.currentIndex + '"]').css({
        'background-color': 'black'
     });
   }
