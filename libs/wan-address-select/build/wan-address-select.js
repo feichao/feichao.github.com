@@ -117,7 +117,7 @@
       initTown: '东华门街道办事处',
       initVillage: '多福巷社区居委会',
       fineness: 'county',
-      url: 'https://raw.githubusercontent.com/feichao/wan-address-select/master/'
+      url: 'http://7xn5wa.com1.z0.glb.clouddn.com/'
     };
 
     this.options = $.extend({}, this.defaults, options);
@@ -213,8 +213,7 @@
   };
 
   WanAddressSelect.prototype.getData = function(provinceId, cb) {
-    
-    $.get(this.options.url + 'build/data/' + this.options.fineness + '/' + provinceId + '.json', function(result) {
+    $.get(this.options.url + this.options.fineness + provinceId + '.json', function(result) {
       cb(result);
     }, 'json');
   };
@@ -323,14 +322,14 @@
   };
 
   var getValueAndId = function(element) {
-    var selectProvince = element.children('#province').children(':selected');
-    var selectCity = element.children('#city').children(':selected');
-    var selectCounty = element.children('#county').children(':selected');
-    var selectTown = element.children('#town').children(':selected');
-    var selectVillage = element.children('#village').children(':selected');
+  	var selectProvince = element.children('#province').children(':selected');
+  	var selectCity = element.children('#city').children(':selected');
+  	var selectCounty = element.children('#county').children(':selected');
+  	var selectTown = element.children('#town').children(':selected');
+  	var selectVillage = element.children('#village').children(':selected');
 
     return {
-      provinceId: selectProvince.data('id'),
+    	provinceId: selectProvince.data('id'),
       province: selectProvince.val(),
       cityId: selectCity.data('id'),
       city: selectCity.val(),
