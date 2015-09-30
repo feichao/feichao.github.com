@@ -1,0 +1,94 @@
+<div class="dashboard">
+  <md-toolbar class="header">
+    <div class="md-toolbar-tools">
+      <div class="app-logo">
+        <a ui-sref=".first">
+          <img class="icon" src="assets/images/icon.png" alt="icon">
+        </a>
+      </div>
+      <div class="toolbar-nav">
+        <a ui-sref=".first" ng-class="vm.isActive('first') ? 'btn-active' : ''">
+          <md-button class="nav-item">
+            {{ "DashBoard_First" | translate }}
+          </md-button>
+        </a>
+        <a ui-sref=".second" ng-class="vm.isActive('second') ? 'btn-active' : ''" ng-show="vm.userinfo.isRoot">
+          <md-button class="nav-item">
+            {{ "DashBoard_Second" | translate }}
+          </md-button>
+        </a>
+      </div>
+      <span flex></span>
+      <div>
+        <md-button class="action" aria-label="username" ng-click="vm.modifyUser($event)">
+          <ng-md-icon icon="perm_identity" size="24"></ng-md-icon>
+          {{vm.userinfo.username}}
+        </md-button>
+        <md-button class="logout" aria-label="logout" ng-click="vm.logout()">
+          {{ "DashBoard_Logout" | translate }}
+        </md-button>
+      </div>
+    </div>
+  </md-toolbar>
+  <div ui-view></div>
+</div>
+
+<!-- flex 不能再弹出框使用？-->
+<script type="text/ng-template" id="modifyUser.html">
+  <md-dialog aria-label="modifyUser" class='modify-user-dialog'>
+    <md-dialog-content style="height: 100%; padding: 0;">
+      <md-tabs class="user-tabs md-default-theme" role="tablist">
+        <md-tab label="{{ 'DashBoard_UserProfile' | translate }}">
+          <md-content class="user-info-content">
+            <md-input-container>
+              <label>{{ "DashBoard_Client" | translate }}</label>
+              <input name="name" ng-model="vm.name">
+            </md-input-container>
+            <md-input-container>
+              <label>{{ "Email" | translate }}</label>
+              <input name="email" ng-model="vm.email" ng-disabled="true">
+            </md-input-container>
+            <md-input-container>
+              <label>{{ "DashBoard_ProjectDesc" | translate }}</label>
+              <input name="desc" ng-model="vm.desc">
+            </md-input-container>
+            <div class="error-msg">{{ vm.errorMsgProfile | translate }}</div>
+            <div class="pull-right">
+              <md-button class="md-raised md-primary" ng-click="vm.confirmProfile()">
+                {{ "Confirm" | translate }}
+              </md-button>
+              <md-button class="md-raised md-default" ng-click="vm.cancel()">
+                {{ "Cancel" | translate }}
+              </md-button>
+            </div>
+          </md-content>
+        </md-tab>
+        <md-tab label="{{ 'DashBoard_ModifyPassword' | translate }}">
+          <md-content class="user-info-content">
+            <md-input-container>
+              <label>{{ "DashBoard_OldPassword" | translate }}</label>
+              <input name="oldpass" ng-model="vm.oldpass" type='password'>
+            </md-input-container>
+            <md-input-container>
+              <label>{{ "DashBoard_NewPassword" | translate }}</label>
+              <input name="newpass" ng-model="vm.newpass" type='password'>
+            </md-input-container>
+            <md-input-container>
+              <label>{{ "DashBoard_ReNewPassword" | translate }}</label>
+              <input name="renewpass" ng-model="vm.renewpass" type='password'>
+            </md-input-container>
+            <div class="error-msg">{{ vm.errorMsgPassword | translate }}</div>
+            <div class="pull-right">
+              <md-button class="md-raised md-primary" ng-click="vm.confirmPassword()">
+                {{ "Confirm" | translate }}
+              </md-button>
+              <md-button class="md-raised md-default" ng-click="vm.cancel()">
+                {{ "Cancel" | translate }}
+              </md-button>
+            </div>
+          </md-content>
+        </md-tab>
+      </md-tabs>
+    </md-dialog-content>
+  </md-dialog>
+</script>

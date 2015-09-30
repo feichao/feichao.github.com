@@ -1,0 +1,44 @@
+<div class="login-container">
+  <div class="choose-lang">
+    <md-select ng-model="vm.lang" ng-change="vm.langChanged()" aria-label="lang">
+      <md-option value="cn"> 简体中文 </md-option>
+      <md-option value="tn"> 繁體中文 </md-option>
+      <md-option value="en"> English </md-option>
+    </md-select>
+  </div>
+  <div class="login-title">
+    <div class="icon">
+      <img src="assets/images/icon.png" alt="icon">
+    </div>
+    <h1 class="title">{{ "Title" | translate }}</h1>
+  </div>
+  <form name="loginForm" novalidate ng-submit="vm.login(loginForm.$valid, $event)">
+    <md-input-container md-no-float class="md-default-theme form-group">
+      <ng-md-icon icon="perm_identity" size="30"></ng-md-icon>
+      <input type="email" name="email" placeholder="{{ 'Login_Email' | translate }}" tabindex="0" required ng-model="vm.email">
+      <div ng-show="loginForm.$submitted || loginForm.email.$touched" ng-messages="loginForm.email.$error">
+        <div ng-show="loginForm.email.$error.required" class="error" ng-message="required">
+          {{ "Login_InputEmail" | translate }}
+        </div>
+        <div ng-show="loginForm.email.$error.email" class="error" ng-message="email">
+          {{ "Login_InvalidEmail" | translate }}
+        </div>
+      </div>
+    </md-input-container>
+    <md-input-container md-no-float class="md-default-theme form-group">
+      <ng-md-icon icon="lock_outline" size="30"></ng-md-icon>
+      <input type="password" name="password" required placeholder="{{ 'Login_Password' | translate }}" ng-model="vm.password">
+      <div ng-show="loginForm.$submitted || loginForm.password.$touched" ng-messages="loginForm.password.$error">
+        <div ng-show="loginForm.password.$error.required" class="error" ng-message="required">
+          {{ "Login_InputPassword" | translate }}
+        </div>
+      </div>
+    </md-input-container>
+    <md-checkbox class="md-primary auto-login" ng-model="vm.autoLogin">
+      {{ "Login_AutoLogin" | translate }}
+    </md-checkbox>
+    <md-button class="md-raised md-primary md-default-theme login-btn margin-top-10 margin-bottom-10">
+      {{ "Login_ConfirmLogin" | translate }}
+    </md-button>
+  </form>
+</div>
