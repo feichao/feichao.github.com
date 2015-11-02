@@ -317,11 +317,14 @@ $(document).ready(function() {
   $(".wan-carousel-1, .wan-carousel-2").WanCarousel();
   $(".wan-carousel-3").WanCarousel({
     interval: 8000,
-    speed: 400,
+    speed: 1000,
   });
   $(".wan-carousel-4").WanCarousel({
     interval: 2000,
-    speed: 800,
+    speed: 200,
+    callback: function(element, index) {
+      
+    }
   });
 
   var optionsTheme1 = {
