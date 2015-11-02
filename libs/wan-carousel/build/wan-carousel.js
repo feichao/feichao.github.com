@@ -6,9 +6,9 @@
     var el = document.createElement('div');
 
     var transEndEventNames = {
-      WebkitTransition: 'webkitTransitionEnd, transitionend',
-      MozTransition: 'transitionend, transitionend',
-      OTransition: 'oTransitionEnd otransitionend, transitionend',
+      WebkitTransition: 'webkitTransitionEnd',
+      MozTransition: 'transitionend',
+      OTransition: 'oTransitionEnd otransitionend',
       transition: 'transitionend'
     };
 
@@ -27,6 +27,9 @@
     this.defaults = {
       interval: 6000,
       speed: 500,
+      callback: function(element, index){
+        return;
+      }
     };
     this.options = $.extend({}, this.defaults, options);
     this.canDo = true;
@@ -137,13 +140,13 @@
         '-webkit-transition-duration': '0ms',
         '-o-transition-duration': '0ms',
         '-ms-transition-duration': '0ms'
-      }).removeClass('left right');
+      }).removeClass('cs-left cs-right');
     } else {
       this.imgContent.css({
         'right': '33.333333%'
       });
     }
-
+    this.options.callback(this.imgList.eq(this.currentIndex), this.currentIndex);
     this.canDo = true;
   };
 
@@ -176,13 +179,13 @@
     if (direction === 'pre') {
       self.currentIndex = index >= 0 ? index : (self.currentIndex + self.imgCount - 1) % self.imgCount;
       dirTemp = '0.000000%'; //bug in IE8, '0' is not good
-      animation = 'left';
+      animation = 'cs-left';
       imgInfo = self.imgInfo[self.currentIndex];
       self.imgContentLeft.attr('src', imgInfo.src).parent().attr('href', imgInfo.href);
     } else {
       self.currentIndex = index >= 0 ? index : (self.currentIndex + 1) % self.imgCount;
       dirTemp = '66.666666%';
-      animation = 'right';
+      animation = 'cs-right';
       imgInfo = self.imgInfo[self.currentIndex];
       self.imgContentRight.attr('src', imgInfo.src).parent().attr('href', imgInfo.href);
     }
@@ -200,9 +203,8 @@
       }).addClass(animation);
 
       setTimeout(function(){
-        console.log('message finish');
-        $.proxy(self.finish, self);
-      }, speed);
+        $.proxy(self.finish, self)();
+      }, self.options.speed);
 
     } else {
       self.imgContent.animate({
@@ -223,25 +225,13 @@
   }
 
   $.fn.WanCarousel = function(options) {
-    if (options === 'start') {
-      this.each(function(index, element) {
-        var wanCarousel = new WanCarousel($(element), options);
-        if (wanCarousel.initDom()) {
-          wanCarousel.bind();
-          wanCarousel.start();
-        }
-      });
-    } else if (options === 'stop') {
-
-    } else {
-      this.each(function(index, element) {
-        var wanCarousel = new WanCarousel($(element), options);
-        if (wanCarousel.initDom()) {
-          wanCarousel.bind();
-          wanCarousel.start();
-        }
-      });
-    }
+    this.each(function(index, element) {
+      var wanCarousel = new WanCarousel($(element), options);
+      if (wanCarousel.initDom()) {
+        wanCarousel.bind();
+        wanCarousel.start();
+      }
+    });
     return this;
   };
 
