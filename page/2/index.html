@@ -30,6 +30,7 @@
   <link rel="stylesheet" href="/libs/wan-select/src/wan-select.css" type="text/css">
   <link rel="stylesheet" href="/libs/paging/src/angular-material-paging.css" type="text/css">
   <link rel="stylesheet" href="/libs/clear/src/angular-material-with-clear.css" type="text/css">
+  <link rel="stylesheet" href="/libs/angular-material-autocomplete/src/angular-material-autocomplete.css" type="text/css">
 
   <link rel="stylesheet" href="/css/style.css" type="text/css">
 </head>
@@ -65,6 +66,56 @@
 </header>
 <div ng-app="demoWan" style="position: relative;">
     <section id="main" class="outer">
+      <article id="post-paging" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/12/paging/">paging</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2015/09/12/paging/" class="article-date">
+  <time datetime="2015-09-12T07:54:40.000Z" itemprop="datePublished">2015-09-12</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/component/">component</a>
+  </div>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="主题">主题</h3><p>  基于angular material的分页组件。</p>
+<h3 id="详情">详情</h3><div ng-controller="DemoCtrl"><h2 id="paging-current" style="text-align:center;"></h2><wan-material-paging wmp-total="total" goto-page="gotoPage()" position="center" current-page="currentPage" step="step"></wan-material-paging><h2 id="paging-current1" style="text-align:center;"></h2><wan-material-paging wmp-total="total1" goto-page="gotoPage()" position="center" current-page="currentPage1" step="step1"></wan-material-paging></div>
+
+
+<p>配置文件如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">angular</span><br><span class="line"> .module(<span class="string">'demoWan'</span>, [</span><br><span class="line">   <span class="string">'ngMaterial'</span>,</span><br><span class="line">   <span class="string">'fc.paging'</span></span><br><span class="line"> ]).controller(<span class="string">'DemoCtrl'</span>, DemoCtrl);</span><br><span class="line"></span><br><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">DemoCtrl</span>(<span class="params">$scope</span>) </span>&#123;</span><br><span class="line">   $scope.total = <span class="number">50</span>;</span><br><span class="line">   $scope.currentPage = <span class="number">1</span>;</span><br><span class="line">   $scope.step = <span class="number">6</span>;</span><br><span class="line"></span><br><span class="line">   $scope.gotoPage = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">     <span class="comment">//do something</span></span><br><span class="line">   &#125;;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
+<p>HTML文件如下：<br> <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">wan-material-paging</span> </span><br><span class="line">    <span class="attribute">wmp-total</span>=<span class="value">"total"</span> </span><br><span class="line">    <span class="attribute">goto-page</span>=<span class="value">"gotoPage()"</span></span><br><span class="line">    <span class="attribute">position</span>=<span class="value">"center"</span> </span><br><span class="line">    <span class="attribute">current-page</span>=<span class="value">"currentPage"</span> </span><br><span class="line">    <span class="attribute">step</span>=<span class="value">"step"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">wan-material-paging</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>Options:</p>
+<h5 id="wmp-total:_总页数">wmp-total: 总页数</h5><h5 id="goto-page:_点击翻页按钮回调函数">goto-page: 点击翻页按钮回调函数</h5><h5 id="position:_组件的位置，取值和layout-align一致">position: 组件的位置，取值和layout-align一致</h5><h5 id="current-page:_当前页">current-page: 当前页</h5><h5 id="step:_每屏显示的页数">step: 每屏显示的页数</h5>
+      
+    </div>
+  
+    <footer class="article-footer">
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/组件/">组件</a></li></ul>
+
+    </footer>
+  
+  </div>
+  
+</article>
+
+
+    
       <article id="post-gulp-seajs" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -284,55 +335,6 @@
 
 
     
-      <article id="post-daterange-picker" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/20/daterange-picker/">angular-material daterange-picker</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/2015/08/20/daterange-picker/" class="article-date">
-  <time datetime="2015-08-20T08:30:45.000Z" itemprop="datePublished">2015-08-20</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/component/">component</a>
-  </div>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="主题">主题</h3><p>  基于angular material的日期段选择控件，也可以只选择日期。</p>
-<h3 id="详情">详情</h3><div ng-controller="DemoCtrl"><daterange-picker date-lang="cn" date-type="range" start-date="startDate" end-date="endDate" date-length="dateLength" max-date="2015-08-23" min-date="2010-07-09" date-label="选择日期段："></daterange-picker><br><br><br><daterange-picker date-lang="cn" start-date="startDate" date-label="选择日期："></daterange-picker><br><br><br><daterange-picker start-date="startDate" date-label="Date："></daterange-picker><br></div>
-
-<p>配置文件如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">angular</span><br><span class="line">  .module(<span class="string">'demoWan'</span>, [</span><br><span class="line">    <span class="string">'ngMaterial'</span>,</span><br><span class="line">    <span class="string">'fc.dateRange'</span>,</span><br><span class="line">    <span class="string">'fc.wanSelect'</span></span><br><span class="line">  ]).controller(<span class="string">'DemoCtrl'</span>, DemoCtrl);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">DemoCtrl</span>(<span class="params">$scope</span>) </span>&#123;</span><br><span class="line">  $scope.startDate = <span class="string">"2015-07-07"</span>;</span><br><span class="line">  $scope.endDate = <span class="string">"2015-07-27"</span>;</span><br><span class="line">  $scope.dateLength = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  $scope.sourceData = [<span class="string">"中国"</span>, <span class="string">"日本"</span>, <span class="string">"蒙古"</span>, <span class="string">"北韩"</span>, <span class="string">"朝鲜"</span>, <span class="string">"韩国"</span>, <span class="string">"缅甸"</span>, <span class="string">"文莱"</span>, <span class="string">"柬埔寨"</span>, <span class="string">"东帝汶"</span>, <span class="string">"印度尼西亚"</span>, <span class="string">"寮国"</span>, <span class="string">"老挝"</span>, <span class="string">"马来西亚"</span>, <span class="string">"菲律宾"</span>, <span class="string">"新加坡"</span>, <span class="string">"泰国"</span>, <span class="string">"越南"</span>];</span><br><span class="line">  $scope.selectedData = [];</span><br><span class="line"></span><br><span class="line">  $scope.selectChanged = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    jQuery(<span class="string">"#wan-selected-data"</span>).html($scope.selectedData.join(<span class="string">'，'</span>));</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>HTML文件如下：<br> <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"wrapper"</span> <span class="attribute">ng-controller</span>=<span class="value">"DemoCtrl"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">daterange-picker</span> <span class="attribute">date-lang</span>=<span class="value">"cn"</span> </span><br><span class="line">                    <span class="attribute">date-type</span>=<span class="value">"range"</span></span><br><span class="line">                    <span class="attribute">start-date</span>=<span class="value">"startDate"</span> </span><br><span class="line">                    <span class="attribute">end-date</span>=<span class="value">"endDate"</span> </span><br><span class="line">                    <span class="attribute">date-length</span>=<span class="value">"dateLength"</span> </span><br><span class="line">                    <span class="attribute">max-date</span>=<span class="value">"2015-08-23"</span> </span><br><span class="line">                    <span class="attribute">min-date</span>=<span class="value">"2010-07-09"</span> </span><br><span class="line">                    <span class="attribute">date-label</span>=<span class="value">"选择日期段："</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">daterange-picker</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>Options:</p>
-<h4 id="所有日期格式均为_YYYY-MM-DD">所有日期格式均为 YYYY-MM-DD</h4><h5 id="date-lang:_string，默认值en，设为cn即为中文">date-lang: string，默认值en，设为cn即为中文</h5><h5 id="date-type:_string，默认为日期选择，设为range即为日期段">date-type: string，默认为日期选择，设为range即为日期段</h5><h5 id="start-date:_选中的开始日期">start-date: 选中的开始日期</h5><h5 id="end-date:_选中的截止日期">end-date: 选中的截止日期</h5><h5 id="date-length:_日期长度">date-length: 日期长度</h5><h5 id="max-date:_所能选的最大日期">max-date: 所能选的最大日期</h5><h5 id="min-date:_所能选的最小日期">min-date: 所能选的最小日期</h5><h5 id="date-label:_label">date-label: label</h5><h5 id="shoule-refresh:_如果起始日期或者截止日期可能会在组件外部被更改，则可将此字段设为true，每次选择日期前都会自动刷新组件">shoule-refresh: 如果起始日期或者截止日期可能会在组件外部被更改，则可将此字段设为true，每次选择日期前都会自动刷新组件</h5><h5 id="confirm-event:_选择好时间后点击确认按钮的回调函数，会传入开始时间和结束时间两个参数">confirm-event: 选择好时间后点击确认按钮的回调函数，会传入开始时间和结束时间两个参数</h5>
-      
-    </div>
-  
-    <footer class="article-footer">
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/组件/">组件</a></li></ul>
-
-    </footer>
-  
-  </div>
-  
-</article>
-
-
-    
       <nav id="page-nav">
         <a class="extend prev" rel="prev" href="/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">下一页 &raquo;</a>
       </nav>
@@ -378,6 +380,7 @@
 <script src="/libs/wan-select/src/wan-select.js" type="text/javascript"></script>
 <script src="/libs/paging/src/angular-material-paging.js" type="text/javascript"></script>
 <script src="/libs/clear/src/angular-material-with-clear.js" type="text/javascript"></script>
+<script src="/libs/angular-material-autocomplete/src/angular-material-autocomplete.js" type="text/javascript"></script>
 
 <script type="text/javascript">
   angular
@@ -387,7 +390,8 @@
       'fc.dateRange',
       'fc.wanSelect',
       'fc.paging',
-      'fc.clear'
+      'fc.clear',
+      'fc.autocomplete'
     ]).controller('DemoCtrl', DemoCtrl);
 
   function DemoCtrl($scope) {
@@ -421,7 +425,8 @@
       name: 'cdfr'
     }];
 
-    console.log($scope.projects);
+    $scope.userList = ['abcdefg-1', 'abcdefg-2', 'abcdefg-3', 'abcdefg-4', 'abcdefg-5'];
+
   }
 </script>
 

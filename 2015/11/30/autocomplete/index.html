@@ -3,17 +3,27 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Category: tech - Feichao&#39;s blog</title>
+  <title>angular-material-autocomplete - Feichao&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Everything about me">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Feichao's blog">
-<meta property="og:url" content="http://blog.0xfc.cn/categories/tech/index.html">
+  <meta name="description" content="主题  基于angular material的自动完成组件，目前只支持固定列表。
+详情
+
+配置文件如下：123456789angular  .module(&apos;demoAutocomplete&apos;, [    &apos;ngMaterial&apos;,    &apos;fc.autocomplete&apos;  ]).controller(&apos;DemoCtrl&apos;, DemoCtrl);function DemoCtrl($scope)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="angular-material-autocomplete">
+<meta property="og:url" content="http://blog.0xfc.cn/2015/11/30/autocomplete/index.html">
 <meta property="og:site_name" content="Feichao's blog">
-<meta property="og:description" content="Everything about me">
+<meta property="og:description" content="主题  基于angular material的自动完成组件，目前只支持固定列表。
+详情
+
+配置文件如下：123456789angular  .module(&apos;demoAutocomplete&apos;, [    &apos;ngMaterial&apos;,    &apos;fc.autocomplete&apos;  ]).controller(&apos;DemoCtrl&apos;, DemoCtrl);function DemoCtrl($scope)">
+<meta property="og:updated_time" content="2015-11-30T11:37:20.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Feichao's blog">
-<meta name="twitter:description" content="Everything about me">
+<meta name="twitter:title" content="angular-material-autocomplete">
+<meta name="twitter:description" content="主题  基于angular material的自动完成组件，目前只支持固定列表。
+详情
+
+配置文件如下：123456789angular  .module(&apos;demoAutocomplete&apos;, [    &apos;ngMaterial&apos;,    &apos;fc.autocomplete&apos;  ]).controller(&apos;DemoCtrl&apos;, DemoCtrl);function DemoCtrl($scope)">
   
   
     <link rel="icon" href="/favicon.png">
@@ -65,92 +75,83 @@
   </div>
 </header>
 <div ng-app="demoWan" style="position: relative;">
-    <section id="main" class="outer">
-    <section class="archives-wrap">
-    <div class="archive-category-wrap">
-      <span class="archive-category">tech</span>
+    <section id="main" class="outer"><article id="post-autocomplete" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      angular-material-autocomplete
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2015/11/30/autocomplete/" class="article-date">
+  <time datetime="2015-11-30T11:26:03.000Z" itemprop="datePublished">2015-11-30</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/component/">component</a>
+  </div>
+
+      
     </div>
-    <div class="archives">
-    
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
+    <div class="article-entry" itemprop="articleBody">
       
-        <a href="/2015/10/31/record-wave/" class="archive-article-date">
-  <time datetime="2015-10-31T08:13:43.000Z" itemprop="datePublished">2015 10月 31</time>
-</a>
-      
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/10/31/record-wave/">record-wave</a>
-    </h1>
-  
+        <h3 id="主题">主题</h3><p>  基于angular material的自动完成组件，目前只支持固定列表。</p>
+<h3 id="详情">详情</h3><div ng-controller="DemoCtrl"><fc-auto-complete placeholder="请输入内容" list-data="userList"></fc-auto-complete></div>
 
-    </header>
+<p>配置文件如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">angular</span><br><span class="line">  .module(<span class="string">'demoAutocomplete'</span>, [</span><br><span class="line">    <span class="string">'ngMaterial'</span>,</span><br><span class="line">    <span class="string">'fc.autocomplete'</span></span><br><span class="line">  ]).controller(<span class="string">'DemoCtrl'</span>, DemoCtrl);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">DemoCtrl</span>(<span class="params">$scope</span>) </span>&#123;</span><br><span class="line">  $scope.userList = [<span class="string">'abcdefg-1'</span>, <span class="string">'abcdefg-2'</span>, <span class="string">'abcdefg-3'</span>, <span class="string">'abcdefg-4'</span>, <span class="string">'abcdefg-5'</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>HTML文件如下：<br> <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">fc-auto-complete</span> <span class="attribute">placeholder</span>=<span class="value">"请输入内容"</span> <span class="attribute">list-data</span>=<span class="value">"userList"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>Options:</p>
+<h5 id="placeholder:_input的placeholder属性">placeholder: input的placeholder属性</h5><h5 id="list-data:_array，待选择的所有数据">list-data: array，待选择的所有数据</h5>
+      
+    </div>
+  
+    <footer class="article-footer">
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/组件/">组件</a></li></ul>
+
+    </footer>
+  
   </div>
-</article>
+  
     
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-        <a href="/2015/09/17/css-selectors/" class="archive-article-date">
-  <time datetime="2015-09-17T12:01:19.000Z" itemprop="datePublished">2015 9月 17</time>
-</a>
-      
-      
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/09/17/css-selectors/">CSS 选择器</a>
-    </h1>
   
+    <a href="/2015/10/31/record-wave/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">record-wave&nbsp;<span>&gt;</span></div>
+    </a>
+  
+</nav>
 
-    </header>
-  </div>
+  
 </article>
-    
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-        <a href="/2015/09/02/gulp-seajs/" class="archive-article-date">
-  <time datetime="2015-09-02T03:19:29.000Z" itemprop="datePublished">2015 9月 2</time>
-</a>
-      
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/09/02/gulp-seajs/">使用gulp构建SeaJS</a>
-    </h1>
-  
 
-    </header>
-  </div>
-</article>
-    
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-        <a href="/2015/08/31/start-seajs/" class="archive-article-date">
-  <time datetime="2015-08-31T04:07:06.000Z" itemprop="datePublished">2015 8月 31</time>
-</a>
-      
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/08/31/start-seajs/">引入SeaJS</a>
-    </h1>
-  
 
-    </header>
-  </div>
-</article>
-    
-    </div></section>
-    
-
+  <section id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread outer" data-thread-key="post-autocomplete" data-title="angular-material-autocomplete" data-url="http://blog.0xfc.cn/2015/11/30/autocomplete/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:'frankwan'};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+      </script>
+    <!-- 多说公共JS代码 end -->
+  </section>
 </section>
     </div>
 <footer id="footer">
