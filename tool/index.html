@@ -58,6 +58,7 @@ ColorHexa">
   <link rel="stylesheet" href="/libs/wan-select/src/wan-select.css" type="text/css">
   <link rel="stylesheet" href="/libs/paging/src/angular-material-paging.css" type="text/css">
   <link rel="stylesheet" href="/libs/clear/src/angular-material-with-clear.css" type="text/css">
+  <link rel="stylesheet" href="/libs/angular-material-autocomplete/src/angular-material-autocomplete.css" type="text/css">
 
   <link rel="stylesheet" href="/css/style.css" type="text/css">
 </head>
@@ -198,6 +199,7 @@ ColorHexa">
 <script src="/libs/wan-select/src/wan-select.js" type="text/javascript"></script>
 <script src="/libs/paging/src/angular-material-paging.js" type="text/javascript"></script>
 <script src="/libs/clear/src/angular-material-with-clear.js" type="text/javascript"></script>
+<script src="/libs/angular-material-autocomplete/src/angular-material-autocomplete.js" type="text/javascript"></script>
 
 <script type="text/javascript">
   angular
@@ -207,7 +209,8 @@ ColorHexa">
       'fc.dateRange',
       'fc.wanSelect',
       'fc.paging',
-      'fc.clear'
+      'fc.clear',
+      'fc.autocomplete'
     ]).controller('DemoCtrl', DemoCtrl);
 
   function DemoCtrl($scope) {
@@ -241,7 +244,8 @@ ColorHexa">
       name: 'cdfr'
     }];
 
-    console.log($scope.projects);
+    $scope.userList = ['abcdefg-1', 'abcdefg-2', 'abcdefg-3', 'abcdefg-4', 'abcdefg-5'];
+
   }
 </script>
 
