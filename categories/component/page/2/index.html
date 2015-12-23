@@ -30,7 +30,6 @@
   <link rel="stylesheet" href="/libs/wan-select/src/wan-select.css" type="text/css">
   <link rel="stylesheet" href="/libs/paging/src/angular-material-paging.css" type="text/css">
   <link rel="stylesheet" href="/libs/clear/src/angular-material-with-clear.css" type="text/css">
-  <link rel="stylesheet" href="/libs/angular-material-autocomplete/src/angular-material-autocomplete.css" type="text/css">
 
   <link rel="stylesheet" href="/css/style.css" type="text/css">
 </head>
@@ -71,25 +70,6 @@
       <span class="archive-category">component</span>
     </div>
     <div class="archives">
-    
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-        <a href="/2015/08/21/wan-select/" class="archive-article-date">
-  <time datetime="2015-08-21T04:13:10.000Z" itemprop="datePublished">2015 8月 21</time>
-</a>
-      
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/08/21/wan-select/">wan-select</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
     
       <article class="archive-article archive-type-post">
   <div class="archive-article-inner">
@@ -214,7 +194,6 @@
 <script src="/libs/wan-select/src/wan-select.js" type="text/javascript"></script>
 <script src="/libs/paging/src/angular-material-paging.js" type="text/javascript"></script>
 <script src="/libs/clear/src/angular-material-with-clear.js" type="text/javascript"></script>
-<script src="/libs/angular-material-autocomplete/src/angular-material-autocomplete.js" type="text/javascript"></script>
 
 <script type="text/javascript">
   angular
@@ -224,8 +203,7 @@
       'fc.dateRange',
       'fc.wanSelect',
       'fc.paging',
-      'fc.clear',
-      'fc.autocomplete'
+      'fc.clear'
     ]).controller('DemoCtrl', DemoCtrl);
 
   function DemoCtrl($scope) {
@@ -259,8 +237,7 @@
       name: 'cdfr'
     }];
 
-    $scope.userList = ['abcdefg-1', 'abcdefg-2', 'abcdefg-3', 'abcdefg-4', 'abcdefg-5'];
-
+    console.log($scope.projects);
   }
 </script>
 
