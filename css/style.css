@@ -197,6 +197,17 @@ div.bktt-test {
 md-select .md-select-label {
   min-width: 200px;
 }
+.move-example {
+  position: relative;
+  height: 200px;
+  margin: 0 2px;
+  -webkit-box-shadow: 0 0 2px rgba(0,0,0,0.5);
+  box-shadow: 0 0 2px rgba(0,0,0,0.5);
+}
+.move-example img {
+  position: absolute;
+  width: 150px;
+}
 .article-meta a,
 a.article-title,
 .article-entry a,
