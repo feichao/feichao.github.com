@@ -1,0 +1,17 @@
+<h3 id="主题">主题</h3><p>  原生JS实现的8点拖拽缩放系统。</p>
+<h3 id="详情">详情</h3><p>  使页面中的任何元素都可以实现拖拽缩放的功能，只要在HTML属性中添加eight-dot-zoom即可。支持IE8以上现代浏览器。<br>  <br>  如何使用：<br>   1. 引用8-dot-zoom.css和8-dot-zoom.js<br>   2. 在需要移动的元素上添加eight-dot-zoom属性<br>    如下：</p>
+<pre><code class="html"><span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"..."</span> <span class="attribute">eight-dot-zoom</span>/&gt;</span>
+</code></pre>
+<p>   3. 引用完8-dot-zoom.js后可以使用下述方式指出拖拽边界：</p>
+<pre><code class="javascript"><span class="comment">//指定拖拽元素的父元素的位置信息为其边界</span>
+<span class="built_in">window</span>.EightZoomSys.demarcation = <span class="string">'parent'</span>;
+<span class="comment">//指定某一元素的位置信息为其边界</span>
+<span class="built_in">window</span>.EightZoomSys.demarcation = Element;
+<span class="comment">//直接指定边界</span>
+<span class="built_in">window</span>.EightZoomSys.demarcation = {
+    top: <span class="number">100</span>,
+    left: <span class="number">100</span>,
+    width: <span class="number">500</span>,
+    height: <span class="number">500</span>
+}
+</code></pre>
