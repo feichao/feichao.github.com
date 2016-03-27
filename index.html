@@ -67,6 +67,56 @@
 </header>
 <div ng-app="demoWan" style="position: relative;">
     <section id="main" class="outer">
+      <article id="post-StarkOS" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/27/StarkOS/">Stark运营平台架构</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2016/03/27/StarkOS/" class="article-date">
+  <time datetime="2016-03-27T03:44:16.000Z" itemprop="datePublished">2016-03-27</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/tech/">tech</a>
+  </div>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="主题">主题</h3><p>  Stark架构</p>
+<h3 id="正文">正文</h3><p>  Stark是一个运营平台，使用的是Material + React + Redux开发。项目前期由于时间预估不准确，加上只有一个前端，所以计划中后台人员也要写点简单的页面，为了让后台人员快速的写出统一的页面，我将所有的Material组件重新封装，比如将所有的form组件封装为Input组件，所有的封装对后台人员来说都是透明的。理想的状态是后台人员只需要完成一些JSON配置就可以输出一些标准的页面。下面是Stark的架构图：</p>
+<p><img src="http://7xl1b4.com1.z0.glb.clouddn.com/stark-structure.png" alt="Stark 架构"></p>
+<p>  业务组件就是JSON配置出来的，JSON中也封装了所有的业务逻辑。中间组件是通过解析业务组件中的JSON，使用基础组件生成的页面，只是单纯的View。而基础组件就是对所有Material组件的再封装加上实现的一些新的组件。</p>
+<p>  Redux可以通过设置props帮助我们管理所有业务组件和部分中间组件的状态，业务组件内部不会擅自更改自己的状态，而中间组件和基础组件则拥有自更新状态的能力，而且越是基础的组件，初始化完成后依赖props更新状态的可能性就越小，也就越聚合。</p>
+<p>  因为业务组件的样式完全依赖JSON配置，没有自定义任何特殊的组件，所以前期可以只实现基础组件的部分功能，保证基本业务逻辑的正确，后台人员可以快速的完成一些页面及后台功能。而基础组件的其他功能，比如样式优化，表单验证可以交给专业的前端人员。</p>
+<p>  这样我们就可以快速输出第一版原型，保证在项目前期业务人员就可以进行业务逻辑的验证。</p>
+
+      
+    </div>
+  
+    <footer class="article-footer">
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/">React</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redux/">Redux</a></li></ul>
+
+    </footer>
+  
+  </div>
+  
+</article>
+
+
+    
       <article id="post-Bajie-8" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -266,51 +316,6 @@
     <footer class="article-footer">
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/八戒/">八戒</a></li></ul>
-
-    </footer>
-  
-  </div>
-  
-</article>
-
-
-    
-      <article id="post-x-ui" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/23/x-ui/">x-ui</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/2015/12/23/x-ui/" class="article-date">
-  <time datetime="2015-12-23T13:23:01.000Z" itemprop="datePublished">2015-12-23</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/tech/">tech</a>
-  </div>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="主题">主题</h3><p>  基于CVTOUCH PC端和手机端，抽象出的CSS+JS组件。</p>
-<h3 id="详情">详情</h3><p>  <br>  直接查看DEMO：<a href="/x-ui/demo">demo</a></p>
-
-      
-    </div>
-  
-    <footer class="article-footer">
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/组件/">组件</a></li></ul>
 
     </footer>
   
