@@ -192,10 +192,10 @@ div.bktt-test {
   width: 500px;
 }
 .clear-select {
-  width: 300px;
+  width: 500px;
 }
 md-select .md-select-label {
-  min-width: 200px;
+  min-width: 400px;
 }
 .move-example {
   position: relative;
