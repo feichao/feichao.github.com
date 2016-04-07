@@ -67,6 +67,54 @@
 </header>
 <div ng-app="demoWan" style="position: relative;">
     <section id="main" class="outer">
+      <article id="post-spinner" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/09/spinner/">jquery-spinner</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2015/08/09/spinner/" class="article-date">
+  <time datetime="2015-08-09T11:47:39.000Z" itemprop="datePublished">2015-08-09</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/component/">component</a>
+  </div>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="主题">主题</h3><p>  基于jQuery实现的组件，支持最大值，最小值，起始值，步进值，异常处理，事件通知。</p>
+<h3 id="详情">详情</h3><h4 id="使用自定义配置">使用自定义配置</h4><p> <div class="wan-spinner wan-spinner-1 a-no-textdecotion"><a href="javascript:void(0)" class="minus" target="_blank" rel="external">-</a><input type="text" value="1"><a href="javascript:void(0)" class="plus" target="_blank" rel="external">+</a></div><br> 配置文件如下：<br> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> options = &#123;</span><br><span class="line">  maxValue: <span class="number">10</span>,     <span class="comment">//设置所能到达的最大值，默认为 999</span></span><br><span class="line">  minValue: -<span class="number">5</span>,     <span class="comment">//设置所能到达的最小值，默认为 -999</span></span><br><span class="line">  step: <span class="number">2.131</span>,      <span class="comment">//步进长度，默认为 1</span></span><br><span class="line">  inputWidth: <span class="number">100</span>,  <span class="comment">//根据最大值设置输入框的宽度，防止内容超出，默认为25</span></span><br><span class="line">  start: -<span class="number">2</span>,        <span class="comment">//起始值，默认为 1</span></span><br><span class="line">  plusClick: <span class="function"><span class="keyword">function</span>(<span class="params">element, val</span>) </span>&#123;<span class="comment">//点击plus按钮触发事件</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"plus button click: "</span> + val);</span><br><span class="line">  &#125;,</span><br><span class="line">  minusClick: <span class="function"><span class="keyword">function</span>(<span class="params">element, val</span>) </span>&#123;<span class="comment">//点击minus按钮触发事件</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"minus button click: "</span> + val);</span><br><span class="line">  &#125;,</span><br><span class="line">  exceptionFun: <span class="function"><span class="keyword">function</span>(<span class="params">exception</span>) </span>&#123;<span class="comment">//值超出设置的范围时触发事件，等于1说明超出上范围，等于-1说明超出下范围</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"exception: "</span> + exception);</span><br><span class="line">  &#125;,</span><br><span class="line">  valueChanged: <span class="function"><span class="keyword">function</span>(<span class="params">element, val</span>) </span>&#123;<span class="comment">//值变更时触发事件</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"value changed: "</span> + val);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">$(<span class="string">".wan-spinner"</span>).WanSpinner(options);</span><br></pre></td></tr></table></figure></p>
+<p> HTML文件如下：<br> <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"wan-spinner wan-spinner-1"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"javascript:void(0)"</span> <span class="attribute">class</span>=<span class="value">"minus"</span>&gt;</span>-<span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">value</span>=<span class="value">"1"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"javascript:void(0)"</span> <span class="attribute">class</span>=<span class="value">"plus"</span>&gt;</span>+<span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p><br></p>
+<h4 id="使用默认配置">使用默认配置</h4><p><div class="wan-spinner wan-spinner-2 a-no-textdecotion"><a href="javascript:void(0)" class="minus" target="_blank" rel="external">-</a><input type="text" value="1"><a href="javascript:void(0)" class="plus" target="_blank" rel="external">+</a></div><br>HTML文件如下：<br> <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"wan-spinner wan-spinner-2"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"javascript:void(0)"</span> <span class="attribute">class</span>=<span class="value">"minus"</span>&gt;</span>-<span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">value</span>=<span class="value">"1"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"javascript:void(0)"</span> <span class="attribute">class</span>=<span class="value">"plus"</span>&gt;</span>+<span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+  
+    <footer class="article-footer">
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/组件/">组件</a></li></ul>
+
+    </footer>
+  
+  </div>
+  
+</article>
+
+
+    
       <article id="post-Bajie-5" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -265,58 +313,8 @@
 
 
     
-      <article id="post-Bajie-1" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/04/21/Bajie-1/">八戒传-1</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/2015/04/21/Bajie-1/" class="article-date">
-  <time datetime="2015-04-21T03:59:59.000Z" itemprop="datePublished">2015-04-21</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/westgoal/">westgoal</a>
-  </div>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="感想">感想</h3><p>  寄居广州城乡结合处，老婆在天河上班。那日午后，天降大雨，雷声滚滚，无法入眠，故写此文送于老婆，无甚含义。</p>
-<h3 id="正文">正文</h3><p>  八戒，师父这里一切都好，刚才也下了一点雨，我没有数清楚是多少滴。天河下雨了，那河水肯定涨到你的腰了，不知道那猴子养的马有没有被淹死。好久没有去你那里坐坐了，上次去你还亲自下厨，好怀念你的味道啊。</p>
-<p>  有时候我念经念到想吐了，就会想起一起去西天的那段时光。哈哈，师父瞒着你们和如来喝了两杯，唉，如来也不容易。没想到转眼一个月就过去了，好快好快。八戒，师父知道你比较好色，虽然你住在天上，但还是要注意身体，那些仙女儿即使再好看，也别辜负高家女儿。</p>
-<p>  师父一个人住在庙里，每天除了大妈大姐来上香，没有一个漂亮mm，都被高富帅抢走了。皇上也不来看我了，每天抱着经书祈求长生不老，连他的妃子都无暇顾及，唉，就这样吧。</p>
-<p>  八戒，不知道你还会不会经常想起那猴子，反正悟净已经彻底堕落了，他和白龙马混在一起，除了做海盗，还做起了恐怖分子，搞得到处都是他们的通缉令。说那猴子吧，他有了小猴子，据他说也是从石头里蹦出来的，可为师总觉得他的话不靠谱，如果你了解，要尽快回复我。</p>
-<p>  好了，师父要去隔壁尼姑庵找你师母了，看来她又做了红烧肉，你应该不感兴趣。还有个好消息，再有八个月，小唐僧就出生了，哈哈，我也是最近才知道。家里也养了一窝猪，下的猪仔没一个像你的，你要努力哦。</p>
-<p>  爱你的师父，再聊。</p>
-
-      
-    </div>
-  
-    <footer class="article-footer">
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/八戒/">八戒</a></li></ul>
-
-    </footer>
-  
-  </div>
-  
-</article>
-
-
-    
       <nav id="page-nav">
-        <a class="extend prev" rel="prev" href="/page/4/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
+        <a class="extend prev" rel="prev" href="/page/4/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/">下一页 &raquo;</a>
       </nav>
     
 
