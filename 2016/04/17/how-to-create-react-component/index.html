@@ -3,17 +3,40 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Feichao&#39;s blog</title>
+  <title>如何写好一个react组件 - Feichao&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Everything about me">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Feichao's blog">
-<meta property="og:url" content="http://blog.0xfc.cn/index.html">
+  <meta name="description" content="正文
+设置默认属性 defaultProps
+属性检测 propTypes
+构造函数：获取默认值，绑定函数
+Controlled Componennt：更新Value
+更新state，回调onChange
+
+123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何写好一个react组件">
+<meta property="og:url" content="http://blog.0xfc.cn/2016/04/17/how-to-create-react-component/index.html">
 <meta property="og:site_name" content="Feichao's blog">
-<meta property="og:description" content="Everything about me">
+<meta property="og:description" content="正文
+设置默认属性 defaultProps
+属性检测 propTypes
+构造函数：获取默认值，绑定函数
+Controlled Componennt：更新Value
+更新state，回调onChange
+
+123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525">
+<meta property="og:image" content="http://7xlphe.com1.z0.glb.clouddn.com/BSelect.png">
+<meta property="og:updated_time" content="2016-04-17T06:38:54.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Feichao's blog">
-<meta name="twitter:description" content="Everything about me">
+<meta name="twitter:title" content="如何写好一个react组件">
+<meta name="twitter:description" content="正文
+设置默认属性 defaultProps
+属性检测 propTypes
+构造函数：获取默认值，绑定函数
+Controlled Componennt：更新Value
+更新state，回调onChange
+
+123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525">
   
   
     <link rel="icon" href="/favicon.png">
@@ -66,16 +89,15 @@
   </div>
 </header>
 <div ng-app="demoWan" style="position: relative;">
-    <section id="main" class="outer">
-      <article id="post-how-to-create-react-component" class="article article-type-post" itemscope itemprop="blogPost">
+    <section id="main" class="outer"><article id="post-how-to-create-react-component" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/17/how-to-create-react-component/">如何写好一个react组件</a>
+    <h1 class="article-title" itemprop="name">
+      如何写好一个react组件
     </h1>
   
 
@@ -115,227 +137,38 @@
   
   </div>
   
-</article>
-
-
     
-      <article id="post-Material-Icons-can-t-display" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/17/Material-Icons-can-t-display/">Material Icons can&#39;t display ?</a>
-    </h1>
   
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/2016/04/17/Material-Icons-can-t-display/" class="article-date">
-  <time datetime="2016-04-17T03:08:20.000Z" itemprop="datePublished">2016-04-17</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/tech/">tech</a>
-  </div>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="正文">正文</h3><p>  <br>  Stark项目使用了react-material-ui，其中包含Material Icons，下载完成所有格式的字体文件后：</p>
-<p>  1. 导入字体</p>
-<pre><code><span class="comment"><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="at_rule">@<span class="keyword">font-face</span></span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">font-family</span>:<span class="value"> <span class="string">'Material Icons'</span></span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">font-style</span>:<span class="value"> normal</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">font-weight</span>:<span class="value"> <span class="number">400</span></span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">src</span>:<span class="value"> <span class="function">url</span>(MaterialIcons-Regular.eot)</span></span>; <span class="comment">/* For IE6-8 */</span></span><br><span class="line">  <span class="rule"><span class="attribute">src</span>:<span class="value"> <span class="function">local</span>(<span class="string">'Material Icons'</span>),</span><br><span class="line">       <span class="function">local</span>(<span class="string">'MaterialIcons-Regular'</span>),</span><br><span class="line">       <span class="function">url</span>(MaterialIcons-Regular.woff2) <span class="function">format</span>(<span class="string">'woff2'</span>),</span><br><span class="line">       <span class="function">url</span>(MaterialIcons-Regular.woff) <span class="function">format</span>(<span class="string">'woff'</span>),</span><br><span class="line">       <span class="function">url</span>(MaterialIcons-Regular.ttf) <span class="function">format</span>(<span class="string">'truetype'</span>)</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></span>
-</code></pre><p>  2. 使用字体</p>
-<pre><code><span class="comment"><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.material-icons</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">direction</span>:<span class="value"> ltr</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">display</span>:<span class="value"> inline-block</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">font-family</span>:<span class="value"> <span class="string">'Material Icons'</span></span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">14px</span></span></span>;  <span class="comment">/* Preferred icon size */</span></span><br><span class="line">  <span class="rule"><span class="attribute">font-weight</span>:<span class="value"> normal</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">font-style</span>:<span class="value"> normal</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">letter-spacing</span>:<span class="value"> normal</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">line-height</span>:<span class="value"> <span class="number">1</span></span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">text-transform</span>:<span class="value"> none</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">white-space</span>:<span class="value"> nowrap</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">word-wrap</span>:<span class="value"> normal</span></span>;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">/* Support for all WebKit browsers. */</span></span><br><span class="line">  <span class="rule"><span class="attribute">-webkit-font-smoothing</span>:<span class="value"> antialiased</span></span>;</span><br><span class="line">  <span class="comment">/* Support for Firefox. */</span></span><br><span class="line">  <span class="rule"><span class="attribute">-moz-osx-font-smoothing</span>:<span class="value"> grayscale</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></span>
-</code></pre><p>  上述两步完成后，在Mac下的chrome上完美的运行着，但是到了windows下的chrome却没法显示字体。最后发现还需要在步骤2的类中添加下述两句CSS：</p>
-<pre><code><span class="comment"><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.material-icons</span><span class="rules">&#123;</span><br><span class="line">  <span class="comment">/* Support for Safari and Chrome. */</span> </span><br><span class="line">  <span class="rule"><span class="attribute">text-rendering</span>:<span class="value"> optimizeLegibility</span></span>;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">/* Support for IE. */</span></span><br><span class="line">  <span class="rule"><span class="attribute">font-feature-settings</span>:<span class="value"> <span class="string">'liga'</span></span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></span>
-</code></pre><p>  这两句CSS的共同作用是启用字体的连字效果，就是下述这种效果,，oo和th都被短线连接：</p>
-<p>  <img src="http://7xlphe.com1.z0.glb.clouddn.com/liga.png" alt="连字效果"></p>
-<p>  强烈建议观看<a href="http://www.sitepoint.com/cross-browser-web-fonts-part-3/" target="_blank" rel="external">web-font</a>这篇文章，对text-rendering和font-feature-settings讲解非常详细。</p>
-<p>  参考：<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-smooth" target="_blank" rel="external">font-smoothing</a></p>
-
-      
-    </div>
+    <a href="/2016/04/17/Material-Icons-can-t-display/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Material Icons can&#39;t display ?&nbsp;<span>&gt;</span></div>
+    </a>
   
-    <footer class="article-footer">
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Material-Icons/">Material Icons</a></li></ul>
+</nav>
 
-    </footer>
-  
-  </div>
   
 </article>
 
 
-    
-      <article id="post-NodeElement" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/07/NodeElement/">Javascript中Node和Element区别</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/2016/04/07/NodeElement/" class="article-date">
-  <time datetime="2016-04-07T13:22:36.000Z" itemprop="datePublished">2016-04-07</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/tech/">tech</a>
-  </div>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="主题">主题</h3><p>  Javascript中Node和Element区别。</p>
-<h3 id="正文">正文</h3><p>  Node是HTML文档中所有内容的父类，包括元素Element，注释Comment，文本Text等等。Element是Node的子类。</p>
-<p>  通过代码来测试一下：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="doctype">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">title</span>&gt;</span>Node &amp; ELlement<span class="tag">&lt;/<span class="title">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">meta</span> <span class="attribute">charset</span>=<span class="value">"utf-8"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- This is Comment Note --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">div</span>&gt;</span>Element Node<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">	Text Node</span><br><span class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>  在控制台中执行下述代码：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; document.body.childNodes //获取所有的Node节点</span><br><span class="line">&gt; [#text, &lt;!-- This is Comment Note --&gt;, #text, &lt;div&gt;Element Node&lt;/div&gt;, "Text Node"]</span><br></pre></td></tr></table></figure></p>
-<p>  可以看到，结果中除了预见中的div元素节点，还有注释和文本节点，甚至还有两个#text字段，点击详情可以看到其实#text也是文本节点，只是内容是回车。</p>
-<p>  再看下述代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="built_in">document</span>.body.children <span class="comment">//获取所有的Element节点</span></span><br><span class="line">&gt; [<span class="xml"><span class="tag">&lt;<span class="title">div</span>&gt;</span>Element Node<span class="tag">&lt;/<span class="title">div</span>&gt;</span>]</span></span><br></pre></td></tr></table></figure></p>
-<p>  可以看到，结果只用div元素节点。</p>
-<p>  具体来说，Node只是Element的一个父元素。Element继承了Node的属性和方法，又加入了自己的属性和方法。</p>
-<p>  参考：<a href="https://developer.mozilla.org/en-US/docs/Web/API/Node" target="_blank" rel="external">Node</a>，<a href="https://developer.mozilla.org/en-US/docs/Web/API/Element" target="_blank" rel="external">Element</a></p>
-
-      
-    </div>
-  
-    <footer class="article-footer">
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Element/">Element</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node/">Node</a></li></ul>
-
-    </footer>
-  
-  </div>
-  
-</article>
-
-
-    
-      <article id="post-StarkOS" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/27/StarkOS/">Stark运营平台架构</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/2016/03/27/StarkOS/" class="article-date">
-  <time datetime="2016-03-27T03:44:16.000Z" itemprop="datePublished">2016-03-27</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/tech/">tech</a>
-  </div>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="主题">主题</h3><p>  Stark架构</p>
-<h3 id="正文">正文</h3><p>  Stark是一个运营平台，使用的是Material + React + Redux开发。项目前期由于时间预估不准确，加上只有一个前端，所以计划中后台人员也要写点简单的页面，为了让后台人员快速的写出统一的页面，我将所有的Material组件重新封装，比如将所有的form组件封装为Input组件，所有的封装对后台人员来说都是透明的。理想的状态是后台人员只需要完成一些JSON配置就可以输出一些标准的页面。下面是Stark的架构图：</p>
-<p><img src="http://7xl1b4.com1.z0.glb.clouddn.com/stark-structure.png" alt="Stark 架构"></p>
-<p>  业务组件就是JSON配置出来的，JSON中也封装了所有的业务逻辑。中间组件是通过解析业务组件中的JSON，使用基础组件生成的页面，只是单纯的View。而基础组件就是对所有Material组件的再封装加上实现的一些新的组件。</p>
-<p>  Redux可以通过设置props帮助我们管理所有业务组件和部分中间组件的状态，业务组件内部不会擅自更改自己的状态，而中间组件和基础组件则拥有自更新状态的能力，而且越是基础的组件，初始化完成后依赖props更新状态的可能性就越小，也就越聚合。</p>
-<p>  因为业务组件的样式完全依赖JSON配置，没有自定义任何特殊的组件，所以前期可以只实现基础组件的部分功能，保证基本业务逻辑的正确，后台人员可以快速的完成一些页面及后台功能。而基础组件的其他功能，比如样式优化，表单验证可以交给专业的前端人员。</p>
-<p>  这样我们就可以快速输出第一版原型，保证在项目前期业务人员就可以进行业务逻辑的验证。</p>
-
-      
-    </div>
-  
-    <footer class="article-footer">
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/">React</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redux/">Redux</a></li></ul>
-
-    </footer>
-  
-  </div>
-  
-</article>
-
-
-    
-      <article id="post-Bajie-8" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/24/Bajie-8/">八戒传-8</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/2016/03/24/Bajie-8/" class="article-date">
-  <time datetime="2016-03-24T13:06:51.000Z" itemprop="datePublished">2016-03-24</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/westgoal/">westgoal</a>
-  </div>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="感想">感想</h3><p>  又是一年啊，怎么还没长白头发！</p>
-<h3 id="正文">正文</h3><p>  八戒，过年了，你那边应该是笙歌艳舞的子时，为师这边已经炮竹声声了。</p>
-<p>  小和尚和小尼姑出去玩了，寺里空荡荡的，你师母在守庵，为师在守庙。</p>
-<p>  远游的僧人都没回来，他们在异乡的宝刹与为师一起守岁。</p>
-<p>  来年，不知道为师会不会长头发，内有烦恼丝，倒不如长几根头发，不但可以帅帅的，还能为佛祖多赚几箱香油钱。</p>
-<p>  今年，寺里的香火不错，到了年底结余不少，管钱的师兄说给大家置换些衣服，小尼姑们都没啥反应，倒是小和尚们吵吵嚷嚷的，这一幕让为师想起了西天路上每次化到斋饭都是你抢先一步，完全不考虑为师的感受，要不是猴子管着你，为师可能早就饿屎了。</p>
-<p>  自从我们西行的故事传开后，为师经常看到小娃娃在玩角色扮演的游戏。前几天，又见到了，为师呆呆的站在那里看了好久，看到了活蹦乱跳的猴子，好吃懒做的猪，任劳任怨的沙僧，就是没找到细皮嫩肉的圣僧，为师就跑过去问一个小朋友：为什么没有唐僧呢？小孩子不耐烦的说：你这笨和尚，唐僧当然是被妖怪抓走了！</p>
-<p>  小孩子们都在争着做猴子，连猴子猴孙都在抢着做。八戒你呢一般都是胖胖的小娃娃，坐在那里不停的吃东西。老沙却总是围在你的旁边，不停的指着猴子们说着这里演错了，那里演的不对。为师的存在仅仅是为了向旁边的大人们证明这不是一场闹剧。</p>
-<p>  这十几年的取经路，为师也明白取经真正的核心是一条正确的路和一颗坚定不移的心，毕竟佛祖等的并不是其他某某某。</p>
-<p>  回到寺庙后，为师去尼姑庵找你师母，把这件事说给你她听，你师母呵呵一笑就不理为师了，转身叫来了几个小尼姑，画面仿佛突然回到了盘丝洞，那时为师蜷缩在阴暗的角落，你却在悠悠的偷看姑娘们洗澡。</p>
-<p>  看来所有的结局不是不尽人意，而是人意太浓，用情太重。</p>
-<p>  爱你的师父，再聊。记得回信啊。</p>
-
-      
-    </div>
-  
-    <footer class="article-footer">
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/八戒/">八戒</a></li></ul>
-
-    </footer>
-  
-  </div>
-  
-</article>
-
-
-    
-      <nav id="page-nav">
-        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
-      </nav>
-    
-
+  <section id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread outer" data-thread-key="post-how-to-create-react-component" data-title="如何写好一个react组件" data-url="http://blog.0xfc.cn/2016/04/17/how-to-create-react-component/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:'frankwan'};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+      </script>
+    <!-- 多说公共JS代码 end -->
+  </section>
 </section>
     </div>
 <footer id="footer">
