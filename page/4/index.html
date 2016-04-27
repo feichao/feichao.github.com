@@ -67,6 +67,51 @@
 </header>
 <div ng-app="demoWan" style="position: relative;">
     <section id="main" class="outer">
+      <article id="post-css-selectors" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/17/css-selectors/">CSS 选择器</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2015/09/17/css-selectors/" class="article-date">
+  <time datetime="2015-09-17T12:01:19.000Z" itemprop="datePublished">2015-09-17</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/tech/">tech</a>
+  </div>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="主题">主题</h3><p>  待更新。</p>
+<h3 id="详情">详情</h3><p>  敬请期待。</p>
+
+      
+    </div>
+  
+    <footer class="article-footer">
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
+
+    </footer>
+  
+  </div>
+  
+</article>
+
+
+    
       <article id="post-paging" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -271,56 +316,6 @@
 <p>HTML文件如下：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"wan-backtotop-theme-1"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"wan-backtotop-theme-2"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"wan-backtotop-theme-3"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>Options:</p>
 <h5 id="imgSrc:_string，图片路径，可自行设置">imgSrc: string，图片路径，可自行设置</h5><h5 id="displayTop:_number，设置离顶部多远开始显示按钮">displayTop: number，设置离顶部多远开始显示按钮</h5><h5 id="speed:_number，回到顶部的时间">speed: number，回到顶部的时间</h5><h5 id="size:_object，{height,_width}，设置图片的尺寸">size: object，{height, width}，设置图片的尺寸</h5><h5 id="position:_object，{right,_bottom}，设置图片的绝对位置">position: object，{right, bottom}，设置图片的绝对位置</h5><h5 id="template:_暂时未用">template: 暂时未用</h5>
-      
-    </div>
-  
-    <footer class="article-footer">
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/组件/">组件</a></li></ul>
-
-    </footer>
-  
-  </div>
-  
-</article>
-
-
-    
-      <article id="post-wan-select" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/21/wan-select/">wan-select</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/2015/08/21/wan-select/" class="article-date">
-  <time datetime="2015-08-21T04:13:10.000Z" itemprop="datePublished">2015-08-21</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/component/">component</a>
-  </div>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="主题">主题</h3><p>  基于angular material的可搜索多选控件。</p>
-<h3 id="详情">详情</h3><div ng-controller="DemoCtrl"><p>选择的数据：<span id="wan-selected-data"></span></p><wan-select placeholder="国家：" source-data="sourceData" selected-data="selectedData" select-changed="selectChanged()"></wan-select></div>
-
-
-<p>配置文件如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">angular</span><br><span class="line">  .module(<span class="string">'demoWan'</span>, [</span><br><span class="line">    <span class="string">'ngMaterial'</span>,</span><br><span class="line">    <span class="string">'fc.dateRange'</span>,</span><br><span class="line">    <span class="string">'fc.wanSelect'</span></span><br><span class="line">  ]).controller(<span class="string">'DemoCtrl'</span>, DemoCtrl);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">DemoCtrl</span>(<span class="params">$scope</span>) </span>&#123;</span><br><span class="line">  $scope.startDate = <span class="string">"2015-07-07"</span>;</span><br><span class="line">  $scope.endDate = <span class="string">"2015-07-27"</span>;</span><br><span class="line">  $scope.dateLength = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  $scope.sourceData = [<span class="string">"中国"</span>, <span class="string">"日本"</span>, <span class="string">"蒙古"</span>, <span class="string">"北韩"</span>, <span class="string">"朝鲜"</span>, <span class="string">"韩国"</span>, <span class="string">"缅甸"</span>, <span class="string">"文莱"</span>, <span class="string">"柬埔寨"</span>, <span class="string">"东帝汶"</span>, <span class="string">"印度尼西亚"</span>, <span class="string">"寮国"</span>, <span class="string">"老挝"</span>, <span class="string">"马来西亚"</span>, <span class="string">"菲律宾"</span>, <span class="string">"新加坡"</span>, <span class="string">"泰国"</span>, <span class="string">"越南"</span>];</span><br><span class="line">  $scope.selectedData = [];</span><br><span class="line"></span><br><span class="line">  $scope.selectChanged = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    jQuery(<span class="string">"#wan-selected-data"</span>).html($scope.selectedData.join(<span class="string">'，'</span>));</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>HTML文件如下：<br> <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">wan-select</span> <span class="attribute">placeholder</span>=<span class="value">"国家："</span> </span><br><span class="line">            <span class="attribute">source-data</span>=<span class="value">"sourceData"</span> </span><br><span class="line">            <span class="attribute">selected-data</span>=<span class="value">"selectedData"</span> </span><br><span class="line">            <span class="attribute">select-changed</span>=<span class="value">"selectChanged()"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">wan-select</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>Options:</p>
-<h5 id="placeholder:_string">placeholder: string</h5><h5 id="source-data:_array，源数据">source-data: array，源数据</h5><h5 id="selected-data:_array，选中的数据">selected-data: array，选中的数据</h5><h5 id="select-changed:_事件，选中的Array改变时触发">select-changed: 事件，选中的Array改变时触发</h5>
       
     </div>
   
