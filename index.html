@@ -67,6 +67,69 @@
 </header>
 <div ng-app="demoWan" style="position: relative;">
     <section id="main" class="outer">
+      <article id="post-react-material-component" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/12/react-material-component/">基于React-material的组件</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2016/05/12/react-material-component/" class="article-date">
+  <time datetime="2016-05-12T04:19:48.000Z" itemprop="datePublished">2016-05-12</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/tech/">tech</a>
+  </div>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="demo"><a href="/react-material-component/">demo</a></h3><h3 id="包括下属组件：">包括下属组件：</h3><ul>
+<li>BSelect</li>
+<li>Color</li>
+<li>Datetime</li>
+<li>MultiSelect</li>
+<li>Paging</li>
+<li>Tag</li>
+</ul>
+<hr>
+<h4 id="BSelect">BSelect</h4><p>按钮组组件，包括单选和多选。<br><img src="http://7xl1b4.com1.z0.glb.clouddn.com/bselect.png" alt="BSelect"></p>
+<hr>
+<h4 id="Color">Color</h4><p>颜色选择组件。<br><img src="http://7xl1b4.com1.z0.glb.clouddn.com/color.png" alt="Color"></p>
+<hr>
+<h3 id="Datetime">Datetime</h3><p>日期时间选择组件，可设置日期时间，日期，时间三种模式。<br><img src="http://7xl1b4.com1.z0.glb.clouddn.com/datetime.png" alt="Datetime"></p>
+<hr>
+<h3 id="MultiSelect">MultiSelect</h3><p>多选组件，支持异步数据加载，数据格式为{label: ‘’, value:’’}。<br><img src="http://7xl1b4.com1.z0.glb.clouddn.com/multiselect.png" alt="MultiSelect"></p>
+<hr>
+<h4 id="Paging">Paging</h4><p>分页组件，上一页，下一页，首页，尾页，跳转到某页。<br><img src="http://7xl1b4.com1.z0.glb.clouddn.com/paging.png" alt="Paging"></p>
+<hr>
+<h4 id="Tag">Tag</h4><p>标签组件，输入内容点击回车添加标签。<br><img src="http://7xl1b4.com1.z0.glb.clouddn.com/tag.png" alt="Tag"></p>
+
+      
+    </div>
+  
+    <footer class="article-footer">
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Material/">Material</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/">React</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/组件/">组件</a></li></ul>
+
+    </footer>
+  
+  </div>
+  
+</article>
+
+
+    
       <article id="post-Bajie-9" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -279,61 +342,8 @@
 
 
     
-      <article id="post-NodeElement" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/07/NodeElement/">Javascript中Node和Element区别</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/2016/04/07/NodeElement/" class="article-date">
-  <time datetime="2016-04-07T13:22:36.000Z" itemprop="datePublished">2016-04-07</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/tech/">tech</a>
-  </div>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="主题">主题</h3><p>  Javascript中Node和Element区别。</p>
-<h3 id="正文">正文</h3><p>  Node是HTML文档中所有内容的父类，包括元素Element，注释Comment，文本Text等等。Element是Node的子类。</p>
-<p>  通过代码来测试一下：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="doctype">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">title</span>&gt;</span>Node &amp; ELlement<span class="tag">&lt;/<span class="title">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">meta</span> <span class="attribute">charset</span>=<span class="value">"utf-8"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- This is Comment Note --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">div</span>&gt;</span>Element Node<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">	Text Node</span><br><span class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>  在控制台中执行下述代码：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; document.body.childNodes //获取所有的Node节点</span><br><span class="line">&gt; [#text, &lt;!-- This is Comment Note --&gt;, #text, &lt;div&gt;Element Node&lt;/div&gt;, "Text Node"]</span><br></pre></td></tr></table></figure></p>
-<p>  可以看到，结果中除了预见中的div元素节点，还有注释和文本节点，甚至还有两个#text字段，点击详情可以看到其实#text也是文本节点，只是内容是回车。</p>
-<p>  再看下述代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="built_in">document</span>.body.children <span class="comment">//获取所有的Element节点</span></span><br><span class="line">&gt; [<span class="xml"><span class="tag">&lt;<span class="title">div</span>&gt;</span>Element Node<span class="tag">&lt;/<span class="title">div</span>&gt;</span>]</span></span><br></pre></td></tr></table></figure></p>
-<p>  可以看到，结果只用div元素节点。</p>
-<p>  具体来说，Node只是Element的一个父元素。Element继承了Node的属性和方法，又加入了自己的属性和方法。</p>
-<p>  参考：<a href="https://developer.mozilla.org/en-US/docs/Web/API/Node" target="_blank" rel="external">Node</a>，<a href="https://developer.mozilla.org/en-US/docs/Web/API/Element" target="_blank" rel="external">Element</a></p>
-
-      
-    </div>
-  
-    <footer class="article-footer">
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Element/">Element</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node/">Node</a></li></ul>
-
-    </footer>
-  
-  </div>
-  
-</article>
-
-
-    
       <nav id="page-nav">
-        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
+        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
       </nav>
     
 
