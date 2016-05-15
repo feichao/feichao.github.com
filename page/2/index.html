@@ -67,6 +67,60 @@
 </header>
 <div ng-app="demoWan" style="position: relative;">
     <section id="main" class="outer">
+      <article id="post-Material-Icons-can-t-display" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/17/Material-Icons-can-t-display/">Material Icons can&#39;t display ?</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2016/04/17/Material-Icons-can-t-display/" class="article-date">
+  <time datetime="2016-04-17T03:08:20.000Z" itemprop="datePublished">2016-04-17</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/tech/">tech</a>
+  </div>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="正文">正文</h3><p>  <br>  Stark项目使用了react-material-ui，其中包含Material Icons，下载完成所有格式的字体文件后：</p>
+<p>  1. 导入字体</p>
+<pre><code><span class="comment"><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="at_rule">@<span class="keyword">font-face</span></span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">font-family</span>:<span class="value"> <span class="string">'Material Icons'</span></span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">font-style</span>:<span class="value"> normal</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">font-weight</span>:<span class="value"> <span class="number">400</span></span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">src</span>:<span class="value"> <span class="function">url</span>(MaterialIcons-Regular.eot)</span></span>; <span class="comment">/* For IE6-8 */</span></span><br><span class="line">  <span class="rule"><span class="attribute">src</span>:<span class="value"> <span class="function">local</span>(<span class="string">'Material Icons'</span>),</span><br><span class="line">       <span class="function">local</span>(<span class="string">'MaterialIcons-Regular'</span>),</span><br><span class="line">       <span class="function">url</span>(MaterialIcons-Regular.woff2) <span class="function">format</span>(<span class="string">'woff2'</span>),</span><br><span class="line">       <span class="function">url</span>(MaterialIcons-Regular.woff) <span class="function">format</span>(<span class="string">'woff'</span>),</span><br><span class="line">       <span class="function">url</span>(MaterialIcons-Regular.ttf) <span class="function">format</span>(<span class="string">'truetype'</span>)</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></span>
+</code></pre><p>  2. 使用字体</p>
+<pre><code><span class="comment"><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.material-icons</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">direction</span>:<span class="value"> ltr</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">display</span>:<span class="value"> inline-block</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">font-family</span>:<span class="value"> <span class="string">'Material Icons'</span></span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">14px</span></span></span>;  <span class="comment">/* Preferred icon size */</span></span><br><span class="line">  <span class="rule"><span class="attribute">font-weight</span>:<span class="value"> normal</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">font-style</span>:<span class="value"> normal</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">letter-spacing</span>:<span class="value"> normal</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">line-height</span>:<span class="value"> <span class="number">1</span></span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">text-transform</span>:<span class="value"> none</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">white-space</span>:<span class="value"> nowrap</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">word-wrap</span>:<span class="value"> normal</span></span>;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">/* Support for all WebKit browsers. */</span></span><br><span class="line">  <span class="rule"><span class="attribute">-webkit-font-smoothing</span>:<span class="value"> antialiased</span></span>;</span><br><span class="line">  <span class="comment">/* Support for Firefox. */</span></span><br><span class="line">  <span class="rule"><span class="attribute">-moz-osx-font-smoothing</span>:<span class="value"> grayscale</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></span>
+</code></pre><p>  上述两步完成后，在Mac下的chrome上完美的运行着，但是到了windows下的chrome却没法显示字体。最后发现还需要在步骤2的类中添加下述两句CSS：</p>
+<pre><code><span class="comment"><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.material-icons</span><span class="rules">&#123;</span><br><span class="line">  <span class="comment">/* Support for Safari and Chrome. */</span> </span><br><span class="line">  <span class="rule"><span class="attribute">text-rendering</span>:<span class="value"> optimizeLegibility</span></span>;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">/* Support for IE. */</span></span><br><span class="line">  <span class="rule"><span class="attribute">font-feature-settings</span>:<span class="value"> <span class="string">'liga'</span></span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></span>
+</code></pre><p>  这两句CSS的共同作用是启用字体的连字效果，就是下述这种效果,，oo和th都被短线连接：</p>
+<p>  <img src="http://7xlphe.com1.z0.glb.clouddn.com/liga.png" alt="连字效果"></p>
+<p>  强烈建议阅读<a href="http://www.sitepoint.com/cross-browser-web-fonts-part-3/" target="_blank" rel="external">web-font</a>这篇文章，对text-rendering和font-feature-settings讲解非常详细。</p>
+<p>  参考：<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-smooth" target="_blank" rel="external">font-smoothing</a></p>
+
+      
+    </div>
+  
+    <footer class="article-footer">
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Material-Icons/">Material Icons</a></li></ul>
+
+    </footer>
+  
+  </div>
+  
+</article>
+
+
+    
       <article id="post-NodeElement" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -264,57 +318,6 @@
     <footer class="article-footer">
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/组件/">组件</a></li></ul>
-
-    </footer>
-  
-  </div>
-  
-</article>
-
-
-    
-      <article id="post-Bajie-7" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/02/22/Bajie-7/">八戒传-7</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/2016/02/22/Bajie-7/" class="article-date">
-  <time datetime="2016-02-22T15:26:36.000Z" itemprop="datePublished">2016-02-22</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/westgoal/">westgoal</a>
-  </div>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="感想">感想</h3><p>  傻子的世界。</p>
-<h3 id="正文">正文</h3><p>  八戒，前几天老方丈坐化了，为师不知道他去西天能不能见到佛祖。虽然老方丈经常跟为师说只要心中有佛，在哪里都是西天，但是我们四人跋山涉水十几年都是因为我们心中没有佛吗？当然我们最后还是找到了佛。也许这是老方丈的境界，也许他现在正和佛祖侃家常呢，谁知道呢。老方丈是个好人，即使他的弟子中只有为师一个稍有出息，但是说句心里话，作为一个和尚，有没有出息都无所谓，而为师之所以有出息，也只是因为比其他和尚多走了一些路。</p>
-<p>  在皇上的爱护下，金山寺依然是香火圣地。皇上偶尔也会过来和为师聊聊天，聊的不多就走了，但是每次离开的时候都会稍作凝视门外的银杏树。为师不知道这棵树是谁种的，也许是皇上，反正比它老的人都已经不在了。记得皇上曾经问为师：御弟，你说是我们在追赶岁月，还是岁月在追赶我们？当时为师答道：皇上，岁月如初，人自竞逐。也许皇上现在已经到了岁月如初的年纪了。</p>
-<p>  为师不知道街上那老半仙是什么时候搬过来的，只是记得有一天为师和你师娘散步回来路过他家门口时，突然就窜出来一个老头，吓得为师赶紧念起了紧箍咒。这老半仙也真够有意思的，圣僧圣僧叫了半天就是为了给为师画一幅画像。为师欣然答应了，和你师娘正襟危坐了好久，结果根本就没画你师娘，气得你师娘好几天都没做肉肉吃，而且几天后听说城西有人大量售卖为师的画像，为师本想带着小和尚去讨回公道，起码要给佛祖收点香油钱，但是最后看了看满满的功德箱，还是打消了这个念头，佛道本是一家嘛。</p>
-<p>  其实老半仙还是蛮有意思的。有一次，为师也在门外凝视银杏树，老半仙不知道什么时候就站到为师旁边了，很突兀的问：圣僧啊，你说这树上有多少片叶子啊？为师讨厌别人说话的时候每一句的末尾都加个啊。为师说：你数啊。他又说：可能是我老眼昏花，数不清啊。为师问：你关心这个干啥呢？他说：那我还能关心啥啊，你这里只有一棵树，数树也没意思啊。为师有点生气了：那你可以去数花，数草，也可以去数和尚啊，为什么偏偏数树叶呢？！他看看了为师，默默的点了点头：圣僧是第一个啊。为师问：第一个啥？他很疑惑的看着为师：第一个和尚啊。说完他就慢悠悠的进了寺庙。为师看了看这树，觉得老半仙说的有道理，这树叶的确是数不清的，说不定明年哪个角落的叶子根本就懒得出来晒太阳，我们又能如何？数不清的不是树叶，是自然。数的清的也不是和尚，是金山寺的和尚。</p>
-<p>  八戒，说了这么多，是不是很想见见老半仙，那你要抓紧啊，天上一天，地下一年，你要是再耽误十天半个月说不定就见不到他了。</p>
-<p>  记得要回信哦。</p>
-<p>  爱你的师傅，再聊。</p>
-
-      
-    </div>
-  
-    <footer class="article-footer">
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/八戒/">八戒</a></li></ul>
 
     </footer>
   

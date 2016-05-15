@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Javascript new及其衍生 - Feichao&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1.new操作符的原理
+12345678910function new(f) &amp;#123;  var object = &amp;#123;&amp;#125;;  object.__proto__ = f.prototype;    return function() &amp;#123;    f.apply(object, arguments);        return object;  &amp;#125;&amp;#125">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Javascript new及其衍生">
+<meta property="og:url" content="http://blog.0xfc.cn/2016/05/15/javascript-new-and-more/index.html">
+<meta property="og:site_name" content="Feichao's blog">
+<meta property="og:description" content="1.new操作符的原理
+12345678910function new(f) &amp;#123;  var object = &amp;#123;&amp;#125;;  object.__proto__ = f.prototype;    return function() &amp;#123;    f.apply(object, arguments);        return object;  &amp;#125;&amp;#125">
+<meta property="og:updated_time" content="2016-05-15T05:12:37.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Javascript new及其衍生">
+<meta name="twitter:description" content="1.new操作符的原理
+12345678910function new(f) &amp;#123;  var object = &amp;#123;&amp;#125;;  object.__proto__ = f.prototype;    return function() &amp;#123;    f.apply(object, arguments);        return object;  &amp;#125;&amp;#125">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
+  <link href="/webfonts/source-code-pro/main.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="http://7xlphe.com1.z0.glb.clouddn.com/angular-material.min.css">
+  
+
+  <link rel="stylesheet" href="/libs/wan-address-select/build/wan-address-select.css" type="text/css">
+  <link rel="stylesheet" href="/libs/wan-carousel/build/wan-carousel.css" type="text/css">
+  <link rel="stylesheet" href="/libs/wan-spinner/build/wan-spinner.css" type="text/css">
+  <link rel="stylesheet" href="/libs/daterange-picker/src/daterangepicker.css" type="text/css">
+  <link rel="stylesheet" href="/libs/wan-select/src/wan-select.css" type="text/css">
+  <link rel="stylesheet" href="/libs/paging/src/angular-material-paging.css" type="text/css">
+  <link rel="stylesheet" href="/libs/clear/src/angular-material-with-clear.css" type="text/css">
+  <link rel="stylesheet" href="/libs/angular-material-autocomplete/src/angular-material-autocomplete.css" type="text/css">
+  <link rel="stylesheet" href="/libs/8-dot-zoom/src/8-dot-zoom.css" type="text/css">
+
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+<body>
+  <div id="container">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <a id="main-nav-toggle" class="nav-icon"></a>
+      <a id="logo" class="logo" href="/"></a>
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/">主页</a>
+        
+          <a class="main-nav-link" href="/categories/tech/">技术</a>
+        
+          <a class="main-nav-link" href="/categories/component/">组件</a>
+        
+          <a class="main-nav-link" href="/categories/westgoal/">八戒</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/tool">工具</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      
+      
+    </div>
+  </div>
+</header>
+<div ng-app="demoWan" style="position: relative;">
+    <section id="main" class="outer"><article id="post-javascript-new-and-more" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Javascript new及其衍生
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2016/05/15/javascript-new-and-more/" class="article-date">
+  <time datetime="2016-05-15T05:03:28.000Z" itemprop="datePublished">2016-05-15</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/tech/">tech</a>
+  </div>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.new操作符的原理</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">new</span>(<span class="params">f</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> object = &#123;&#125;;</span><br><span class="line">  object.__proto__ = f.prototype;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    f.apply(object, <span class="built_in">arguments</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> object;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>从上述代码可以看出new操作符的基本原理：</p>
+<ul>
+<li>第一步：新建一个对象object</li>
+<li>第二步：向对象添加一个名为__proto__的属性，指向构造函数的原型</li>
+<li>第三步：返回一个闭包</li>
+<li>第四步：立即执行闭包，返回这个新对象。在闭包中，构造函数的作用域（this）为新对象object，执行构造函数可以为object添加新属性</li>
+<li>第五步：返回新对象object</li>
+</ul>
+<p>具体来说：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//构造函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Person.prototype.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用new操作符：</span></span><br><span class="line"><span class="comment">// 返回新对象，并且新对象的被关联到构造函数的原型（prototype）</span></span><br><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> Person(<span class="string">'frank'</span>, <span class="number">20</span>);</span><br><span class="line">log(person.name); <span class="comment">// frank</span></span><br><span class="line">log(person.age); <span class="comment">// 20</span></span><br><span class="line">log(person.getName()); <span class="comment">// frank</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 直接执行构造函数：</span></span><br><span class="line"><span class="comment">// 由于函数不返回任何数据，默认返回undefined，</span></span><br><span class="line"><span class="comment">// 而name和age属性被添加到全局作用域</span></span><br><span class="line"><span class="keyword">var</span> person2 = Person(<span class="string">'peggy'</span>, <span class="number">18</span>);</span><br><span class="line">log(person2); <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用apply方式执行构造函数：</span></span><br><span class="line"><span class="comment">// 可以获取到属性，但是无法关联到原型（prototype）</span></span><br><span class="line"><span class="keyword">var</span> person3 = &#123;&#125;;</span><br><span class="line">Person.apply(person3, [<span class="string">'peggy'</span>, <span class="number">18</span>]);</span><br><span class="line">log(person.name); <span class="comment">// peggy</span></span><br><span class="line">log(person.age); <span class="comment">// 18</span></span><br><span class="line">log(person.getName()); <span class="comment">// Uncaught TypeError: person3.getName is not a function</span></span><br></pre></td></tr></table></figure></p>
+<p>2.作用域链<br>当我们执行一个函数A的时候，JS引擎会为A生成一个执行环境，刚开始这个执行环境只有arguments一个可访问对象，还有一个指向外部执行环境的指针，这个外部执行环境也有一个指针指向它的外部执行环境，直到延续到全局执行环境。这样就生成了A的作用域链。当我们访问A中的一个变量v时，如果v不存在于当前的执行环境，则会通过作用域链查找上一个执行环境，如果还不存在v，则会继续通过作用域链查找，直到全局执行环境。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 假设这是全局执行环境：__GlobalEnvironment__</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>; <span class="comment">// 即__GlobalEnvironment__.a = 1;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">A</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 假设这是函数A的执行环境：__AEnvironment__</span></span><br><span class="line">  <span class="comment">// 此时A的执行环境会有一个指针指向__GlobalEnvironment__</span></span><br><span class="line">  </span><br><span class="line">  <span class="keyword">var</span> b = <span class="number">2</span>; <span class="comment">// 即__AEnvironment__.b = 2;</span></span><br><span class="line">  log(a); <span class="comment">// 1</span></span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="title">B</span>(<span class="params"></span>) </span>&#123; </span><br><span class="line">    <span class="comment">// 假设这是函数B的执行环境：__BEnvironment__</span></span><br><span class="line">    <span class="comment">// 此时B的执行环境会有一个指针指向__AEnvironment__</span></span><br><span class="line">    <span class="keyword">var</span> c = <span class="number">3</span>; <span class="comment">// 即__BEnvironment__.b = 2;</span></span><br><span class="line">    log(b); <span class="comment">//2</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = A(); <span class="comment">// 返回一个闭包</span></span><br><span class="line">a(); <span class="comment">// 打印b</span></span><br></pre></td></tr></table></figure></p>
+<p>通过上述代码也可以看到闭包就是作用域链实现的。</p>
+<p>3.原型链<br>在JS中，每定义一个函数，就会为这个函数自动生成一个原型属性（prototype），当我们使用new操作符通过一个构造函数创建一个实例的时候，这个实例会有一个内部指针（__proto__）指向构造函数的原型对象。当我们访问实例的属性时，如果实例本身不存在这个属性，就会查找构造函数的原型。如果还没找到这个属性但是这个原型恰好也有一个内部指针（__proto__），则会继续查找原型的原型对象，这样就形成了一个原型链。如何让这个原型有一个__proto__指针呢，那就是让这个原型也是某一个构造函数的实例。看下代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Animal</span>(<span class="params">kind</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.kind = kind;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Animal.prototype.getKind = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.kind;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Cat</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 通过将Cat的原型指向Animal的实例来继承Animal</span></span><br><span class="line">Cat.prototype = <span class="keyword">new</span> Animal(<span class="string">'cat'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义Cat自身的原型方法</span></span><br><span class="line">Cat.prototype.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> cat = <span class="keyword">new</span> Cat(<span class="string">'Catty'</span>);</span><br><span class="line"><span class="comment">// 通过cat的原型访问getName</span></span><br><span class="line">cat.getName(); <span class="comment">// Catty</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 通过cat的原型链访问getKind</span></span><br><span class="line">cat.getKind(); <span class="comment">// cat</span></span><br></pre></td></tr></table></figure></p>
+<p>通过原型链就可以实现继承了。</p>
+
+      
+    </div>
+  
+    <footer class="article-footer">
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/new/">new</a></li></ul>
+
+    </footer>
+  
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/05/12/react-material-component/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">基于React-material的组件&nbsp;<span>&gt;</span></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+  <section id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread outer" data-thread-key="post-javascript-new-and-more" data-title="Javascript new及其衍生" data-url="http://blog.0xfc.cn/2016/05/15/javascript-new-and-more/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:'frankwan'};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+      </script>
+    <!-- 多说公共JS代码 end -->
+  </section>
+</section>
+    </div>
+<footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Feichao Wan&nbsp;
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, theme by <a href="http://github.com/ppoffice">PPOffice</a>
+      <p style="margin-top:10px;">Email: <a href="mailto:len.may@foxmail.com">len.may@foxmail.com</a></p>
+    </div>
+  </div>
+  <div class="wan-backtotop-theme-1"></div>
+  <div class="wan-backtotop-theme-2"></div>
+  <div class="wan-backtotop-theme-3"></div>
+</footer>
+    
+
+<script src="/js/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+<script src="/libs/wan-address-select/build/wan-address-select.js" type="text/javascript"></script>
+<script src="/libs/wan-carousel/build/wan-carousel.js" type="text/javascript"></script>
+<script src="/libs/wan-spinner/build/wan-spinner.js" type="text/javascript"></script>
+<script src="/libs/back-to-top/src/wan-backtotop.js" type="text/javascript"></script>
+<script src="/libs/8-dot-zoom/src/8-dot-zoom.js" type="text/javascript"></script>
+
+<script type="text/javascript" src="http://7xlphe.com1.z0.glb.clouddn.com/angular.min.js"></script>
+<script type="text/javascript" src="http://7xlphe.com1.z0.glb.clouddn.com/angular-material.min.js"></script>
+<script type="text/javascript" src="http://7xlphe.com1.z0.glb.clouddn.com/angular-aria.min.js"></script>
+<script type="text/javascript" src="http://7xlphe.com1.z0.glb.clouddn.com/angular-animate.min.js"></script>
+<script type="text/javascript" src="http://7xlphe.com1.z0.glb.clouddn.com/moment.min.js"></script>
+<script type="text/javascript" src="http://7xlphe.com1.z0.glb.clouddn.com/angular-material-icons.min.js"></script>
+<script src="/libs/daterange-picker/src/daterangepicker.js" type="text/javascript"></script>
+<script src="/libs/wan-select/src/wan-select.js" type="text/javascript"></script>
+<script src="/libs/paging/src/angular-material-paging.js" type="text/javascript"></script>
+<script src="/libs/clear/src/angular-material-with-clear.js" type="text/javascript"></script>
+<script src="/libs/angular-material-autocomplete/src/angular-material-autocomplete.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  angular
+    .module('demoWan', [
+      'ngMaterial',
+      'ngMdIcons',
+      'fc.dateRange',
+      'fc.wanSelect',
+      'fc.paging',
+      'fc.clear',
+      'fc.autocomplete'
+    ]).controller('DemoCtrl', DemoCtrl);
+
+  function DemoCtrl($scope) {
+    $scope.startDate = "2015-07-07";
+    $scope.endDate = "2015-07-27";
+    $scope.dateLength = 0;
+
+    $scope.sourceData = ["中国", "日本", "蒙古", "北韩", "朝鲜", "韩国", "缅甸", "文莱", "柬埔寨", "东帝汶", "印度尼西亚", "寮国", "老挝", "马来西亚", "菲律宾", "新加坡", "泰国", "越南"];
+    $scope.selectedData = [];
+
+    $scope.selectChanged = function(){
+      jQuery("#wan-selected-data").html($scope.selectedData.join('，'));
+    };
+
+    $scope.total = 1000;
+    $scope.currentPage = 1;
+    $scope.step = 5;
+
+    $scope.total1 = 8;
+    $scope.currentPage1 = 3;
+    $scope.step1 = 8;
+
+    $scope.gotoPage = function() {
+      jQuery("#paging-current").html("CurrentPage: " + $scope.currentPage);
+      jQuery("#paging-current1").html("CurrentPage: " + $scope.currentPage1);
+    };
+
+    $scope.projects = [{
+      name: 'abce',
+    }, {
+      name: 'cdfr'
+    }];
+
+    $scope.userList = ['abcdefg-1', 'abcdefg-2', 'abcdefg-3', 'abcdefg-4', 'abcdefg-5'];
+
+  }
+</script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  var options = {
+     maxValue: 10,     //设置所能到达的最大值，默认为 999
+     minValue: -5,     //设置所能到达的最小值，默认为 -999
+     step: 2.131,      //步进长度，默认为 1
+     inputWidth: 100,  //根据最大值设置输入框的宽度，防止内容超出，默认为25
+     start: -2,        //起始值，默认为 1
+     plusClick: function(element, val) {//点击plus按钮触发事件
+       console.log("plus button click: " + val);
+     },
+     minusClick: function(element, val) {//点击minus按钮触发事件
+       console.log("minus button click: " + val);
+     },
+     exceptionFun: function(exception) {//值超出设置的范围时触发事件，等于1说明超出上范围，等于-1说明超出下范围
+       console.log("exception: " + exception);
+     },
+     valueChanged: function(element, val) {//值变更时触发事件
+       console.log("value changed: " + val);
+     }
+   };
+  $(".wan-spinner-1").WanSpinner(options);
+  $(".wan-spinner-2").WanSpinner().css("border-color", "red");
+
+  var optionsAddress1 = {
+      initProvice: '北京市',
+      initCity: '市辖区',
+      initCounty: '西城区',
+      initTown: '月坛街道办事处',
+      initVillage: '南礼士路社区居委会',
+      fineness: 'county'
+    };
+  var optionsAddress2 = {
+      initProvice: '北京市',
+      initCity: '市辖区',
+      initCounty: '西城区',
+      initTown: '月坛街道办事处',
+      initVillage: '南礼士路社区居委会',
+      fineness: 'town'
+    };
+  var optionsAddress3 = {
+      initProvice: '北京市',
+      initCity: '市辖区',
+      initCounty: '西城区',
+      initTown: '月坛街道办事处',
+      initVillage: '南礼士路社区居委会',
+      fineness: 'village'
+    };
+  $(".wan-address-select1").WanAddressSelect(optionsAddress1);
+  $(".wan-address-select2").WanAddressSelect(optionsAddress2);
+  $(".wan-address-select3").WanAddressSelect(optionsAddress3);
+
+  $("#getValue").on("click", function(){
+    alert(JSON.stringify($(".wan-address-select1").WanAddressSelect('val')));
+  });
+  $("#getValueAndId").on("click", function(){
+    alert(JSON.stringify($(".wan-address-select1").WanAddressSelect('idval')));
+  });
+
+  $(".wan-carousel-1, .wan-carousel-2").WanCarousel();
+  $(".wan-carousel-3").WanCarousel({
+    interval: 8000,
+    speed: 1000,
+  });
+  $(".wan-carousel-4").WanCarousel({
+    interval: 2000,
+    speed: 200,
+    callback: function(element, index) {
+      
+    }
+  });
+
+  var optionsTheme1 = {
+    imgSrc: 'http://7xl1b4.com1.z0.glb.clouddn.com/to_top.png',
+    displayTop: 500,
+    speed: 200,
+    size: {
+      height: '35px',
+      width: '35px'
+    },
+    position: {
+      right: '40px',
+      bottom: '30px'
+    },
+    template: ''
+  };
+  var optionsTheme2 = {
+    imgSrc: 'http://7xl1b4.com1.z0.glb.clouddn.com/to_top_2.png',
+    displayTop: 2500,
+    speed: 800,
+    size: {
+      height: '40px',
+      width: '40px'
+    },
+    position: {
+      right: '90px',
+      bottom: '60px'
+    },
+    template: ''
+  };
+  var optionsTheme3 = {
+    imgSrc: 'http://7xl1b4.com1.z0.glb.clouddn.com/to_top_3.png',
+    displayTop: 4000,
+    speed: 2000,
+    size: {
+      height: '45px',
+      width: '45px'
+    },
+    position: {
+      right: '140px',
+      bottom: '90px'
+    },
+    template: ''
+  };
+  $(".wan-backtotop-theme-1").WanBackToTop(optionsTheme1);
+  $(".wan-backtotop-theme-2").WanBackToTop(optionsTheme2);
+  $(".wan-backtotop-theme-3").WanBackToTop(optionsTheme3);
+
+  window.EightZoomSys.demarcation = 'parent';
+});
+</script>
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=44532796" charset="UTF-8"></script>
+  </div>
+</body>
+</html>

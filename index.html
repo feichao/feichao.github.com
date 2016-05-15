@@ -67,6 +67,64 @@
 </header>
 <div ng-app="demoWan" style="position: relative;">
     <section id="main" class="outer">
+      <article id="post-javascript-new-and-more" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/15/javascript-new-and-more/">Javascript new及其衍生</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2016/05/15/javascript-new-and-more/" class="article-date">
+  <time datetime="2016-05-15T05:03:28.000Z" itemprop="datePublished">2016-05-15</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/tech/">tech</a>
+  </div>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.new操作符的原理</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">new</span>(<span class="params">f</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> object = &#123;&#125;;</span><br><span class="line">  object.__proto__ = f.prototype;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    f.apply(object, <span class="built_in">arguments</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> object;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>从上述代码可以看出new操作符的基本原理：</p>
+<ul>
+<li>第一步：新建一个对象object</li>
+<li>第二步：向对象添加一个名为__proto__的属性，指向构造函数的原型</li>
+<li>第三步：返回一个闭包</li>
+<li>第四步：立即执行闭包，返回这个新对象。在闭包中，构造函数的作用域（this）为新对象object，执行构造函数可以为object添加新属性</li>
+<li>第五步：返回新对象object</li>
+</ul>
+<p>具体来说：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//构造函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Person.prototype.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用new操作符：</span></span><br><span class="line"><span class="comment">// 返回新对象，并且新对象的被关联到构造函数的原型（prototype）</span></span><br><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> Person(<span class="string">'frank'</span>, <span class="number">20</span>);</span><br><span class="line">log(person.name); <span class="comment">// frank</span></span><br><span class="line">log(person.age); <span class="comment">// 20</span></span><br><span class="line">log(person.getName()); <span class="comment">// frank</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 直接执行构造函数：</span></span><br><span class="line"><span class="comment">// 由于函数不返回任何数据，默认返回undefined，</span></span><br><span class="line"><span class="comment">// 而name和age属性被添加到全局作用域</span></span><br><span class="line"><span class="keyword">var</span> person2 = Person(<span class="string">'peggy'</span>, <span class="number">18</span>);</span><br><span class="line">log(person2); <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用apply方式执行构造函数：</span></span><br><span class="line"><span class="comment">// 可以获取到属性，但是无法关联到原型（prototype）</span></span><br><span class="line"><span class="keyword">var</span> person3 = &#123;&#125;;</span><br><span class="line">Person.apply(person3, [<span class="string">'peggy'</span>, <span class="number">18</span>]);</span><br><span class="line">log(person.name); <span class="comment">// peggy</span></span><br><span class="line">log(person.age); <span class="comment">// 18</span></span><br><span class="line">log(person.getName()); <span class="comment">// Uncaught TypeError: person3.getName is not a function</span></span><br></pre></td></tr></table></figure></p>
+<p>2.作用域链<br>当我们执行一个函数A的时候，JS引擎会为A生成一个执行环境，刚开始这个执行环境只有arguments一个可访问对象，还有一个指向外部执行环境的指针，这个外部执行环境也有一个指针指向它的外部执行环境，直到延续到全局执行环境。这样就生成了A的作用域链。当我们访问A中的一个变量v时，如果v不存在于当前的执行环境，则会通过作用域链查找上一个执行环境，如果还不存在v，则会继续通过作用域链查找，直到全局执行环境。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 假设这是全局执行环境：__GlobalEnvironment__</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>; <span class="comment">// 即__GlobalEnvironment__.a = 1;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">A</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 假设这是函数A的执行环境：__AEnvironment__</span></span><br><span class="line">  <span class="comment">// 此时A的执行环境会有一个指针指向__GlobalEnvironment__</span></span><br><span class="line">  </span><br><span class="line">  <span class="keyword">var</span> b = <span class="number">2</span>; <span class="comment">// 即__AEnvironment__.b = 2;</span></span><br><span class="line">  log(a); <span class="comment">// 1</span></span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="title">B</span>(<span class="params"></span>) </span>&#123; </span><br><span class="line">    <span class="comment">// 假设这是函数B的执行环境：__BEnvironment__</span></span><br><span class="line">    <span class="comment">// 此时B的执行环境会有一个指针指向__AEnvironment__</span></span><br><span class="line">    <span class="keyword">var</span> c = <span class="number">3</span>; <span class="comment">// 即__BEnvironment__.b = 2;</span></span><br><span class="line">    log(b); <span class="comment">//2</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = A(); <span class="comment">// 返回一个闭包</span></span><br><span class="line">a(); <span class="comment">// 打印b</span></span><br></pre></td></tr></table></figure></p>
+<p>通过上述代码也可以看到闭包就是作用域链实现的。</p>
+<p>3.原型链<br>在JS中，每定义一个函数，就会为这个函数自动生成一个原型属性（prototype），当我们使用new操作符通过一个构造函数创建一个实例的时候，这个实例会有一个内部指针（__proto__）指向构造函数的原型对象。当我们访问实例的属性时，如果实例本身不存在这个属性，就会查找构造函数的原型。如果还没找到这个属性但是这个原型恰好也有一个内部指针（__proto__），则会继续查找原型的原型对象，这样就形成了一个原型链。如何让这个原型有一个__proto__指针呢，那就是让这个原型也是某一个构造函数的实例。看下代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Animal</span>(<span class="params">kind</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.kind = kind;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Animal.prototype.getKind = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.kind;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Cat</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 通过将Cat的原型指向Animal的实例来继承Animal</span></span><br><span class="line">Cat.prototype = <span class="keyword">new</span> Animal(<span class="string">'cat'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义Cat自身的原型方法</span></span><br><span class="line">Cat.prototype.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> cat = <span class="keyword">new</span> Cat(<span class="string">'Catty'</span>);</span><br><span class="line"><span class="comment">// 通过cat的原型访问getName</span></span><br><span class="line">cat.getName(); <span class="comment">// Catty</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 通过cat的原型链访问getKind</span></span><br><span class="line">cat.getKind(); <span class="comment">// cat</span></span><br></pre></td></tr></table></figure></p>
+<p>通过原型链就可以实现继承了。</p>
+
+      
+    </div>
+  
+    <footer class="article-footer">
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/new/">new</a></li></ul>
+
+    </footer>
+  
+  </div>
+  
+</article>
+
+
+    
       <article id="post-react-material-component" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -279,60 +337,6 @@
     <footer class="article-footer">
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React-Component/">React Component</a></li></ul>
-
-    </footer>
-  
-  </div>
-  
-</article>
-
-
-    
-      <article id="post-Material-Icons-can-t-display" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/17/Material-Icons-can-t-display/">Material Icons can&#39;t display ?</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/2016/04/17/Material-Icons-can-t-display/" class="article-date">
-  <time datetime="2016-04-17T03:08:20.000Z" itemprop="datePublished">2016-04-17</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/tech/">tech</a>
-  </div>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="正文">正文</h3><p>  <br>  Stark项目使用了react-material-ui，其中包含Material Icons，下载完成所有格式的字体文件后：</p>
-<p>  1. 导入字体</p>
-<pre><code><span class="comment"><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="at_rule">@<span class="keyword">font-face</span></span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">font-family</span>:<span class="value"> <span class="string">'Material Icons'</span></span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">font-style</span>:<span class="value"> normal</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">font-weight</span>:<span class="value"> <span class="number">400</span></span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">src</span>:<span class="value"> <span class="function">url</span>(MaterialIcons-Regular.eot)</span></span>; <span class="comment">/* For IE6-8 */</span></span><br><span class="line">  <span class="rule"><span class="attribute">src</span>:<span class="value"> <span class="function">local</span>(<span class="string">'Material Icons'</span>),</span><br><span class="line">       <span class="function">local</span>(<span class="string">'MaterialIcons-Regular'</span>),</span><br><span class="line">       <span class="function">url</span>(MaterialIcons-Regular.woff2) <span class="function">format</span>(<span class="string">'woff2'</span>),</span><br><span class="line">       <span class="function">url</span>(MaterialIcons-Regular.woff) <span class="function">format</span>(<span class="string">'woff'</span>),</span><br><span class="line">       <span class="function">url</span>(MaterialIcons-Regular.ttf) <span class="function">format</span>(<span class="string">'truetype'</span>)</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></span>
-</code></pre><p>  2. 使用字体</p>
-<pre><code><span class="comment"><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.material-icons</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">direction</span>:<span class="value"> ltr</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">display</span>:<span class="value"> inline-block</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">font-family</span>:<span class="value"> <span class="string">'Material Icons'</span></span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">14px</span></span></span>;  <span class="comment">/* Preferred icon size */</span></span><br><span class="line">  <span class="rule"><span class="attribute">font-weight</span>:<span class="value"> normal</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">font-style</span>:<span class="value"> normal</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">letter-spacing</span>:<span class="value"> normal</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">line-height</span>:<span class="value"> <span class="number">1</span></span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">text-transform</span>:<span class="value"> none</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">white-space</span>:<span class="value"> nowrap</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">word-wrap</span>:<span class="value"> normal</span></span>;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">/* Support for all WebKit browsers. */</span></span><br><span class="line">  <span class="rule"><span class="attribute">-webkit-font-smoothing</span>:<span class="value"> antialiased</span></span>;</span><br><span class="line">  <span class="comment">/* Support for Firefox. */</span></span><br><span class="line">  <span class="rule"><span class="attribute">-moz-osx-font-smoothing</span>:<span class="value"> grayscale</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></span>
-</code></pre><p>  上述两步完成后，在Mac下的chrome上完美的运行着，但是到了windows下的chrome却没法显示字体。最后发现还需要在步骤2的类中添加下述两句CSS：</p>
-<pre><code><span class="comment"><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.material-icons</span><span class="rules">&#123;</span><br><span class="line">  <span class="comment">/* Support for Safari and Chrome. */</span> </span><br><span class="line">  <span class="rule"><span class="attribute">text-rendering</span>:<span class="value"> optimizeLegibility</span></span>;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">/* Support for IE. */</span></span><br><span class="line">  <span class="rule"><span class="attribute">font-feature-settings</span>:<span class="value"> <span class="string">'liga'</span></span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></span>
-</code></pre><p>  这两句CSS的共同作用是启用字体的连字效果，就是下述这种效果,，oo和th都被短线连接：</p>
-<p>  <img src="http://7xlphe.com1.z0.glb.clouddn.com/liga.png" alt="连字效果"></p>
-<p>  强烈建议阅读<a href="http://www.sitepoint.com/cross-browser-web-fonts-part-3/" target="_blank" rel="external">web-font</a>这篇文章，对text-rendering和font-feature-settings讲解非常详细。</p>
-<p>  参考：<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-smooth" target="_blank" rel="external">font-smoothing</a></p>
-
-      
-    </div>
-  
-    <footer class="article-footer">
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Material-Icons/">Material Icons</a></li></ul>
 
     </footer>
   

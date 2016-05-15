@@ -67,6 +67,80 @@
 </header>
 <div ng-app="demoWan" style="position: relative;">
     <section id="main" class="outer">
+      <article id="post-start-seajs" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/31/start-seajs/">引入SeaJS</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2015/08/31/start-seajs/" class="article-date">
+  <time datetime="2015-08-31T04:07:06.000Z" itemprop="datePublished">2015-08-31</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/tech/">tech</a>
+  </div>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="主题">主题</h3><p>  为什么我选择了SeaJS</p>
+<h3 id="正文">正文</h3><ol>
+<li><p>前端开发中遇到的问题<br>以前如果要将某个功能抽象出来，比如Cvtouch商城的公共部分common.js，包括显示错误，打印错误，编码解码等，首先会自己找个名字，有意义并且不会冲突，可能是Common，然后将Common 关联到全局对象window.Common={}，最后在Common下定义功能函数，Common.log=function(){}，Common.encode=function(){}。这样做看似没什么问题，只要在HTML中引用common.js，那么所用的JS文件都可以通过Common使用公共函数log和encode。<br>但是真的没问题吗?起码现在有3个问题需要思考。</p>
+<ul>
+<li>命名冲突。假如某一天另一个项目组的小A看到我们的公共模块感觉还不错，想拿过去直接使用，而他的项目里面有个文件叫做Acommon.js，恰好也有个全局对象Common，即使小A在定义Common 时聪明的使用了window.Common=window.Common || {}，但在HTML中引用文件时我们的common.js在Acommon.js之后，那么我们的定义方式window.Common={}就完全覆盖了小A的所有功能。即使我们也足够聪明，我们的log和encode也会覆盖小A的同名函数。</li>
+<li>文件依赖。common.js是依赖jQuery的，如果小A并没有引用jQuery，那就只能靠浏览器报错来手动解决依赖关系。小项目可能还比较容易解决，但是如果项目变大，依赖文件变多，那就麻烦了。</li>
+<li>都关联到window对象。浏览器唯一的JavaScript全局对象就是window，所以大家都把可抽象部分关联到window对象，导致window对象越来越大，极易产生命名冲突。</li>
+</ul>
+</li>
+<li><p>为什么要模块化?<br>为了解决上述问题。模块的封装可以很轻易的解决命名冲突，模块的引用可以很轻易的解决文件依赖。</p>
+</li>
+<li><p>主流的模块化工具<br>SeaJS和RequireJS，两者的主要区别:(参考 <a href="http://www.zhihu.com/question/20342350" target="_blank" rel="external">http://www.zhihu.com/question/20342350</a>)</p>
+<ul>
+<li>两者定位有差异。RequireJS 想成为浏览器端的模块加载器，同时也想成为Rhino/Node等环境的模块加载器。SeaJS则专注于Web浏览器端，同时通过Node扩展的方式可以很方便跑在Node 服务器端。</li>
+<li>两者遵循的标准有差异。RequireJS 遵循的是 AMD(异步模 块定义)规范，SeaJS 遵循的是 CMD(通用模块定义)规范。规范的不同，导致了两者API的不同。SeaJS更简洁优雅，更贴近CommonJS Modules/1.1和Node Modules规范。</li>
+<li>两者社区理念有差异。RequireJS在尝试让第三方类库修改自身来支持RequireJS，目前只有少数社区采纳。SeaJS不强推，而采用自主封装的方式来“海纳百川”，目前已有较成熟的封装策略。</li>
+<li>两者代码质量有差异。RequireJS是没有明显的bug，SeaJS是明显没有bug。</li>
+<li>两者对调试等的支持有差异。SeaJS通过插件，可以实现Fiddler中自动映射的功能，还可以实现自动combo等功能，非常方便便捷。RequireJS无这方面的支持。</li>
+<li>两者的插件机制有差异。RequireJS采取的是在源码中预留接口的形式，源码中留有为插件而写的代码。SeaJS采取的 插件机制则与Node的方式一致:开放自身，让插件开发者可直接访问或修改，从而非常灵活，可以实现各种类型的插件。<br>综上所述，我们选择了SeaJS。</li>
+</ul>
+</li>
+<li><p>目前的状况<br><img src="http://7xl1b4.com1.z0.glb.clouddn.com/start_seajs1.png?imageView/2/w/240/q/90" alt="左图">            <img src="http://7xl1b4.com1.z0.glb.clouddn.com/start_seajs2.png?imageView/2/w/240/q/90" alt="右图"><br>先看两张图片，左边是之前的JS文件结构图，右边是现在的JS文件结构图。可以看到，结构清晰了，用不用SeaJS其实都该这 样做。关键问题是SeaJS如何做到模块化的?与NodeJS使用的 Require非常类似，3个接口就可以搞定:</p>
+<ul>
+<li>define:定义模块。</li>
+<li>require:引用模块。</li>
+<li>exports:导出模块接口。<br>我们看看右图中的modules下的Ajax.js是如何定义的:<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">define(<span class="function"><span class="keyword">function</span>(<span class="params">require, exports, module</span>)</span>&#123; </span><br><span class="line">  <span class="comment">//引入其他模块</span></span><br><span class="line">  <span class="keyword">var</span> $ = <span class="built_in">require</span>(jquery);</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//定义模块</span></span><br><span class="line">  <span class="keyword">var</span> Ajax = &#123;&#125;; </span><br><span class="line">  </span><br><span class="line">  <span class="comment">//导出模块接口 </span></span><br><span class="line">  <span class="built_in">module</span>.exports = Ajax; </span><br><span class="line">  </span><br><span class="line">  <span class="comment">//模块接口定义</span></span><br><span class="line">  Ajax.get = <span class="function"><span class="keyword">function</span>(<span class="params">url, cb</span>)</span>&#123;</span><br><span class="line">    $.get(url, cb); </span><br><span class="line">  &#125;;</span><br><span class="line">  Ajax.post = <span class="function"><span class="keyword">function</span>(<span class="params">uri, data, cb</span>)</span>&#123; </span><br><span class="line">    $.post(url, data, cb);</span><br><span class="line">  &#125;; </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<p>上述代码可以看到，在使用模块的时候只需要require一下，SeaJS会根据文件名查找相应的模块，然后赋值给指定变量，完全不需要担心命名冲突的问题，而使用require可以完整的解决文件依赖的问题，我们不需要在HTML中留意文件的依赖顺序，只需要在使用的时候在JS中require一下，SeaJS就会自动下载文件并执行。最后，完全与window全局对象没有任何关系。</p>
+
+      
+    </div>
+  
+    <footer class="article-footer">
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SeaJS/">SeaJS</a></li></ul>
+
+    </footer>
+  
+  </div>
+  
+</article>
+
+
+    
       <article id="post-backtotop" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -244,53 +318,6 @@
 <h3 id="详情">详情</h3><p> <div class="wan-carousel wan-carousel-1 a-no-textdecotion" style="width: 50%; float:left;"><div class="carousel-list no-fancybox"><img src="/css/images/1.jpg" alt="img"><img src="/css/images/2.jpg" alt="img"><img src="/css/images/3.jpg" alt="img"><img src="/css/images/4.jpg" alt="img"></div></div><div class="wan-carousel wan-carousel-2 a-no-textdecotion" style="width: 50%; float:left;"><div class="carousel-list no-fancybox"><img src="/css/images/1.jpg" alt="img"><img src="/css/images/2.jpg" alt="img"></div></div><div class="wan-carousel wan-carousel-3 a-no-textdecotion" style="width: 50%; float:left;"><div class="carousel-list no-fancybox"><img src="/css/images/2.jpg" alt="img"><img src="/css/images/3.jpg" alt="img"><img src="/css/images/4.jpg" alt="img"></div></div><div class="wan-carousel wan-carousel-4 a-no-textdecotion" style="width: 50%; float:left;"><div class="carousel-list no-fancybox"><img src="/css/images/1.jpg" alt="img"><img src="/css/images/2.jpg" alt="img"></div></div><div style="clear:both;"></div><br></p>
 <p>配置文件如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">".wan-carousel-1, .wan-carousel-2"</span>).WanCarousel();</span><br><span class="line">$(<span class="string">".wan-carousel-3"</span>).WanCarousel(&#123;</span><br><span class="line">  interval: <span class="number">8000</span>,</span><br><span class="line">  speed: <span class="number">1000</span>,</span><br><span class="line">&#125;);</span><br><span class="line">$(<span class="string">".wan-carousel-4"</span>).WanCarousel(&#123;</span><br><span class="line">  interval: <span class="number">2000</span>,</span><br><span class="line">  speed: <span class="number">200</span>,</span><br><span class="line">  callback: <span class="function"><span class="keyword">function</span>(<span class="params">element, index</span>) </span>&#123;<span class="comment">//called when animaton end</span></span><br><span class="line">    </span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
 <p>HTML文件如下：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"wan-carousel wan-carousel-1"</span> <span class="attribute">style</span>=<span class="value">"width: 50%; float:left;"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"carousel-list"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"img/1.jpg"</span> <span class="attribute">alt</span>=<span class="value">"img"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"img/2.jpg"</span> <span class="attribute">alt</span>=<span class="value">"img"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"img/3.jpg"</span> <span class="attribute">alt</span>=<span class="value">"img"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"img/4.jpg"</span> <span class="attribute">alt</span>=<span class="value">"img"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"wan-carousel wan-carousel-2"</span> <span class="attribute">style</span>=<span class="value">"width: 50%; float:left;"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"carousel-list"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"#"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"img/1.jpg"</span> <span class="attribute">alt</span>=<span class="value">"img"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"img/2.jpg"</span> <span class="attribute">alt</span>=<span class="value">"img"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"wan-carousel wan-carousel-3"</span> <span class="attribute">style</span>=<span class="value">"width: 50%; float:left;"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"carousel-list"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"img/2.jpg"</span> <span class="attribute">alt</span>=<span class="value">"img"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"img/3.jpg"</span> <span class="attribute">alt</span>=<span class="value">"img"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"img/4.jpg"</span> <span class="attribute">alt</span>=<span class="value">"img"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"wan-carousel wan-carousel-4"</span> <span class="attribute">style</span>=<span class="value">"width: 50%; float:left;"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"carousel-list"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"#"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"img/1.jpg"</span> <span class="attribute">alt</span>=<span class="value">"img"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"img/2.jpg"</span> <span class="attribute">alt</span>=<span class="value">"img"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-
-      
-    </div>
-  
-    <footer class="article-footer">
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/组件/">组件</a></li></ul>
-
-    </footer>
-  
-  </div>
-  
-</article>
-
-
-    
-      <article id="post-address" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/11/address/">jquery-wan-address-select</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/2015/08/11/address/" class="article-date">
-  <time datetime="2015-08-11T02:11:38.000Z" itemprop="datePublished">2015-08-11</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/component/">component</a>
-  </div>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="主题">主题</h3><p>  基于jQuery实现的中国省市区选择插件，可自定义精细度：城镇，街道，村委。</p>
-<h3 id="详情">详情</h3><p> <div class="wan-address-select wan-address-select1" style="display:inline-block;"></div><input id="getValue" type="button" value="get value" style="margin-left:20px;"><input id="getValueAndId" type="button" value="get value and id"></p>
-<p> <div class="wan-address-select wan-address-select2"></div><br> <div class="wan-address-select wan-address-select3"></div><br> 配置文件如下：<br> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">var</span> optionsAddress1 = &#123;</span><br><span class="line">  initProvice: <span class="string">'北京市'</span>,</span><br><span class="line">  initCity: <span class="string">'市辖区'</span>,</span><br><span class="line">  initCounty: <span class="string">'西城区'</span>,</span><br><span class="line">  initTown: <span class="string">'月坛街道办事处'</span>,</span><br><span class="line">  initVillage: <span class="string">'南礼士路社区居委会'</span>,</span><br><span class="line">  fineness: <span class="string">'county'</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> optionsAddress2 = &#123;</span><br><span class="line">     initProvice: <span class="string">'北京市'</span>,</span><br><span class="line">     initCity: <span class="string">'市辖区'</span>,</span><br><span class="line">     initCounty: <span class="string">'西城区'</span>,</span><br><span class="line">     initTown: <span class="string">'月坛街道办事处'</span>,</span><br><span class="line">     initVillage: <span class="string">'南礼士路社区居委会'</span>,</span><br><span class="line">     fineness: <span class="string">'town'</span></span><br><span class="line">   &#125;;</span><br><span class="line"> <span class="keyword">var</span> optionsAddress3 = &#123;</span><br><span class="line">     initProvice: <span class="string">'北京市'</span>,</span><br><span class="line">     initCity: <span class="string">'市辖区'</span>,</span><br><span class="line">     initCounty: <span class="string">'西城区'</span>,</span><br><span class="line">     initTown: <span class="string">'月坛街道办事处'</span>,</span><br><span class="line">     initVillage: <span class="string">'南礼士路社区居委会'</span>,</span><br><span class="line">     fineness: <span class="string">'village'</span></span><br><span class="line">   &#125;;</span><br><span class="line"> $(<span class="string">".wan-address-select1"</span>).WanAddressSelect(optionsAddress1);</span><br><span class="line"> $(<span class="string">".wan-address-select2"</span>).WanAddressSelect(optionsAddress2);</span><br><span class="line"> $(<span class="string">".wan-address-select3"</span>).WanAddressSelect(optionsAddress3);</span><br><span class="line"></span><br><span class="line"> $(<span class="string">"#getValue"</span>).on(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   alert(<span class="built_in">JSON</span>.stringify($(<span class="string">".wan-address-select1"</span>).WanAddressSelect(<span class="string">'val'</span>)));</span><br><span class="line"> &#125;);</span><br><span class="line"> $(<span class="string">"#getValueAndId"</span>).on(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   alert(<span class="built_in">JSON</span>.stringify($(<span class="string">".wan-address-select1"</span>).WanAddressSelect(<span class="string">'idval'</span>)));</span><br><span class="line"> &#125;);</span><br></pre></td></tr></table></figure></p>
-<p> HTML文件如下：<br> <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"wan-address-select wan-address-select1"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"wan-address-select wan-address-select2"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"wan-address-select wan-address-select3"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 
       
     </div>
