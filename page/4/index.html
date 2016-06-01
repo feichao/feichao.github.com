@@ -67,6 +67,51 @@
 </header>
 <div ng-app="demoWan" style="position: relative;">
     <section id="main" class="outer">
+      <article id="post-record-wave" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/31/record-wave/">record-wave</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2015/10/31/record-wave/" class="article-date">
+  <time datetime="2015-10-31T08:13:43.000Z" itemprop="datePublished">2015-10-31</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/tech/">tech</a>
+  </div>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="主题">主题</h3><p>  基于HTML5 Web Audio API，使用canvas绘制的录音曲线图。</p>
+<h3 id="详情">详情</h3><p>  <br>  直接查看DEMO：<a href="http://blog.0xfc.cn/record-wave/">demo</a></p>
+
+      
+    </div>
+  
+    <footer class="article-footer">
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/组件/">组件</a></li></ul>
+
+    </footer>
+  
+  </div>
+  
+</article>
+
+
+    
       <article id="post-angular-material-template" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -259,54 +304,6 @@
 
 
     
-      <article id="post-gulp-seajs" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/09/02/gulp-seajs/">使用gulp构建SeaJS</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/2015/09/02/gulp-seajs/" class="article-date">
-  <time datetime="2015-09-02T03:19:29.000Z" itemprop="datePublished">2015-09-02</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/tech/">tech</a>
-  </div>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="主题">主题</h3><p>  使用SeaJS完成了Cvtouch商城的模块化工作，接下来一个严峻的问题是如何进行构建，因为模块化之前使用的是gulp，也为了减少切换成本，放弃了SPM，决定还是暂时使用gulp构建。</p>
-<h3 id="正文">正文</h3><p>  <br>  使用SeaJS主要是改变了JS的文件结构，对其他静态文件CSS，IMG都没有什么影响。所以本文只针对模块化构建前后的JS部分。<br>  对JS的构建包括：合并，压缩，文件名+hash。<br>  模块化之前的gulp file：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">  gulp.task(<span class="string">'lib-js'</span>, [], <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> gulp.src([</span><br><span class="line">        pathSource.libs + <span class="string">'jquery.min.js'</span>,</span><br><span class="line">        pathSource.libs + <span class="string">'jquery.bpopup.min.js'</span>])</span><br><span class="line">      .pipe(sourcemaps.init())</span><br><span class="line">      .pipe(concat(<span class="string">'lib.min.js'</span>))</span><br><span class="line">      .pipe(uglify())</span><br><span class="line">      .pipe(rev())</span><br><span class="line">      .pipe(sourcemaps.write(<span class="string">'.'</span>))</span><br><span class="line">      .pipe(gulp.dest(pathDist.libs))</span><br><span class="line">      .pipe(rev.manifest(&#123;base:<span class="string">''</span>, merge: <span class="literal">true</span>&#125;))</span><br><span class="line">      .pipe(gulp.dest(<span class="string">''</span>));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-<p>  模块化之后的gulp file：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">  gulp.task(<span class="string">"module-js"</span>, [<span class="string">'component-js'</span>], <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    gulp.src([</span><br><span class="line">      pathSource.modules + <span class="string">"cstorage.js"</span>,</span><br><span class="line">      pathSource.modules + <span class="string">"dialog.js"</span>,</span><br><span class="line">      pathSource.modules + <span class="string">"util.js"</span>], &#123;base: pathSource.root&#125;)</span><br><span class="line">      .pipe(transport())</span><br><span class="line">      .pipe(sourcemaps.init())</span><br><span class="line">      .pipe(concat(<span class="string">'module.min.js'</span>))</span><br><span class="line">      .pipe(uglify())</span><br><span class="line">      .pipe(rev())</span><br><span class="line">      .pipe(sourcemaps.write(<span class="string">'.'</span>))</span><br><span class="line">      .pipe(gulp.dest(pathDist.modules))</span><br><span class="line">      .pipe(rev.manifest(&#123;base:<span class="string">''</span>, merge: <span class="literal">true</span>&#125;))</span><br><span class="line">      .pipe(gulp.dest(<span class="string">''</span>));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-<p>  可以看到，构建操作：合并，压缩，文件名+hash，模块化前后本质上没有任何区别。而模块化之后主要多了一步transport（使用gulp-seajs-transport）。关于SeaJS的transport，请看<a href="http://www.zhihu.com/question/20789867/answer/16187950" target="_blank" rel="external">http://www.zhihu.com/question/20789867/answer/16187950</a>，简单就是为每个模块命名ID，使SeaJS在定位模块时采用ID，而不是文件名。这里要详细了解下SeaJS模块ID的解析规则，否则可能在构建后发生无法找到模块的错误，具体可以看这里<a href="http://segmentfault.com/a/1190000000354302" target="_blank" rel="external">http://segmentfault.com/a/1190000000354302</a>和<a href="https://github.com/seajs/seajs/issues/930" target="_blank" rel="external">https://github.com/seajs/seajs/issues/930</a>，简单来说就是尽量使用相对标识，不要使用顶级标识。<br>  HTML中引用构建后的文件：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 公共模块 --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- build:js $&#123;pageContext.request.contextPath&#125;/modules/module.min.js --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- /build --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 业务模块 --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- build:js $&#123;pageContext.request.contextPath&#125;/public/public.min.js --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- /build --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="actionscript"></span><br><span class="line">  seajs.config(&#123;</span><br><span class="line">    charset: <span class="string">'utf-8'</span>,</span><br><span class="line">    debug: <span class="literal">false</span></span><br><span class="line">  &#125;);</span><br><span class="line">  seajs.<span class="keyword">use</span>(<span class="string">"public/js/main"</span>);</span><br><span class="line"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>  看起来没什么复杂的，其实最重要的是熟悉SeaJS ID的解析规则！！！</p>
-
-      
-    </div>
-  
-    <footer class="article-footer">
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SeaJS/">SeaJS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gulp/">gulp</a></li></ul>
-
-    </footer>
-  
-  </div>
-  
-</article>
-
-
-    
       <nav id="page-nav">
         <a class="extend prev" rel="prev" href="/page/3/">&laquo; 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/5/">下一页 &raquo;</a>
       </nav>
@@ -349,6 +346,12 @@
 <script type="text/javascript" src="http://7xlphe.com1.z0.glb.clouddn.com/angular-animate.min.js"></script>
 <script type="text/javascript" src="http://7xlphe.com1.z0.glb.clouddn.com/moment.min.js"></script>
 <script type="text/javascript" src="http://7xlphe.com1.z0.glb.clouddn.com/angular-material-icons.min.js"></script>
+
+<script type="text/javascript" src="http://7xlphe.com1.z0.glb.clouddn.com/absord-guideline.js"></script>
+<script type="text/javascript" src="http://7xlphe.com1.z0.glb.clouddn.com/absord-movesystem.js"></script>
+<script type="text/javascript" src="http://7xlphe.com1.z0.glb.clouddn.com/absord-guidelines.js"></script>
+
+
 <script src="/libs/daterange-picker/src/daterangepicker.js" type="text/javascript"></script>
 <script src="/libs/wan-select/src/wan-select.js" type="text/javascript"></script>
 <script src="/libs/paging/src/angular-material-paging.js" type="text/javascript"></script>

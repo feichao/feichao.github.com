@@ -3,21 +3,30 @@
 <head>
   <meta charset="utf-8">
   
-  <title>jquery-wan-backtotop - Feichao&#39;s blog</title>
+  <title>吸附对齐系统 - Feichao&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="主题  基于jQuery实现的回到顶部插件，可自定义位置，尺寸，图片资源，提供3套主题。可通过向下拖动主页查看。
-详情配置文件如下：123456789101112131415161718192021222324252627282930313233343536373839404142434445var optionsTheme1 = &amp;#123;  imgSrc: &apos;http://7xl1b4.co">
+  <meta name="description" content="主题  原生JS实现的吸附对齐系统。
+详情
+代码
+
+12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061...#content &amp;#123;  border: 1px solid #ddd;  box-sizing: bord">
 <meta property="og:type" content="article">
-<meta property="og:title" content="jquery-wan-backtotop">
-<meta property="og:url" content="http://blog.0xfc.cn/2015/08/24/backtotop/index.html">
+<meta property="og:title" content="吸附对齐系统">
+<meta property="og:url" content="http://blog.0xfc.cn/2016/06/01/absord-system/index.html">
 <meta property="og:site_name" content="Feichao's blog">
-<meta property="og:description" content="主题  基于jQuery实现的回到顶部插件，可自定义位置，尺寸，图片资源，提供3套主题。可通过向下拖动主页查看。
-详情配置文件如下：123456789101112131415161718192021222324252627282930313233343536373839404142434445var optionsTheme1 = &amp;#123;  imgSrc: &apos;http://7xl1b4.co">
-<meta property="og:updated_time" content="2015-08-24T08:37:50.000Z">
+<meta property="og:description" content="主题  原生JS实现的吸附对齐系统。
+详情
+代码
+
+12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061...#content &amp;#123;  border: 1px solid #ddd;  box-sizing: bord">
+<meta property="og:updated_time" content="2016-06-01T06:23:33.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="jquery-wan-backtotop">
-<meta name="twitter:description" content="主题  基于jQuery实现的回到顶部插件，可自定义位置，尺寸，图片资源，提供3套主题。可通过向下拖动主页查看。
-详情配置文件如下：123456789101112131415161718192021222324252627282930313233343536373839404142434445var optionsTheme1 = &amp;#123;  imgSrc: &apos;http://7xl1b4.co">
+<meta name="twitter:title" content="吸附对齐系统">
+<meta name="twitter:description" content="主题  原生JS实现的吸附对齐系统。
+详情
+代码
+
+12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061...#content &amp;#123;  border: 1px solid #ddd;  box-sizing: bord">
   
   
     <link rel="icon" href="/favicon.png">
@@ -70,7 +79,7 @@
   </div>
 </header>
 <div ng-app="demoWan" style="position: relative;">
-    <section id="main" class="outer"><article id="post-backtotop" class="article article-type-post" itemscope itemprop="blogPost">
+    <section id="main" class="outer"><article id="post-absord-system" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     
@@ -78,15 +87,15 @@
         
   
     <h1 class="article-title" itemprop="name">
-      jquery-wan-backtotop
+      吸附对齐系统
     </h1>
   
 
       </header>
     
     <div class="article-meta">
-      <a href="/2015/08/24/backtotop/" class="article-date">
-  <time datetime="2015-08-24T08:04:35.000Z" itemprop="datePublished">2015-08-24</time>
+      <a href="/2016/06/01/absord-system/" class="article-date">
+  <time datetime="2016-06-01T03:25:45.000Z" itemprop="datePublished">2016-06-01</time>
 </a>
       
   <div class="article-category">
@@ -97,11 +106,19 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="主题">主题</h3><p>  基于jQuery实现的回到顶部插件，可自定义位置，尺寸，图片资源，提供3套主题。可通过向下拖动<a href="/">主页</a>查看。</p>
-<h3 id="详情">详情</h3><p>配置文件如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> optionsTheme1 = &#123;</span><br><span class="line">  imgSrc: <span class="string">'http://7xl1b4.com1.z0.glb.clouddn.com/to_top.png'</span>,</span><br><span class="line">  displayTop: <span class="number">500</span>,</span><br><span class="line">  speed: <span class="number">200</span>,</span><br><span class="line">  size: &#123;</span><br><span class="line">    height: <span class="string">'35px'</span>,</span><br><span class="line">    width: <span class="string">'35px'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  position: &#123;</span><br><span class="line">    right: <span class="string">'40px'</span>,</span><br><span class="line">    bottom: <span class="string">'30px'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  template: <span class="string">''</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> optionsTheme2 = &#123;</span><br><span class="line">  imgSrc: <span class="string">'http://7xl1b4.com1.z0.glb.clouddn.com/to_top_2.png'</span>,</span><br><span class="line">  displayTop: <span class="number">2500</span>,</span><br><span class="line">  speed: <span class="number">800</span>,</span><br><span class="line">  size: &#123;</span><br><span class="line">    height: <span class="string">'40px'</span>,</span><br><span class="line">    width: <span class="string">'40px'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  position: &#123;</span><br><span class="line">    right: <span class="string">'90px'</span>,</span><br><span class="line">    bottom: <span class="string">'60px'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  template: <span class="string">''</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> optionsTheme3 = &#123;</span><br><span class="line">  imgSrc: <span class="string">'http://7xl1b4.com1.z0.glb.clouddn.com/to_top_3.png'</span>,</span><br><span class="line">  displayTop: <span class="number">4000</span>,</span><br><span class="line">  speed: <span class="number">2000</span>,</span><br><span class="line">  size: &#123;</span><br><span class="line">    height: <span class="string">'45px'</span>,</span><br><span class="line">    width: <span class="string">'45px'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  position: &#123;</span><br><span class="line">    right: <span class="string">'140px'</span>,</span><br><span class="line">    bottom: <span class="string">'90px'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  template: <span class="string">''</span></span><br><span class="line">&#125;;</span><br><span class="line">$(<span class="string">".wan-backtotop-theme-1"</span>).WanBackToTop(optionsTheme1);</span><br><span class="line">$(<span class="string">".wan-backtotop-theme-2"</span>).WanBackToTop(optionsTheme2);</span><br><span class="line">$(<span class="string">".wan-backtotop-theme-3"</span>).WanBackToTop(optionsTheme3);</span><br></pre></td></tr></table></figure></p>
-<p>HTML文件如下：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"wan-backtotop-theme-1"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"wan-backtotop-theme-2"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"wan-backtotop-theme-3"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>Options:</p>
-<h5 id="imgSrc:_string，图片路径，可自行设置">imgSrc: string，图片路径，可自行设置</h5><h5 id="displayTop:_number，设置离顶部多远开始显示按钮">displayTop: number，设置离顶部多远开始显示按钮</h5><h5 id="speed:_number，回到顶部的时间">speed: number，回到顶部的时间</h5><h5 id="size:_object，{height,_width}，设置图片的尺寸">size: object，{height, width}，设置图片的尺寸</h5><h5 id="position:_object，{right,_bottom}，设置图片的绝对位置">position: object，{right, bottom}，设置图片的绝对位置</h5><h5 id="template:_暂时未用">template: 暂时未用</h5>
+        <h3 id="主题">主题</h3><p>  原生JS实现的吸附对齐系统。</p>
+<h3 id="详情">详情</h3><blockquote>
+<p>代码</p>
+</blockquote>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="comment">#content &#123;</span></span><br><span class="line">  border: <span class="number">1</span>px solid <span class="comment">#ddd;</span></span><br><span class="line">  box-sizing: border-box;</span><br><span class="line">  height: <span class="number">400</span>px;</span><br><span class="line">  margin: auto;</span><br><span class="line">  position: relative;</span><br><span class="line">  width: <span class="number">800</span>px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">#canvas &#123;</span></span><br><span class="line">  height: <span class="number">400</span>px;</span><br><span class="line">  position: absolute;</span><br><span class="line">  width: <span class="number">800</span>px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">#retangle &#123;</span></span><br><span class="line">  background: <span class="comment">#eee;</span></span><br><span class="line">  border: <span class="number">1</span>px solid <span class="comment">#ccc;</span></span><br><span class="line">  box-shadow: <span class="number">0</span> <span class="number">0</span> <span class="number">2</span>px <span class="comment">#ddd;</span></span><br><span class="line">  height: <span class="number">130</span>px;</span><br><span class="line">  left: <span class="number">50</span>px;</span><br><span class="line">  top: <span class="number">10</span>px;</span><br><span class="line">  width: <span class="number">175</span>px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">#retangle-1 &#123;</span></span><br><span class="line">  background: <span class="comment">#333;</span></span><br><span class="line">  border: <span class="number">1</span>px solid <span class="comment">#000;</span></span><br><span class="line">  box-shadow: <span class="number">0</span> <span class="number">0</span> <span class="number">2</span>px <span class="comment">#111;</span></span><br><span class="line">  height: <span class="number">130</span>px;</span><br><span class="line">  left: <span class="number">250</span>px;</span><br><span class="line">  top: <span class="number">230</span>px;</span><br><span class="line">  width: <span class="number">175</span>px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">#retangle-2 &#123;</span></span><br><span class="line">  background: <span class="comment">#666;</span></span><br><span class="line">  border: <span class="number">1</span>px solid <span class="comment">#333;</span></span><br><span class="line">  box-shadow: <span class="number">0</span> <span class="number">0</span> <span class="number">2</span>px <span class="comment">#444;</span></span><br><span class="line">  height: <span class="number">130</span>px;</span><br><span class="line">  left: <span class="number">550</span>px;</span><br><span class="line">  top: <span class="number">260</span>px;</span><br><span class="line">  width: <span class="number">175</span>px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.retangle &#123;</span><br><span class="line">  box-sizing: border-box;</span><br><span class="line">  cursor: pointer;</span><br><span class="line">  position: absolute;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">&lt;<span class="keyword">div</span> <span class="property">id</span>=<span class="string">"content"</span>&gt;</span><br><span class="line">  &lt;canvas <span class="property">id</span>=<span class="string">"canvas"</span> height=<span class="string">"400"</span> width=<span class="string">"800"</span>&gt;&lt;/canvas&gt;</span><br><span class="line">  &lt;<span class="keyword">div</span> <span class="property">id</span>=<span class="string">"retangle"</span> <span class="type">class</span>=<span class="string">"retangle"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</span><br><span class="line">  &lt;<span class="keyword">div</span> <span class="property">id</span>=<span class="string">"retangle-1"</span> <span class="type">class</span>=<span class="string">"retangle"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</span><br><span class="line">  &lt;<span class="keyword">div</span> <span class="property">id</span>=<span class="string">"retangle-2"</span> <span class="type">class</span>=<span class="string">"retangle"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</span><br><span class="line">&lt;/<span class="keyword">div</span>&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight openscad"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 声明吸附参考线</span></span><br><span class="line">var guideLines = new GuideLines<span class="params">()</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化吸附系统</span></span><br><span class="line">var moveSystem = new MoveSystem<span class="params">()</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置最小吸附距离</span></span><br><span class="line">moveSystem.setABD<span class="params">(<span class="number">5</span>)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置吸附参考线</span></span><br><span class="line">moveSystem.setGuideLines<span class="params">(guideLines)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置吸附对齐参考线</span></span><br><span class="line">moveSystem.setAlignLines<span class="params">(alignLines)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置被拖动的DOM元素</span></span><br><span class="line">moveSystem.setElement<span class="params">(retangle)</span>;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>效果</p>
+</blockquote>
+<div id="content"><canvas id="canvas" height="400" width="800"></canvas><div id="retangle" class="retangle"></div><div id="retangle-1" class="retangle"></div><div id="retangle-2" class="retangle"></div></div>
+
+
+
       
     </div>
   
@@ -116,17 +133,9 @@
     
 <nav id="article-nav">
   
-    <a href="/2015/08/31/start-seajs/" id="article-nav-newer" class="article-nav-link-wrap">
-      <div class="article-nav-title"><span>&lt;</span>&nbsp;
-        
-          引入SeaJS
-        
-      </div>
-    </a>
   
-  
-    <a href="/2015/08/21/wan-select/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">wan-select&nbsp;<span>&gt;</span></div>
+    <a href="/2016/05/15/javascript-new-and-more/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Javascript new及其衍生&nbsp;<span>&gt;</span></div>
     </a>
   
 </nav>
@@ -137,7 +146,7 @@
 
   <section id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread outer" data-thread-key="post-backtotop" data-title="jquery-wan-backtotop" data-url="http://blog.0xfc.cn/2015/08/24/backtotop/"></div>
+    <div class="ds-thread outer" data-thread-key="post-absord-system" data-title="吸附对齐系统" data-url="http://blog.0xfc.cn/2016/06/01/absord-system/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
