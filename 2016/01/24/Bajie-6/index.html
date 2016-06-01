@@ -208,6 +208,8 @@
 <script type="text/javascript" src="http://7xlphe.com1.z0.glb.clouddn.com/absord-movesystem.js"></script>
 <script type="text/javascript" src="http://7xlphe.com1.z0.glb.clouddn.com/absord-guidelines.js"></script>
 
+<script type="text/javascript" src="http://7xlphe.com1.z0.glb.clouddn.com/digit-digit-dance.js"></script>
+
 
 <script src="/libs/daterange-picker/src/daterangepicker.js" type="text/javascript"></script>
 <script src="/libs/wan-select/src/wan-select.js" type="text/javascript"></script>
@@ -383,6 +385,33 @@ $(document).ready(function() {
 
   window.EightZoomSys.demarcation = 'parent';
 });
+
+function getRandomStr(num) {
+  var r = '';
+  for(; num > 0; num--) {
+    r += Math.floor(Math.random() * 10);
+  }
+
+  return r;
+}
+
+var digitDanceEle = document.getElementById('digit-dance');
+var digitDanceEle1 = document.getElementById('digit-dance-1');
+
+var digitDance = new DigitDance(digitDanceEle);
+var digitDance1 = new DigitDance(digitDanceEle1);
+
+digitDance.setDigitBits(10);
+digitDance1.setDigitBits(20);
+
+setInterval(function() {
+  digitDance.setNumber(getRandomStr(10));
+}, 3000);
+
+setInterval(function() {
+  digitDance1.setNumber(getRandomStr(20));
+}, 5000);
+    
 </script>
 <script type="text/javascript" src="http://tajs.qq.com/stats?sId=44532796" charset="UTF-8"></script>
   </div>

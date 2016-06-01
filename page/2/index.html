@@ -67,6 +67,61 @@
 </header>
 <div ng-app="demoWan" style="position: relative;">
     <section id="main" class="outer">
+      <article id="post-react-decorator" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/24/react-decorator/">react es6 装饰器</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2016/04/24/react-decorator/" class="article-date">
+  <time datetime="2016-04-24T03:24:34.000Z" itemprop="datePublished">2016-04-24</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/tech/">tech</a>
+  </div>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="主题">主题</h3><p>  如何使用es6装饰器？</p>
+<h3 id="正文">正文</h3><p>  ES6不支持Mixins，但是ES7支持Decorator，使用Decorator可以实现Mixins功能。Decorator本质上是一个高阶函数（高阶组件），在面向对象的语言中被定义为一个包装类。也就是说，使用Decorator，会为React组件添加一些通用的新功能。</p>
+<p>  在React中，Decorator定义为一个函数，这个函数将一个组件A作为参数，并且重新render一个以A为基础的组件。此时只需要在A组件定义的时候加上@Decorator。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Component =&gt; &#123;</span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    <span class="keyword">super</span>(props);</span><br><span class="line">    ...</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  ...</span><br><span class="line">  </span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="title">Component</span> &#123;<span class="attribute">...this.props</span>&#125; <span class="attribute">...</span> /&gt;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>  有些时候需要使用this.context，此时应该手动将contextTypes传入Decorator。此时需要在A组件定义的时候加上@Decorator(contextTypes, context)。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">(contextTypes = &#123;&#125;, context = &#123;&#125;) =&gt; Component =&gt; &#123;</span><br><span class="line">  static childContextTypes = contextTypes;</span><br><span class="line">  static contextTypes = contextTypes;</span><br><span class="line">  </span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    <span class="keyword">super</span>(props);</span><br><span class="line">    ...</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  ...</span><br><span class="line">  </span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="title">Component</span> &#123;<span class="attribute">...this.props</span>&#125; <span class="attribute">...</span> /&gt;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>  可以在Decorator中定义通用函数，将此函数作为props传入A组件中，此时A组件可以通过this.props.doSomething()使用此函数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">doSomething() &#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">render() &#123;</span><br><span class="line">  <span class="xml"><span class="tag">&lt;<span class="title">Component</span> &#123;<span class="attribute">...this.props</span>&#125; </span><br><span class="line">    <span class="attribute">doSomething</span>=<span class="value">&#123;this.doSomething.bind(this)&#125;</span> /&gt;</span></span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>  也可以重新封装A组件。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">render() &#123;</span><br><span class="line">  <span class="xml"><span class="tag">&lt;<span class="title">Wrap</span> <span class="attribute">...</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">Component</span> &#123;<span class="attribute">...this.props</span>&#125; <span class="attribute">...</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">Wrap</span>&gt;</span></span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>  Decorator不但可以装饰组件类，还可以装饰函数，多个装饰器也可以同时使用装饰同一个组件类，但是要保证每次装饰后不影响源组件的基本功能。</p>
+<p>  Decorator虽好，但是在使用之前还是要深思熟虑，props的来源会增加代码阅读和维护的难度，尤其是使用多个Decorator的时候。Decorator的使用对A来说应该是透明的，不能影响A的基本功能。</p>
+
+      
+    </div>
+  
+    <footer class="article-footer">
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/decorator/">decorator</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/es6/">es6</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
+
+    </footer>
+  
+  </div>
+  
+</article>
+
+
+    
       <article id="post-how-to-create-react-component" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -276,61 +331,6 @@
 
 
     
-      <article id="post-Bajie-8" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/24/Bajie-8/">八戒传-8</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/2016/03/24/Bajie-8/" class="article-date">
-  <time datetime="2016-03-24T13:06:51.000Z" itemprop="datePublished">2016-03-24</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/westgoal/">westgoal</a>
-  </div>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="感想">感想</h3><p>  又是一年啊，怎么还没长白头发！</p>
-<h3 id="正文">正文</h3><p>  八戒，过年了，你那边应该是笙歌艳舞的子时，为师这边已经炮竹声声了。</p>
-<p>  小和尚和小尼姑出去玩了，寺里空荡荡的，你师母在守庵，为师在守庙。</p>
-<p>  远游的僧人都没回来，他们在异乡的宝刹与为师一起守岁。</p>
-<p>  来年，不知道为师会不会长头发，内有烦恼丝，倒不如长几根头发，不但可以帅帅的，还能为佛祖多赚几箱香油钱。</p>
-<p>  今年，寺里的香火不错，到了年底结余不少，管钱的师兄说给大家置换些衣服，小尼姑们都没啥反应，倒是小和尚们吵吵嚷嚷的，这一幕让为师想起了西天路上每次化到斋饭都是你抢先一步，完全不考虑为师的感受，要不是猴子管着你，为师可能早就饿屎了。</p>
-<p>  自从我们西行的故事传开后，为师经常看到小娃娃在玩角色扮演的游戏。前几天，又见到了，为师呆呆的站在那里看了好久，看到了活蹦乱跳的猴子，好吃懒做的猪，任劳任怨的沙僧，就是没找到细皮嫩肉的圣僧，为师就跑过去问一个小朋友：为什么没有唐僧呢？小孩子不耐烦的说：你这笨和尚，唐僧当然是被妖怪抓走了！</p>
-<p>  小孩子们都在争着做猴子，连猴子猴孙都在抢着做。八戒你呢一般都是胖胖的小娃娃，坐在那里不停的吃东西。老沙却总是围在你的旁边，不停的指着猴子们说着这里演错了，那里演的不对。为师的存在仅仅是为了向旁边的大人们证明这不是一场闹剧。</p>
-<p>  这十几年的取经路，为师也明白取经真正的核心是一条正确的路和一颗坚定不移的心，毕竟佛祖等的并不是其他某某某。</p>
-<p>  回到寺庙后，为师去尼姑庵找你师母，把这件事说给你她听，你师母呵呵一笑就不理为师了，转身叫来了几个小尼姑，画面仿佛突然回到了盘丝洞，那时为师蜷缩在阴暗的角落，你却在悠悠的偷看姑娘们洗澡。</p>
-<p>  看来所有的结局不是不尽人意，而是人意太浓，用情太重。</p>
-<p>  爱你的师父，再聊。记得回信啊。</p>
-
-      
-    </div>
-  
-    <footer class="article-footer">
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/八戒/">八戒</a></li></ul>
-
-    </footer>
-  
-  </div>
-  
-</article>
-
-
-    
       <nav id="page-nav">
         <a class="extend prev" rel="prev" href="/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/">下一页 &raquo;</a>
       </nav>
@@ -377,6 +377,8 @@
 <script type="text/javascript" src="http://7xlphe.com1.z0.glb.clouddn.com/absord-guideline.js"></script>
 <script type="text/javascript" src="http://7xlphe.com1.z0.glb.clouddn.com/absord-movesystem.js"></script>
 <script type="text/javascript" src="http://7xlphe.com1.z0.glb.clouddn.com/absord-guidelines.js"></script>
+
+<script type="text/javascript" src="http://7xlphe.com1.z0.glb.clouddn.com/digit-digit-dance.js"></script>
 
 
 <script src="/libs/daterange-picker/src/daterangepicker.js" type="text/javascript"></script>
@@ -553,6 +555,33 @@ $(document).ready(function() {
 
   window.EightZoomSys.demarcation = 'parent';
 });
+
+function getRandomStr(num) {
+  var r = '';
+  for(; num > 0; num--) {
+    r += Math.floor(Math.random() * 10);
+  }
+
+  return r;
+}
+
+var digitDanceEle = document.getElementById('digit-dance');
+var digitDanceEle1 = document.getElementById('digit-dance-1');
+
+var digitDance = new DigitDance(digitDanceEle);
+var digitDance1 = new DigitDance(digitDanceEle1);
+
+digitDance.setDigitBits(10);
+digitDance1.setDigitBits(20);
+
+setInterval(function() {
+  digitDance.setNumber(getRandomStr(10));
+}, 3000);
+
+setInterval(function() {
+  digitDance1.setNumber(getRandomStr(20));
+}, 5000);
+    
 </script>
 <script type="text/javascript" src="http://tajs.qq.com/stats?sId=44532796" charset="UTF-8"></script>
   </div>

@@ -3,17 +3,42 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: React Component - Feichao&#39;s blog</title>
+  <title>digit-dance - Feichao&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Everything about me">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Feichao's blog">
-<meta property="og:url" content="http://blog.0xfc.cn/tags/React-Component/index.html">
+  <meta name="description" content="主题  原生JS实现的数字展示效果。
+详情
+html
+
+12&amp;lt;!-- 定义wrap元素 --&amp;gt;&amp;lt;div id=&quot;digit-dance&quot;&amp;gt;&amp;lt;/div&amp;gt;
+
+javascript
+
+1234567891011// 获取wrap元素var digitDanceEle = document.getElementById(&apos;digit-dance&apos;);// 使用wrap元">
+<meta property="og:type" content="article">
+<meta property="og:title" content="digit-dance">
+<meta property="og:url" content="http://blog.0xfc.cn/2016/06/01/digit-dance/index.html">
 <meta property="og:site_name" content="Feichao's blog">
-<meta property="og:description" content="Everything about me">
+<meta property="og:description" content="主题  原生JS实现的数字展示效果。
+详情
+html
+
+12&amp;lt;!-- 定义wrap元素 --&amp;gt;&amp;lt;div id=&quot;digit-dance&quot;&amp;gt;&amp;lt;/div&amp;gt;
+
+javascript
+
+1234567891011// 获取wrap元素var digitDanceEle = document.getElementById(&apos;digit-dance&apos;);// 使用wrap元">
+<meta property="og:updated_time" content="2016-06-01T13:23:49.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Feichao's blog">
-<meta name="twitter:description" content="Everything about me">
+<meta name="twitter:title" content="digit-dance">
+<meta name="twitter:description" content="主题  原生JS实现的数字展示效果。
+详情
+html
+
+12&amp;lt;!-- 定义wrap元素 --&amp;gt;&amp;lt;div id=&quot;digit-dance&quot;&amp;gt;&amp;lt;/div&amp;gt;
+
+javascript
+
+1234567891011// 获取wrap元素var digitDanceEle = document.getElementById(&apos;digit-dance&apos;);// 使用wrap元">
   
   
     <link rel="icon" href="/favicon.png">
@@ -66,35 +91,87 @@
   </div>
 </header>
 <div ng-app="demoWan" style="position: relative;">
-    <section id="main" class="outer">
-    <section class="archives-wrap">
-    <div class="archive-tag-wrap">
-      <span class="archive-tag">#React Component</span>
-    </div>
-    <div class="archives">
+    <section id="main" class="outer"><article id="post-digit-dance" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-        <a href="/2016/04/17/how-to-create-react-component/" class="archive-article-date">
-  <time datetime="2016-04-17T06:36:59.000Z" itemprop="datePublished">2016 4月 17</time>
-</a>
-      
-      
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/04/17/how-to-create-react-component/">如何写好一个react组件</a>
+    <h1 class="article-title" itemprop="name">
+      digit-dance
     </h1>
   
 
-    </header>
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2016/06/01/digit-dance/" class="article-date">
+  <time datetime="2016-06-01T11:35:32.000Z" itemprop="datePublished">2016-06-01</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/component/">component</a>
   </div>
-</article>
-    
-    </div></section>
-    
 
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="主题">主题</h3><p>  原生JS实现的数字展示效果。</p>
+<h3 id="详情">详情</h3><blockquote>
+<p>html</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 定义wrap元素 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"digit-dance"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>javascript</p>
+</blockquote>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取wrap元素</span></span><br><span class="line"><span class="keyword">var</span> digitDanceEle = <span class="built_in">document</span>.getElementById(<span class="string">'digit-dance'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用wrap元素初始化实例</span></span><br><span class="line"><span class="keyword">var</span> digitDance = <span class="keyword">new</span> DigitDance(digitDanceEle);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置位数</span></span><br><span class="line">digitDance.setDigitBits(<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置数据</span></span><br><span class="line">digitDance.setNumber(<span class="number">13456283</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="效果">效果</h3><div id="digit-dance"></div><div id="digit-dance-1" style="margin: 20px 0;"></div>
+
+      
+    </div>
+  
+    <footer class="article-footer">
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/组件/">组件</a></li></ul>
+
+    </footer>
+  
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/06/01/absord-system/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">吸附对齐系统&nbsp;<span>&gt;</span></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+  <section id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread outer" data-thread-key="post-digit-dance" data-title="digit-dance" data-url="http://blog.0xfc.cn/2016/06/01/digit-dance/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:'frankwan'};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+      </script>
+    <!-- 多说公共JS代码 end -->
+  </section>
 </section>
     </div>
 <footer id="footer">
